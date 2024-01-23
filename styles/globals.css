@@ -18,16 +18,20 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #ffffff;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  width: 100%;
+}
+
+.MuiInputBase-input::placeholder {
+  color: #fff;
 }
