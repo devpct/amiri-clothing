@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
 import Container from '@mui/material/Container';
 import InputBase from '@mui/material/InputBase';
 import Avatar from '@mui/material/Avatar';
@@ -16,8 +15,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { TextField } from '@mui/material';
+import Link from 'next/link';
+import Image from 'next/image';
 
-const pages = ['Products', 'Pricing', 'Blog', 'Search'];
+const pages = ['Products', 'Women', 'Men', 'Search'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
@@ -84,26 +85,15 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: 'white', boxShadow: 'none' }}>
+        <AppBar position="fixed" sx={{ backgroundColor: 'white', boxShadow: 'none' }}>
           <Container maxWidth="full">
             <Toolbar disableGutters >
-              <Typography
-                variant="h6"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                  display: { xs: 'none', md: 'flex' },
-                  fontFamily: 'roboto',
-                  fontWeight: 'bold',
-                  fontSize: '2rem',
-                  letterSpacing: '0.5rem',
-                  color: 'black',
-                  textDecoration: 'none',
-                }}
-              >
-                AMIRI
-              </Typography>
+
+            <Box sx={{ display: { xs: 'none', md: 'block' } }} >
+            <Link href="/">
+              <Image className="w-auto h-6 sm:h-7 mr-3" src="https://seeklogo.com/images/A/amiri-logo-0A19AA90E1-seeklogo.com.png" alt="AMIRI" width={500} height={500}/>
+            </Link>
+            </Box>
     
 
               <Box sx={{ display: { xs: 'flex', md: 'none' } }} >
@@ -133,8 +123,8 @@ function ResponsiveAppBar() {
                     onClose={handleCloseNavMenu}
                     sx={{
                     display: { xs: 'block', md: 'none' },
-                    top: '15px'
                     }}
+                    className="bg-[#0000008f] navbar "
                     >
                     {pages.map((page) => (
                         page === 'Search' ? 
@@ -168,6 +158,7 @@ function ResponsiveAppBar() {
     
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page) => (
+                  page !== 'Search' &&
                   <Button
                     key={page}
                     onClick={handleCloseNavMenu}
@@ -196,6 +187,7 @@ function ResponsiveAppBar() {
               {/* <LocalMallIcon sx={{ color: '#585858', fontSize: '2.5rem', marginRight: '1rem'}}/> */}
               
               {/* Avatar and User Settings */}
+              <Link href='/signup'>
               <Box>
                 <Tooltip title="Signup">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -218,13 +210,14 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+            {settings.map((setting) => (
+              <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              <Typography textAlign="center">{setting}</Typography>
+              </MenuItem>
               ))}
             </Menu> */}
               </Box>
+            </Link>
             </Toolbar>
           </Container>
         </AppBar>
