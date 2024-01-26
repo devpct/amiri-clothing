@@ -2,6 +2,7 @@ import { Button } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 import Card from '@/components/modules/Card'
+
 export default function Products() {
   return (
     <>
@@ -24,7 +25,7 @@ export default function Products() {
 
         <div className="w-full text-center">
 		<Link href='/products'>
-        <Button className='bg-black text-white hover:bg-black rounded-lg w-[9rem] h-[3rem]'>
+        <Button style={{ backgroundColor: '#000', color: '#fff' }} className='rounded-lg w-[9rem] h-[3rem]'>
 			Show all
 		</Button>
 		</Link>

@@ -110,10 +110,10 @@ body {
     background-image: var(--stripesDark), var(--rainbow);
 }
 
-.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
-  width: fit-content ;
-}
-
 .navbar .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper{
   width: 100% ;
+}
+
+.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  width: fit-content ;
 }

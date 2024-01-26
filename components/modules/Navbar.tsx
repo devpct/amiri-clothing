@@ -16,7 +16,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { TextField } from '@mui/material';
 import Link from 'next/link';
-import Image from 'next/image';
+
 
 const pages = ['Products', 'Women', 'Men', 'Search'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -85,13 +85,16 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="fixed" sx={{ backgroundColor: 'white', boxShadow: 'none' }}>
-          <Container maxWidth="full">
+        <AppBar position="fixed" className='px-[1rem]' sx={{ backgroundColor: 'white', boxShadow: 'none'}}>
             <Toolbar disableGutters >
 
             <Box sx={{ display: { xs: 'none', md: 'block' } }} >
             <Link href="/">
-              <Image className="w-auto h-6 sm:h-7 mr-3" src="https://seeklogo.com/images/A/amiri-logo-0A19AA90E1-seeklogo.com.png" alt="AMIRI" width={500} height={500}/>
+            <img src='https://seeklogo.com/images/A/amiri-logo-0A19AA90E1-seeklogo.com.png'
+            loading="lazy"
+            alt='AMIRI'
+            className="w-auto h-6 sm:h-7 mr-3"
+            />
             </Link>
             </Box>
     
@@ -124,11 +127,11 @@ function ResponsiveAppBar() {
                     sx={{
                     display: { xs: 'block', md: 'none' },
                     }}
-                    className="bg-[#0000008f] navbar "
+                    className="bg-[#0000008f] navbar"
                     >
                     {pages.map((page) => (
                         page === 'Search' ? 
-                        <TextField id="standard-basic" label="Search" className='w-[-webkit-fill-available] m-5'/>
+                        <TextField id="standard-basic" label="Search" style={{ width: 'w-webkit-fill-available', margin: '5px' }}/>
                         :
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
                         <Typography textAlign="center">{page}</Typography>
@@ -219,7 +222,6 @@ function ResponsiveAppBar() {
               </Box>
             </Link>
             </Toolbar>
-          </Container>
         </AppBar>
       );
     }

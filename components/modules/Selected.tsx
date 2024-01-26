@@ -7,7 +7,7 @@ export default function Selected() {
 
     const [age, setAge] = React.useState('');
 
-    const handleChange = (event) => {
+    const handleChange = (event:any) => {
       setAge(event.target.value);
     };
     

@@ -1,13 +1,16 @@
 import ProductCard from '@/components/templates/Products/ProductCards'
 import Sidebar from '@/components/templates/Products/Sidebar'
 import React from 'react'
-
+import Head from "next/head";
 import '@radix-ui/themes/styles.css';
 import ProductsSettings from '@/components/templates/Products/ProductsSettings';
 
 export default function index() {
   return (
     <>
+    <Head>
+        <title>AMIRI - All Products</title>
+    </Head>
     <div className="flex">
       <Sidebar/>
     <div className="w-full">

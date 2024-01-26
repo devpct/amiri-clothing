@@ -4,7 +4,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 
 // Import Swiper styles
 import "swiper/css";
-import Image from 'next/image';
+
 
 export default function Slider() {
   return (
@@ -22,37 +22,29 @@ export default function Slider() {
     modules={[Autoplay, Pagination]}
     >
         <SwiperSlide >
-            <Image src={'https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'}
-            width={'500'}
-            height={'500'}
-            quality={100}
+            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
+            loading="lazy"
             alt='Slider 1'
             className='w-full h-full object-fill'
             />
         </SwiperSlide>
         <SwiperSlide >
-            <Image src={'https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'}
-            width={'500'}
-            height={'500'}
-            quality={100}
+            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
+            loading="lazy"
             alt='Slider 1'
             className='w-full h-full object-fill'
             />
         </SwiperSlide>
         <SwiperSlide >
-            <Image src={'https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'}
-            width={'500'}
-            height={'500'}
-            quality={100}
+            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
+            loading="lazy"
             alt='Slider 1'
             className='w-full h-full object-fill'
             />
         </SwiperSlide>
         <SwiperSlide >
-            <Image src={'https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'}
-            width={'500'}
-            height={'500'}
-            quality={100}
+            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
+            loading="lazy"
             alt='Slider 1'
             className='w-full h-full object-fill'
             />

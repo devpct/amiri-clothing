@@ -3,7 +3,9 @@ import type { AppProps } from "next/app"
 import Head from "next/head";
 import Navbar from '@/components/modules/Navbar';
 import Footer from "@/components/modules/Footer";
+import { Inter } from 'next/font/google'
 
+const inter = Inter({ subsets: ['latin'] })
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,12 +15,13 @@ export default function App({ Component, pageProps }: AppProps) {
   <meta name="theme-color" content="#ffffff"/>
   </Head>
 
-
+  <main className={inter.className}>
   <Navbar/>
   <div className="mt-[3.5rem]">
   <Component {...pageProps} />
   </div>
   <Footer/>
+  </main>
   </>  
   )
 }

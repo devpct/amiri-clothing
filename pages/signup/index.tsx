@@ -1,14 +1,18 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from 'swiper/modules';
+import Head from "next/head";
 
 // Import Swiper styles
 import "swiper/css";
-import Image from 'next/image';
+
 
 export default function index() {
   return (
     <>
+    <Head>
+        <title>AMIRI - Signup</title>
+    </Head>
 <section className="bg-white">
     <div className="grid grid-cols-1 lg:grid-cols-2" >
         <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-10">
@@ -57,7 +61,7 @@ export default function index() {
                         <div className="flex items-center">
                             <input type="checkbox" name="agree" id="agree" className="w-5 h-5 text-blue-600 bg-white border-gray-200 rounded" />
 
-                            <label for="agree" className="ml-3 text-sm font-medium text-gray-500">
+                            <label className="ml-3 text-sm font-medium text-gray-500">
                                 I agree to Postcraft’s <a href="#" title="" className="text-blue-600 hover:text-blue-700 hover:underline">Terms of Service</a> and <a href="#" title="" className="text-blue-600 hover:text-blue-700 hover:underline">Privacy Policy</a>
                             </label>
                         </div>
@@ -113,38 +117,30 @@ export default function index() {
           }}
           modules={[Autoplay, Pagination]}
         >
-        <SwiperSlide >
-            <Image src={'https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'}
-            width={'500'}
-            height={'500'}
-            quality={100}
+       <SwiperSlide >
+            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
+            loading="lazy"
             alt='Slider 1'
             className='w-full h-full object-fill'
             />
         </SwiperSlide>
         <SwiperSlide >
-            <Image src={'https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'}
-            width={'500'}
-            height={'500'}
-            quality={100}
+            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
+            loading="lazy"
             alt='Slider 1'
             className='w-full h-full object-fill'
             />
         </SwiperSlide>
         <SwiperSlide >
-            <Image src={'https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'}
-            width={'500'}
-            height={'500'}
-            quality={100}
+            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
+            loading="lazy"
             alt='Slider 1'
             className='w-full h-full object-fill'
             />
         </SwiperSlide>
         <SwiperSlide >
-            <Image src={'https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'}
-            width={'500'}
-            height={'500'}
-            quality={100}
+            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
+            loading="lazy"
             alt='Slider 1'
             className='w-full h-full object-fill'
             />
