@@ -1,4 +1,4 @@
-import ProductCard from '@/components/templates/Products/ProductCard'
+import ProductCard from '@/components/templates/Products/ProductCards'
 import Sidebar from '@/components/templates/Products/Sidebar'
 import React from 'react'
 
