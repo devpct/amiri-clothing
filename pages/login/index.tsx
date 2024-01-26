@@ -2,6 +2,7 @@ import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from 'swiper/modules';
 import Head from "next/head";
+import Input from '@/components/modules/Input'
 
 // Import Swiper styles
 import "swiper/css";
@@ -22,29 +23,11 @@ export default function index() {
 
                 <form className="mt-8">
                     <div className="space-y-5">
-                        <div>
-                            <label className="text-base font-medium text-gray-900"> Email address </label>
-                            <div className="mt-2.5">
-                                <input
-                                    type="email"
-                                    name=""
-                                    placeholder="Enter email to get started"
-                                    className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
-                                />
-                            </div>
-                        </div>
 
-                        <div>
-                            <label className="text-base font-medium text-gray-900"> Password </label>
-                            <div className="mt-2.5">
-                                <input
-                                    type="password"
-                                    name=""
-                                    placeholder="Enter your password"
-                                    className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
-                                />
-                            </div>
-                        </div>
+                    <Input label='Email address' placeholder='Enter email to get started'/>
+
+                    <Input label='Password' placeholder='Enter your password'/>
+
 
                         {/* <div className="flex items-center">
                             <input type="checkbox" name="agree" id="agree" className="w-5 h-5 text-blue-600 bg-white border-gray-200 rounded" />
