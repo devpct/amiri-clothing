@@ -5,8 +5,12 @@ import { Autoplay, Pagination } from 'swiper/modules';
 // Import Swiper styles
 import "swiper/css";
 
+interface Slider {
+  data: any;
+}
 
-export default function Slider() {
+
+const Slider: React.FC<Slider> =({ data }) => {
   return (
     <>
     <Swiper 
@@ -21,35 +25,21 @@ export default function Slider() {
     }}
     modules={[Autoplay, Pagination]}
     >
-        <SwiperSlide >
-            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
+      {
+        data.map(slider => (
+          <SwiperSlide key={slider.id}>
+            <img src={slider.image}
             loading="lazy"
             alt='Slider 1'
             className='w-full h-full object-fill'
             />
-        </SwiperSlide>
-        <SwiperSlide >
-            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
-            loading="lazy"
-            alt='Slider 1'
-            className='w-full h-full object-fill'
-            />
-        </SwiperSlide>
-        <SwiperSlide >
-            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
-            loading="lazy"
-            alt='Slider 1'
-            className='w-full h-full object-fill'
-            />
-        </SwiperSlide>
-        <SwiperSlide >
-            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
-            loading="lazy"
-            alt='Slider 1'
-            className='w-full h-full object-fill'
-            />
-        </SwiperSlide>
+          </SwiperSlide>
+        ))
+      }
     </Swiper>
     </>
   )
 }
+
+
+export default Slider

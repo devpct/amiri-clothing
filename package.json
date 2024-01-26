@@ -26,6 +26,7 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/themes": "^2.0.3",
     "@tremor/react": "^3.13.3",
+    "axios": "^1.6.7",
     "framer-motion": "^11.0.3",
     "json-server": "^1.0.0-alpha.22",
     "mdb-react-ui-kit": "^7.1.0",
@@ -33,6 +34,7 @@
     "rc-footer": "^0.6.8",
     "react": "^18",
     "react-dom": "^18",
+    "react-query": "^3.39.3",
     "swiper": "^11.0.5",
     "tw-elements-react": "^1.0.0-alpha2"
   },
