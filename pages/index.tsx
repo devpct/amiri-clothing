@@ -13,12 +13,11 @@ interface Index {
 
 const Index: React.FC<Index> =({ }) => {
 
-  const { isLoading, error, data } = useQuery('Slider', () => 
+  const { isLoading, data } = useQuery('Slider', () => 
   axios.get('https://amiri-clothing-server.liara.run/slider').then((res) => res.data)
   );
 
   if (isLoading) return <div>Loading...</div>
-  if (error) return <div>Error: {error.message}</div>
 
   return (
     <>
