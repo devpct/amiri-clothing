@@ -9,6 +9,11 @@ interface Slider {
   data: any;
 }
 
+interface sliderData {
+  id: number;
+  image: string;
+}
+
 
 const Slider: React.FC<Slider> =({ data }) => {
   return (
@@ -26,7 +31,7 @@ const Slider: React.FC<Slider> =({ data }) => {
     modules={[Autoplay, Pagination]}
     >
       {
-        data.map(slider => (
+        data.map((slider:sliderData) => (
           <SwiperSlide key={slider.id}>
             <img src={slider.image}
             loading="lazy"
