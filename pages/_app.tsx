@@ -6,6 +6,7 @@ import Footer from "@/components/modules/Footer";
 import { Inter } from 'next/font/google'
 import { QueryClient, QueryClientProvider } from 'react-query';
 const queryClient = new QueryClient();
+// import { ReactQueryDevtools } from 'react-query/devtools'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,6 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
   <Component {...pageProps} />
   </div>
   <Footer/>
+  {/* <ReactQueryDevtools/> */}
   </QueryClientProvider>
   </main>
   </>  

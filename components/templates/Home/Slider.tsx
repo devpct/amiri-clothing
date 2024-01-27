@@ -31,7 +31,7 @@ const Slider: React.FC<Slider> =({ data }) => {
     modules={[Autoplay, Pagination]}
     >
       {
-        data.map((slider:sliderData) => (
+        data?.map((slider:sliderData) => (
           <SwiperSlide key={slider.id}>
             <img src={slider.image}
             loading="lazy"
