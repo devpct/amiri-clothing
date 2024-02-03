@@ -1,22 +1,60 @@
 {
-    "customers": [
-      { "id": "1", "title": "a title" },
-      { "id": "2", "title": "another title" }
-    ],
-    "product": [
-        { "id": "1", "title": "a title" },
-        { "id": "2", "title": "another title" }
-    ],
-    "category": [
-        { "id": "1", "title": "a title" },
-        { "id": "2", "title": "another title" }
-    ],
-    "comments": [
-      { "id": "1", "text": "a comment about post 1", "postId": "1" },
-      { "id": "2", "text": "another comment about post 1", "postId": "1" }
-    ],
-    "slider": [
-      { "id": "1", "image": "https://media.licdn.com/dms/image/C4E12AQHWyW6VbusXZg/article-cover_image-shrink_720_1280/0/1525774737844?e=1711584000&v=beta&t=cOqnpNsFduBeUup4UsgBKOlBiTnc0Dxa-VuiDXNP0nI"},
-      { "id": "2", "image": "https://www.funkypigeon.com/_next/image?url=%2Fimages%2FSweaterHoodie%2Ftab_types.jpg&w=640&q=75"}
-    ]
+  "users": [
+    {
+      "id": "c050",
+      "fullname": "Mohammad Abdollahzadeh",
+      "email": "mrdevpct@gmail.com",
+      "password": "$2a$12$GbDKpKP5FNT9.3fZmvGi2ewGCQ/pUfdJ8mISoPJWxfws.Y1V.3bSu",
+      "role": "customer"
+    },
+    {
+      "id": "31c9",
+      "fullname": "Rasool Hosseini",
+      "email": "rasool@gmail.com",
+      "password": "$2a$12$3jY6hdjShdbhjYpsx4ICbuim77wGjhhcjf7M8qnHuh/gdrQpiZk/W",
+      "role": "customer"
+    }
+  ],
+  "product": [
+    {
+      "id": "1",
+      "title": "a title"
+    },
+    {
+      "id": "2",
+      "title": "another title"
+    }
+  ],
+  "category": [
+    {
+      "id": "1",
+      "title": "a title"
+    },
+    {
+      "id": "2",
+      "title": "another title"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "slider": [
+    {
+      "id": "1",
+      "image": "https://media.licdn.com/dms/image/C4E12AQHWyW6VbusXZg/article-cover_image-shrink_720_1280/0/1525774737844?e=1711584000&v=beta&t=cOqnpNsFduBeUup4UsgBKOlBiTnc0Dxa-VuiDXNP0nI"
+    },
+    {
+      "id": "2",
+      "image": "https://www.funkypigeon.com/_next/image?url=%2Fimages%2FSweaterHoodie%2Ftab_types.jpg&w=640&q=75"
+    }
+  ]
 }

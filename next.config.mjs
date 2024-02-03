@@ -4,6 +4,9 @@ const nextConfig = {
   images: { 
     domains: ['idehalmag.com','seeklogo.com','tailwindui.com']
   },
+  env: {
+    privateKey: 'dsasfdfakfdskjdffdsdfas'
+  }
 };
 
 export default nextConfig;

@@ -1,36 +1,118 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { toast, Bounce } from 'react-toastify';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from 'swiper/modules';
 import Head from "next/head";
 import Input from '@/components/modules/Input'
-
-// Import Swiper styles
 import "swiper/css";
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
+interface IndexProps {
+    sliderData: any;
+}
 
-export default function index() {
+interface sliderData {
+    id: number;
+    image: string;
+}
+
+const Index: React.FC<IndexProps> = ({ sliderData }) => {
+
+    const { data } = useQuery('Slider', () =>
+    axios.get('https://amiri-clothing-server.liara.run/slider').then((res) => res.data),
+    {
+      initialData: sliderData,
+      staleTime: 900000,
+      cacheTime: 900000,
+    }
+  );
+  
+  const router = useRouter()
+
+  const [fullname, setFullname] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const signup = (event) => {
+    event.preventDefault()
+
+    const customer = { fullname, email, password, role: "customer" }
+
+    axios.post('/api/auth/signup', customer)
+      .then((res) => {        
+        if (res.status === 201) {        
+          setFullname("");
+          setEmail("");
+          setPassword("");
+          localStorage.setItem('toast', 'signup');
+          router.replace('/');
+        }
+      })
+      .catch((error) => {
+        if(error.response.status === 422) {
+            toast.warn('Sorry, the email you entered is already in use by another user', {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
+        }else if(error.response.status === 400) {
+            toast.error('The information is not complete!!', {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
+        }
+      })
+  }
+
   return (
     <>
-    <Head>
-        <title>AMIRI - Signup</title>
-    </Head>
-<section className="bg-white">
-    <div className="grid grid-cols-1 lg:grid-cols-2" >
-        <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-10">
+    <section className="bg-white h-[100vh]">
+    <div className="grid grid-cols-1 lg:grid-cols-2 h-full" >
+        <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-10 ">
 
-            <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
+            <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto ">
 
                 <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">Signup</h2>
-                <p className="mt-2 text-base text-gray-600">Already have an account? <a href="/login" title="" className="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 hover:underline focus:text-blue-700">Login</a></p>
+                <p className="mt-2 text-base text-gray-600">Already have an account? <Link href="/login" title="" className="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 hover:underline focus:text-blue-700">Login</Link></p>
 
                 <form className="mt-8">
                     <div className="space-y-5">
-                    <Input label='Full Name' placeholder='Enter your full name'/>
+                    <Input 
+                    label='Full Name' 
+                    placeholder='Enter your full name' 
+                    value={fullname} 
+                    onChange={event=> setFullname(event.target.value)}
+                    />
 
-                    <Input label='Email address' placeholder='Enter email to get started'/>
+                    <Input 
+                    label='Email address' 
+                    placeholder='Enter email to get started'
+                    value={email} 
+                    onChange={event=> setEmail(event.target.value)}
+                    />
                     
-                    <Input label='Password' placeholder='Enter your password'/>
-
+                    <Input 
+                    label='Password' 
+                    placeholder='Enter your password'
+                    value={password} 
+                    onChange={event=> setPassword(event.target.value)}
+                    />
 
                         <div className="flex items-center">
                             <input type="checkbox" name="agree" id="agree" className="w-5 h-5 text-blue-600 bg-white border-gray-200 rounded" />
@@ -41,7 +123,8 @@ export default function index() {
                         </div>
 
                         <div>
-                            <button type="submit" className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700">
+                            <button type="submit" className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700"
+                            onClick={signup}>
                                 Create free account
                             </button>
                         </div>
@@ -91,38 +174,43 @@ export default function index() {
           }}
           modules={[Autoplay, Pagination]}
         >
-       <SwiperSlide >
-            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
+        {
+        data.map((slider:sliderData) => (
+          <SwiperSlide key={slider.id}>
+            <img src={slider.image}
             loading="lazy"
-            alt='Slider 1'
+            alt='Slider'
             className='w-full h-full object-fill'
             />
-        </SwiperSlide>
-        <SwiperSlide >
-            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
-            loading="lazy"
-            alt='Slider 1'
-            className='w-full h-full object-fill'
-            />
-        </SwiperSlide>
-        <SwiperSlide >
-            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
-            loading="lazy"
-            alt='Slider 1'
-            className='w-full h-full object-fill'
-            />
-        </SwiperSlide>
-        <SwiperSlide >
-            <img src='https://idehalmag.com/wp-content/uploads/2021/01/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D8%B3%D8%AA%D8%A7%DB%8C%D9%84-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87.jpg'
-            loading="lazy"
-            alt='Slider 1'
-            className='w-full h-full object-fill'
-            />
-        </SwiperSlide>
+          </SwiperSlide>
+        ))
+        }
     </Swiper>
         </div>
     </div>
 </section>
     </>
   )
+}
+
+export default Index
+
+export async function getServerSideProps(context) {
+    const { token } = context.req.cookies
+
+    if (token) {
+        return {
+          redirect:{
+            destination: '/',
+          }
+        }
+    }
+
+    const sliderData = await axios.get('https://amiri-clothing-server.liara.run/slider').then((res) => res.data);
+
+    return {
+      props: {
+        sliderData,
+      },
+    };
 }

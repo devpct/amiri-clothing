@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -16,7 +16,9 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { TextField } from '@mui/material';
 import Link from 'next/link';
-
+import axios from 'axios';
+import { useQuery, useQueryClient } from 'react-query';
+import { parseCookies } from 'nookies';
 
 const pages = ['Products', 'Women', 'Men', 'Search'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -65,7 +67,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function ResponsiveAppBar() {
+function Navbar() {
+
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   
@@ -84,8 +87,20 @@ function ResponsiveAppBar() {
       setAnchorElUser(null);
     };
 
+    const queryClient = useQueryClient();
+
+    let { data } = useQuery('UserInfo', () =>
+    axios.get('/api/auth/info').then((res) => res.data))
+
+    const handleOpenMenu = (event) => {
+      if(event.target.innerHTML === 'Logout'){
+        axios.get('/api/auth/logout')
+        queryClient.setQueryData('UserInfo', undefined)
+      }
+    };
+
     return (
-        <AppBar position="fixed" className='px-[1rem]' sx={{ backgroundColor: 'white', boxShadow: 'none'}}>
+        <AppBar position="sticky" className='px-[1rem] top-0' sx={{ backgroundColor: 'white', boxShadow: 'none'}}>
             <Toolbar disableGutters >
 
             <Box sx={{ display: { xs: 'none', md: 'block' } }} >
@@ -190,40 +205,50 @@ function ResponsiveAppBar() {
               {/* <LocalMallIcon sx={{ color: '#585858', fontSize: '2.5rem', marginRight: '1rem'}}/> */}
               
               {/* Avatar and User Settings */}
-              <Link href='/signup'>
               <Box>
-                <Tooltip title="Signup">
+                  { data === undefined ? (
+                    
+                    <Tooltip title="Signup">
+                      <Link href='/signup'>
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="" src="/static/images/avatar/2.jpg" />
+                      <Avatar alt="" src="/static/images/avatar/2.jpg" />
                   </IconButton>
+                      </Link>
                 </Tooltip>
-                {/* <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-            {settings.map((setting) => (
-              <MenuItem key={setting} onClick={handleCloseUserMenu}>
-              <Typography textAlign="center">{setting}</Typography>
-              </MenuItem>
-              ))}
-            </Menu> */}
+                  ) : (
+                    <>
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar alt={data.fullname} src="/static/images/avatar/2.jpg" />
+                  </IconButton>
+                    <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                  >
+                {settings.map((setting) => (
+                  <MenuItem key={setting} style={{ padding: '0'}} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center" style={{ padding: '10px 30px', width: '100%', height:'100%'}} onClick={handleOpenMenu}>{setting}</Typography>
+                  </MenuItem>
+                  ))}
+                </Menu>
+              </>
+                  )
+                  }
               </Box>
-            </Link>
             </Toolbar>
         </AppBar>
       );
     }
     
-    export default ResponsiveAppBar;
+    export default Navbar;

@@ -8,9 +8,6 @@ import ProductsSettings from '@/components/templates/Products/ProductsSettings';
 export default function index() {
   return (
     <>
-    <Head>
-        <title>AMIRI - All Products</title>
-    </Head>
     <div className="flex">
       <Sidebar/>
     <div className="w-full">

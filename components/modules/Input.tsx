@@ -2,10 +2,12 @@ import React from 'react'
 
 interface InputProps {
     label: string;
-    placeholder?: string;
+    placeholder: string;
+    value: any;
+    onChange: any;
 }
 
-const InputProps: React.FC<InputProps> = ({ label, placeholder }) => {
+const InputProps: React.FC<InputProps> = ({ label, placeholder, value, onChange }) => {
     return (
       <>
       <div>
@@ -15,6 +17,9 @@ const InputProps: React.FC<InputProps> = ({ label, placeholder }) => {
                 type="text"
                 placeholder={placeholder}
                 className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
+                value={value}
+                onChange={onChange}
+                required
                 />
         </div>
       </div>

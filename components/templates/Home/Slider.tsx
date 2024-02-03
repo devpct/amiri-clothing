@@ -31,11 +31,11 @@ const Slider: React.FC<Slider> =({ data }) => {
     modules={[Autoplay, Pagination]}
     >
       {
-        data?.map((slider:sliderData) => (
+        data.map((slider:sliderData) => (
           <SwiperSlide key={slider.id}>
             <img src={slider.image}
             loading="lazy"
-            alt='Slider 1'
+            alt='Slider'
             className='w-full h-full object-fill'
             />
           </SwiperSlide>
