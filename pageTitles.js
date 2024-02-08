@@ -19,6 +19,14 @@ const pageTitles = [
         title: 'Login',
         route: '/login'
     },
+    {
+        title: 'Women',
+        route: '/products/women'
+    },
+    {
+        title: 'Men',
+        route: '/products/men'
+    },
   ];
   
   export default pageTitles;

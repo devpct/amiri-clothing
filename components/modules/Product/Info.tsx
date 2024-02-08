@@ -1,11 +1,11 @@
 import React from 'react'
+import { startCase } from 'lodash';
 
-export default function Info() {
+export default function Info({ product }) {
 
     const productDetails = {
-        name: 'Basic Tee 6-Pack',
-        description:
-          'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
+        name: startCase(product.name),
+        description: product.description,
         highlights: [
           'Hand cut and sewn locally',
           'Dyed with our proprietary colors',

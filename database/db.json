@@ -28,7 +28,7 @@
         "https://amiri.com/cdn/shop/products/115_PRE-SS24_MENS_JERSEY_TOP_CNY_20DRAGON_20TEE_BLACK_06_4555.jpg?v=1706124816&width=1440",
         "https://amiri.com/cdn/shop/products/115_PRE-SS24_MENS_JERSEY_TOP_CNY_20DRAGON_20TEE_BLACK_05_4561.jpg?v=1706124816&width=1440"
       ],
-      "size": ["x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large"],
+      "size": ["xs", "s", "m", "l", "xl", "2xl", "3xl"],
       "category_id": "1"
     },
     {
@@ -43,7 +43,7 @@
         "https://amiri.com/cdn/shop/products/23_06_Pre-SS24_Womenswear_Shirts_TOP_Pajama_LEOPARD_20PJ_20SHIRT_PS24WSL004_Chai_20Tea_0301.jpg?v=1706914262&width=1440",
         "https://amiri.com/cdn/shop/products/23_05_Pre-SS24_Womenswear_Shirts_TOP_Pajama_LEOPARD_20PJ_20SHIRT_PS24WSL004_Chai_20Tea_0310.jpg?v=1706914262&width=1440"
       ],
-      "size": ["small", "medium", "large"],
+      "size": ["s", "m", "l"],
       "category_id": "2"
     }
   ],

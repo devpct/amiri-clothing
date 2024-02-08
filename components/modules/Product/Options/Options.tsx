@@ -2,10 +2,10 @@ import React,{ useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
 
-export default function Options() {
+export default function Options({ product }) {
 
   const productDetails = {
-    price: '$192',
+    price: Number(product.price).toLocaleString(),
     colors: [
       { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
       { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
@@ -22,6 +22,11 @@ export default function Options() {
       { name: '3XL', inStock: true },
     ],
   }
+
+  productDetails.sizes.forEach((size) => {
+    size.inStock = product.size.includes(size.name.toLowerCase());
+  });
+  
   const reviews = { href: '#', average: 4, totalCount: 117 }
 
   const [selectedColor, setSelectedColor] = useState(productDetails.colors[0])
@@ -30,7 +35,7 @@ export default function Options() {
   return (
     <>
     <div className="mt-4 lg:row-span-3 lg:mt-0">
-            <p className="text-3xl tracking-tight text-gray-900">{productDetails.price}</p>
+            <p className="text-3xl tracking-tight text-gray-900">${productDetails.price}</p>
 
 
             {/* Reviews */}

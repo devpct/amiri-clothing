@@ -1,8 +1,9 @@
 import React from 'react'
 import Options from '@/components/modules/Product/Options/Options'
 import Info from '@/components/modules/Product/Info'
+import { startCase } from 'lodash';
 
-export default function ProductInfo() {
+export default function ProductInfo({ product }) {
 
   return (
     <>
@@ -10,12 +11,12 @@ export default function ProductInfo() {
 
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
             <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                {'Basic Tee 6-Pack'}
+                {startCase(product.name)}
             </h1>
           </div>
 
-          <Options/>
-          <Info/>
+          <Options product={product}/>
+          <Info product={product}/>
 
         </div>
     </>

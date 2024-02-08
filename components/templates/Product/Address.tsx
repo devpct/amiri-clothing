@@ -1,8 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
+import { startCase } from 'lodash';
 
 
-export default function Address() {
+export default function Address({ product }) {
 
     const breadcrumbs = [
         { id: 1, name: 'Prducts', href: '/products' },
@@ -11,7 +12,7 @@ export default function Address() {
     ]
     
     const productDetails = {
-        name: 'Basic Tee 6-Pack',
+        name: startCase(product.name),
         href: '#'
       }
 

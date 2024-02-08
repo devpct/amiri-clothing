@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default function ProductImages() {
+export default function ProductImages({ imags }) {
   return (
     <>
     <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
     <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
 
-    <img src='https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg'
+    <img src={imags[1]}
     loading="lazy"
     alt='image 1'
     className="h-[20rem] w-full object-cover object-center"
@@ -15,7 +15,7 @@ export default function ProductImages() {
     </div>
     <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
 
-    <img src='https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg'
+    <img src={imags[2]}
     loading="lazy"
     alt='image 1'
     className="h-[20rem] w-full object-cover object-center"
