@@ -15,24 +15,46 @@
       "role": "customer"
     }
   ],
-  "product": [
+  "products": [
     {
       "id": "1",
-      "title": "a title"
+      "name": "lunar new year dragon tee",
+      "colors": ["black", "white"],
+      "price": "470000",
+      "description": "this cotton tee honors the year of the dragon with a fierce mythical serpent encircling the amiri logo. designed in an easy, relaxed fit, this tee pairs well with house denim offerings.",
+      "images": [
+        "https://amiri.com/cdn/shop/products/115_PRE-SS24_MENS_JERSEY_TOP_CNY_20DRAGON_20TEE_BLACK_638f9123-8d64-44f5-bbc3-cf76b42fa14f.jpg?v=1706124816&width=1440",
+        "https://amiri.com/cdn/shop/products/115_PRE-SS24_MENS_JERSEY_TOP_CNY_20DRAGON_20TEE_BLACK_02_4553.jpg?v=1706124816&width=1440",
+        "https://amiri.com/cdn/shop/products/115_PRE-SS24_MENS_JERSEY_TOP_CNY_20DRAGON_20TEE_BLACK_06_4555.jpg?v=1706124816&width=1440",
+        "https://amiri.com/cdn/shop/products/115_PRE-SS24_MENS_JERSEY_TOP_CNY_20DRAGON_20TEE_BLACK_05_4561.jpg?v=1706124816&width=1440"
+      ],
+      "size": ["x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large"],
+      "category_id": "1"
     },
     {
       "id": "2",
-      "title": "another title"
+      "name": "leopard pj shirt",
+      "colors": ["wormy"],
+      "price": "1030000",
+      "description": "this leisurewear-inspired silhouette in fluid silk layers artfully illustrated leopards with boldly contrasted polka dots in a maximalist approach. featuring front patch pockets, classic notched lapel and button-down closure, this shirt pairs effortlessly with the matching leopard paperbag silk pant for a look of elevated leisure.",
+      "images": [
+        "https://amiri.com/cdn/shop/products/23_Pre-SS24_20Womenswear_Shirts_TOP_Pajama_LEOPARD_20PJ_20SHIRT_PS24WSL004_Chai_20Tea.jpg?v=1706914262&width=1440",
+        "https://amiri.com/cdn/shop/products/23_02_Pre-SS24_Womenswear_Shirts_TOP_Pajama_LEOPARD_20PJ_20SHIRT_PS24WSL004_Chai_20Tea_0318.jpg?v=1706914262&width=1440",
+        "https://amiri.com/cdn/shop/products/23_06_Pre-SS24_Womenswear_Shirts_TOP_Pajama_LEOPARD_20PJ_20SHIRT_PS24WSL004_Chai_20Tea_0301.jpg?v=1706914262&width=1440",
+        "https://amiri.com/cdn/shop/products/23_05_Pre-SS24_Womenswear_Shirts_TOP_Pajama_LEOPARD_20PJ_20SHIRT_PS24WSL004_Chai_20Tea_0310.jpg?v=1706914262&width=1440"
+      ],
+      "size": ["small", "medium", "large"],
+      "category_id": "2"
     }
   ],
-  "category": [
+  "categories": [
     {
       "id": "1",
-      "title": "a title"
+      "name": "mens shirt"
     },
     {
       "id": "2",
-      "title": "another title"
+      "name": "womens shirt"
     }
   ],
   "comments": [

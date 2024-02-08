@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import React from 'react'
-import Selected from '@/components/modules/Selected'
+import CategorySelect from '@/components/modules/Sidebar/CategorySelect'
 import SidebarSearch from '@/components/modules/Sidebar/SidebarSearch'
+import ProductsSort from '@/components/modules/Sidebar/ProductsSort'
 
-export default function Sidebar() {
+export default function Sidebar({ categoriesData }) {
 
   return (
     <>
@@ -20,9 +21,10 @@ export default function Sidebar() {
 
     <div className="flex flex-col justify-between flex-1 mt-6">
         <nav className='grid gap-y-3'>
-        <Selected/>
-        <Selected/>
-        <Selected/>
+        <p>Categories</p>
+        <CategorySelect categoriesData={categoriesData}/>
+        <p>Sort by</p>
+        <ProductsSort />
         </nav>
     </div>
     

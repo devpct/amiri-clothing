@@ -11,7 +11,7 @@ export default function index({ productsData, categoriesData }) {
 
   const selectedCategoryId = useSelector(state => state.selectedCategoryId);
 
-  const { data:products } = useQuery('Products', () =>
+  const { data:products } = useQuery('ProductsWomen', () =>
   axios.get('http://localhost:4000/products').then((res) => res.data),
   {
     initialData: productsData,
@@ -20,7 +20,7 @@ export default function index({ productsData, categoriesData }) {
   }
   )
 
-  const { data:categories } = useQuery('Categories', () =>
+  const { data:categories } = useQuery('CategoriesWomen', () =>
   axios.get('http://localhost:4000/categories').then((res) => res.data),
   {
     initialData: categoriesData,
@@ -51,13 +51,21 @@ export default function index({ productsData, categoriesData }) {
 
 
 export async function getStaticProps() {
-  const productsData = await axios.get('http://localhost:4000/products').then((res) => res.data)
-  const categoriesData = await axios.get('http://localhost:4000/categories').then((res) => res.data)
+  const productsData = await axios.get('http://localhost:4000/products').then((res) => res.data);
+  const categoriesData = await axios.get('http://localhost:4000/categories').then((res) => res.data);
   
+const categoriesWithoutWomen = categoriesData.filter(category => category.name.toLowerCase().includes('women'));
+
+const categoriesWithoutWomenIds = categoriesWithoutWomen.map(category => category.id);
+
+const productsWithoutWomen = productsData.filter(product =>
+    categoriesWithoutWomenIds.includes(product.category_id));
+
+
   return {
     props: {
-      productsData,
-      categoriesData
+      productsData: productsWithoutWomen,
+      categoriesData: categoriesWithoutWomen,
     },
   };
 }

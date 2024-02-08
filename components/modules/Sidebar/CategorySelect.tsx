@@ -1,0 +1,41 @@
+import React, { useEffect, useState } from 'react'
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { startCase } from 'lodash';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategoryId } from '@/redux/actions';
+
+export default function CategorySelect({ categoriesData }) {
+
+  const dispatch = useDispatch();
+  const selectedCategoryId = useSelector(state => state.selectedCategoryId);
+
+  const handleChange = (event) => {
+    
+    dispatch(setCategoryId(event.target.value));
+  };
+  
+  return (
+    <>
+    <FormControl className='w-full'>
+        <Select
+          value={selectedCategoryId}
+          onChange={handleChange}
+          displayEmpty
+          inputProps={{ 'aria-label': 'Without label' }}
+        >
+          <MenuItem value="">
+            <em>All Products</em>
+          </MenuItem>
+          {
+            categoriesData?.map(category => (
+              <MenuItem key={category.id} value={category.id}>{startCase(category.name)}</MenuItem>
+            ))
+          }
+        </Select>
+    </FormControl>
+    </>
+  )
+}
+

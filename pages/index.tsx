@@ -10,7 +10,7 @@ interface IndexProps {
   sliderData: any;
 }
 
-const Index: React.FC<IndexProps> = ({ sliderData }) => {
+const Index: React.FC<IndexProps> = ({ sliderData, productsData }) => {
   const { data } = useQuery('Slider', () =>
     axios.get('https://amiri-clothing-server.liara.run/slider').then((res) => res.data),
     {
@@ -56,7 +56,7 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
   return (
     <>
       <Slider data={data} />
-      <Clothes />
+      <Clothes productsData={productsData} />
     </>
   );
 };
@@ -66,9 +66,12 @@ export default Index;
 export async function getStaticProps() {
   const sliderData = await axios.get('https://amiri-clothing-server.liara.run/slider').then((res) => res.data)
   
+  const productsData = await axios.get('http://localhost:4000/products').then((res) => res.data)
+
   return {
     props: {
       sliderData,
+      productsData
     },
   };
 }

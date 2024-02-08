@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -19,55 +19,69 @@ import Link from 'next/link';
 import axios from 'axios';
 import { useQuery, useQueryClient } from 'react-query';
 import { parseCookies } from 'nookies';
+import { startCase } from 'lodash';
+import { useRouter } from 'next/router';
 
-const pages = ['Products', 'Women', 'Men', 'Search'];
+const pages = ['products', 'women', 'men'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
+// const Search = styled('div')(({ theme }) => ({
+//   position: 'relative',
+//   borderRadius: theme.shape.borderRadius,
+//   backgroundColor: alpha(theme.palette.common.white, 0.15),
+//   '&:hover': {
+//     backgroundColor: alpha(theme.palette.common.white, 0.25),
+//   },
+//   marginLeft: 0,
+//   width: '100%',
+//   [theme.breakpoints.up('sm')]: {
+//     marginLeft: theme.spacing(1),
+//     width: 'auto',
+//   },
+// }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
+// const SearchIconWrapper = styled('div')(({ theme }) => ({
+//   padding: theme.spacing(0, 2),
+//   height: '100%',
+//   position: 'absolute',
+//   pointerEvents: 'none',
+//   display: 'flex',
+//   alignItems: 'center',
+//   justifyContent: 'center',
+// }));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  width: '100%',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
+// const StyledInputBase = styled(InputBase)(({ theme }) => ({
+//   color: 'inherit',
+//   width: '100%',
+//   '& .MuiInputBase-input': {
+//     padding: theme.spacing(1, 1, 1, 0),
+//     // vertical padding + font size from searchIcon
+//     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+//     transition: theme.transitions.create('width'),
+//     [theme.breakpoints.up('sm')]: {
+//       width: '12ch',
+//       '&:focus': {
+//         width: '20ch',
+//       },
+//     },
+//   },
+// }));
 
 function Navbar() {
+
+  const [selectedPage, setSelectedPage] = useState(null);
+  const router = useRouter();
+
+  // تابع برای بررسی اینکه آیا صفحه فعلی یکی از صفحات /products است یا نه
+  const isProductPage = () => {
+    return router.pathname.startsWith('/products');
+  };
+
+  const handleClick = (page) => {
+    setSelectedPage(page);
+  };
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -145,12 +159,15 @@ function Navbar() {
                     className="bg-[#0000008f] navbar"
                     >
                     {pages.map((page) => (
-                        page === 'Search' ? 
-                        <TextField id="standard-basic" label="Search" style={{ width: 'w-webkit-fill-available', margin: '5px' }}/>
-                        :
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">{page}</Typography>
+                    <Link href={page === 'products' ? '/products':`/products/${page}`}>
+                    <MenuItem key={page} onClick={handleCloseNavMenu}
+                    style={{
+                      color: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'white' : 'black',
+                      backgroundColor: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'black' : 'transparent', 
+                    }}>
+                        <Typography textAlign="center">{startCase(page)}</Typography>
                     </MenuItem>
+                    </Link>
                     ))}
                 </Menu>
               </Box>
@@ -175,31 +192,26 @@ function Navbar() {
               </Typography>
     
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                {pages.map((page) => (
-                  page !== 'Search' &&
+              {pages.map((page) => (
+                <Link href={page === 'products' ? '/products' : `/products/${page}`} key={page}>
                   <Button
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'black', display: 'block', fontSize: '1rem' }} 
+                    onClick={() => handleClick(page)}
+                    sx={{
+                      my: 2,
+                      display: 'block',
+                      fontSize: '1rem',
+                    }}
+                    style={{
+                      color: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'white' : 'black',
+                      backgroundColor: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'black' : 'transparent', 
+                    }}                    
                   >
                     {page}
                   </Button>
-                ))}
+                </Link>
+              ))}
               </Box>
 
-              <Box sx={{display: { xs: 'none', md: 'flex' }, marginRight: '1rem'}}>
-                <AppBar position="static" style={{ width: 'fit-content', backgroundColor: '#585858', boxShadow: 'none' }}>
-                    <Search style={{ marginLeft: '0'}} >
-                      <SearchIconWrapper >
-                        <SearchIcon />
-                      </SearchIconWrapper>
-                      <StyledInputBase
-                        placeholder="Search…"
-                        inputProps={{ 'aria-label': 'search' }}
-                      />
-                    </Search>
-                </AppBar>
-              </Box>
 
               {/* Cart */}
               {/* <LocalMallIcon sx={{ color: '#585858', fontSize: '2.5rem', marginRight: '1rem'}}/> */}

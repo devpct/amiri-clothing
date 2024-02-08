@@ -9,7 +9,8 @@ const queryClient = new QueryClient();
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import pageTitles from '@/pageTitles'
-// import { ReactQueryDevtools } from 'react-query/devtools'
+import { Provider } from 'react-redux';
+import store from '@/redux/store';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,15 +31,16 @@ export default function App({ Component, pageProps, router }: AppProps) {
   <meta name="theme-color" content="#ffffff"/>
   </Head>
 
+  <Provider store={store}>
   <main className={inter.className}>
   <QueryClientProvider client={queryClient}>
   {!isLoginPage && !isSignupPage && <Navbar />}
   <Component {...pageProps} />
   {!isLoginPage && !isSignupPage && <Footer />}
   <ToastContainer />
-  {/* <ReactQueryDevtools/> */}
   </QueryClientProvider>
   </main>
+  </Provider>
   </>  
   )
 }

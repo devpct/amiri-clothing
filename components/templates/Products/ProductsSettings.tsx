@@ -1,17 +1,23 @@
 import React from 'react'
-import Selected from '@/components/modules/Selected'
+import CategorySelect from '@/components/modules/Sidebar/CategorySelect'
 import SidebarSearch from '@/components/modules/Sidebar/SidebarSearch'
+import ProductsSort from '@/components/modules/Sidebar/ProductsSort'
 
-export default function ProductsSettings() {
+export default function ProductsSettings({ categoriesData }) {
 
   return (
     <>
     <div className="lg:hidden mt-[5rem] px-4">
         <SidebarSearch/>
         <div className="flex gap-x-5 my-5 w-full justify-center">
-           <Selected/>
-           <Selected/>
-           <Selected/>
+          <div className='w-full'>
+          <p className='text-center mb-2'>Categories</p>
+           <CategorySelect categoriesData={categoriesData}/>
+          </div>
+          <div className='w-full'>
+          <p className='text-center mb-2'>Sort by</p>
+           <ProductsSort />
+          </div>
         </div>
     </div>
     </>
