@@ -6,7 +6,7 @@ import Head from "next/head";
 import axios from 'axios';
 
 
-export default function product({ product }) {
+export default function product({ product, categories }) {
 
   // useEffect(()=>{
   //   console.log(product[0]);
@@ -19,7 +19,7 @@ export default function product({ product }) {
      <div className="bg-white font-[system-ui]">
       <div className="pt-6">
         
-      <Address product={product[0]}/>
+      <Address product={product[0]} categories={categories}/>
       <ImageGallery product={product[0]}/>
       <ProductInfo product={product[0]}/>
         
@@ -47,9 +47,12 @@ export async function getStaticProps(context) {
 
   const product = await axios.get(`http://localhost:4000/products?name=${params.productName}`).then((res) => res.data);
 
+  const categories = await axios.get('http://localhost:4000/categories').then((res) => res.data)
+
   return {
     props: {
       product,
+      categories
     },
   };
 }

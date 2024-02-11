@@ -11,8 +11,7 @@ export default function CategorySelect({ categoriesData }) {
   const dispatch = useDispatch();
   const selectedCategoryId = useSelector(state => state.selectedCategoryId);
 
-  const handleChange = (event) => {
-    
+  const handleChange = (event) => {    
     dispatch(setCategoryId(event.target.value));
   };
   

@@ -4,11 +4,17 @@ import '@radix-ui/themes/styles.css';
 import ProductsSettings from '@/components/templates/Products/ProductsSettings';
 import axios from 'axios';
 import { useQuery } from 'react-query';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startCase } from 'lodash';
+import { setCategoryId } from '@/redux/actions';
+import { useEffect } from 'react';
 
 export default function index({ productsData, categoriesData }) {
 
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(setCategoryId(''));
+  },[])
   const selectedCategoryId = useSelector(state => state.selectedCategoryId);
 
   const { data:products } = useQuery('ProductsMen', () =>
@@ -38,7 +44,7 @@ export default function index({ productsData, categoriesData }) {
       <h1 className='bg-white fixed z-50 font-bold lg:text-[3rem] text-[2rem] w-full h-fit
       py-2 pl-5 border-b-1'>
         {
-          selectedCategoryId === '' ? 'All Products' : startCase(categories[+selectedCategoryId-1].name)
+          selectedCategoryId === '' ? 'All Products' : startCase(categories[+selectedCategoryId-selectedCategoryId].name)
         }
       </h1>
       <ProductsSettings categoriesData={categories}/>
@@ -51,6 +57,7 @@ export default function index({ productsData, categoriesData }) {
 
 
 export async function getStaticProps() {
+
   const productsData = await axios.get('http://localhost:4000/products').then((res) => res.data);
   const categoriesData = await axios.get('http://localhost:4000/categories').then((res) => res.data);
   

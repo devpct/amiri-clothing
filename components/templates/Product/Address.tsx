@@ -3,13 +3,19 @@ import Link from 'next/link'
 import { startCase } from 'lodash';
 
 
-export default function Address({ product }) {
+export default function Address({ product, categories }) {
 
-    const breadcrumbs = [
-        { id: 1, name: 'Prducts', href: '/products' },
-        { id: 2, name: 'Men', href: '#' },
-        { id: 2, name: 'Clothing', href: '#' },
-    ]
+  const categoryName = categories[product.category_id - 1].name;
+
+  
+  const breadcrumbs = [
+      { id: 1, name: 'Prducts', href: '/products' },
+      categoryName.includes('women') || categoryName.includes('men')? 
+      { id: 2, name: categoryName.includes('women') ? 'Women ' : 'Men', href:categoryName.includes('women') ? 'women ' : 'men' }
+      : null,
+      { id: 2, name: startCase(categoryName.replace(/mens|womens/gi, '')), href: '#' },
+  ];
+  
     
     const productDetails = {
         name: startCase(product.name),
@@ -18,7 +24,7 @@ export default function Address({ product }) {
 
   return (
     <>
-    <nav aria-label="Breadcrumb">
+    <nav aria-label="Breadcrumb" className='lg:sticky lg:top-[7.5%] lg:bg-white lg:pb-5'>
           <ol role="list" className="flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             {breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>

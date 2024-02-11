@@ -19,7 +19,8 @@
     {
       "id": "1",
       "name": "lunar new year dragon tee",
-      "colors": ["black", "white"],
+      "colors": ["black","white"],
+      "colors_code": ["000","fff"],
       "price": "470000",
       "description": "this cotton tee honors the year of the dragon with a fierce mythical serpent encircling the amiri logo. designed in an easy, relaxed fit, this tee pairs well with house denim offerings.",
       "images": [
@@ -35,6 +36,7 @@
       "id": "2",
       "name": "leopard pj shirt",
       "colors": ["wormy"],
+      "colors_code": ["ffebc2"],
       "price": "1030000",
       "description": "this leisurewear-inspired silhouette in fluid silk layers artfully illustrated leopards with boldly contrasted polka dots in a maximalist approach. featuring front patch pockets, classic notched lapel and button-down closure, this shirt pairs effortlessly with the matching leopard paperbag silk pant for a look of elevated leisure.",
       "images": [
