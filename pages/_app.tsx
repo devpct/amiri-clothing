@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import pageTitles from '@/pageTitles'
 import { Provider } from 'react-redux';
 import store from '@/redux/store';
+import ShoppingCarts from "@/components/modules/ShoppingCarts";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -38,6 +39,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
   <Component {...pageProps} />
   {!isLoginPage && !isSignupPage && <Footer />}
   <ToastContainer />
+  <ShoppingCarts/>
   </QueryClientProvider>
   </main>
   </Provider>

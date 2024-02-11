@@ -7,3 +7,9 @@ export const setSortBy = (name) => ({
     type: 'SET_SELECTED_SORT_BY',
     payload: name
 });
+
+export const setShoppingCarts = (bet) => ({
+    type: 'SET_SHOPPING_CARTS',
+    payload: bet
+});
+

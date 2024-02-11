@@ -21,6 +21,8 @@ import { useQuery, useQueryClient } from 'react-query';
 import { parseCookies } from 'nookies';
 import { startCase } from 'lodash';
 import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
+import { setShoppingCarts } from '@/redux/actions';
 
 const pages = ['products', 'women', 'men'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -112,6 +114,19 @@ function Navbar() {
         queryClient.setQueryData('UserInfo', undefined)
       }
     };
+
+    const dispatch = useDispatch();
+    const shoppingCarts = useSelector(state => state.shoppingCarts);
+
+    const handleShoppingCarts = ()=>{
+      console.log('mmd');
+      
+      if (shoppingCarts) {
+        dispatch(setShoppingCarts(false));
+      }else{
+        dispatch(setShoppingCarts(true));
+      }
+    }
 
     return (
         <AppBar position="sticky" className='px-[1rem] top-0' sx={{ backgroundColor: 'white', boxShadow: 'none'}}>
@@ -217,6 +232,7 @@ function Navbar() {
               {/* <LocalMallIcon sx={{ color: '#585858', fontSize: '2.5rem', marginRight: '1rem'}}/> */}
               
               {/* Avatar and User Settings */}
+
               <Box>
                   { data === undefined ? (
                     
@@ -228,7 +244,17 @@ function Navbar() {
                       </Link>
                 </Tooltip>
                   ) : (
-                    <>
+                    <div className='flex gap-x-5 items-center'>
+
+                  <button onClick={handleShoppingCarts} className="mt-2 lg:mt-0 relative z-50 inline-flex justify-center items-center h-[2.5rem] w-[2.5rem] 
+                  lg:h-[2.8rem] lg:w-[3rem]
+                  text-sm font-semibold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                  <svg className="flex-shrink-0 w-[1.9rem] lg:w-[2.2rem]"  fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21.312 7.94a1.49 1.49 0 0 0-1.062-.44h-3v-.75a5.25 5.25 0 1 0-10.5 0v.75h-3A1.5 1.5 0 0 0 2.25 9v10.125c0 1.828 1.547 3.375 3.375 3.375h12.75c.884 0 1.734-.346 2.366-.963a3.256 3.256 0 0 0 1.009-2.353V9a1.489 1.489 0 0 0-.438-1.06ZM8.25 6.75a3.75 3.75 0 0 1 7.5 0v.75h-7.5v-.75Zm9 4.5a5.25 5.25 0 1 1-10.5 0v-.75a.75.75 0 1 1 1.5 0v.75a3.75 3.75 0 0 0 7.5 0v-.75a.75.75 0 1 1 1.5 0v.75Z" />
+                  </svg>
+                  <span className="absolute top-0 end-0 inline-flex items-center py-0.5 px-[0.5rem] rounded-full text-xs font-medium transform -translate-y-1/2 translate-x-1/2 bg-red-500 text-white">0</span>
+                  </button>
+
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                       <Avatar alt={data.fullname} src="/static/images/avatar/2.jpg" />
                   </IconButton>
@@ -254,7 +280,7 @@ function Navbar() {
                   </MenuItem>
                   ))}
                 </Menu>
-              </>
+              </div>
                   )
                   }
               </Box>
