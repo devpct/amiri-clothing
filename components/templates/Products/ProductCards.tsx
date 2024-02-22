@@ -31,9 +31,9 @@ export default function ProductCard({ productsData, searchResult }) {
 
   let sortedProducts;
   if (selectedSortBy === 'expensive' || selectedSortBy === 'cheapest') {
-    sortedProducts = products.sort(compareByPrice);
+    sortedProducts = products?.sort(compareByPrice);
   } else {
-    sortedProducts = products.sort(sortByProductId);
+    sortedProducts = products?.sort(sortByProductId);
   }
 
   return (

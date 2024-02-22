@@ -3,7 +3,8 @@ import { createStore } from 'redux';
 const initialState = {
   selectedCategoryId: '',
   selectedSortBy: '',
-  shoppingCarts: false
+  shoppingCarts: false,
+  cartsQty: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -22,6 +23,11 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           shoppingCarts: action.payload
+        };
+      case 'SET_CARTS_QTY':
+        return {
+          ...state,
+          cartsQty: action.payload
         };
     default:
       return state;

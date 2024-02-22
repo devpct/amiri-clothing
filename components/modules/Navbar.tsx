@@ -25,7 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setShoppingCarts } from '@/redux/actions';
 
 const pages = ['products', 'women', 'men'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Dashboard', 'Logout'];
 
 
 
@@ -76,7 +76,6 @@ function Navbar() {
   const [selectedPage, setSelectedPage] = useState(null);
   const router = useRouter();
 
-  // تابع برای بررسی اینکه آیا صفحه فعلی یکی از صفحات /products است یا نه
   const isProductPage = () => {
     return router.pathname.startsWith('/products');
   };
@@ -117,10 +116,9 @@ function Navbar() {
 
     const dispatch = useDispatch();
     const shoppingCarts = useSelector(state => state.shoppingCarts);
+    const cartsQty = useSelector(state => state.cartsQty);
 
-    const handleShoppingCarts = ()=>{
-      console.log('mmd');
-      
+    const handleShoppingCarts = ()=>{      
       if (shoppingCarts) {
         dispatch(setShoppingCarts(false));
       }else{
@@ -252,7 +250,7 @@ function Navbar() {
                   <svg className="flex-shrink-0 w-[1.9rem] lg:w-[2.2rem]"  fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M21.312 7.94a1.49 1.49 0 0 0-1.062-.44h-3v-.75a5.25 5.25 0 1 0-10.5 0v.75h-3A1.5 1.5 0 0 0 2.25 9v10.125c0 1.828 1.547 3.375 3.375 3.375h12.75c.884 0 1.734-.346 2.366-.963a3.256 3.256 0 0 0 1.009-2.353V9a1.489 1.489 0 0 0-.438-1.06ZM8.25 6.75a3.75 3.75 0 0 1 7.5 0v.75h-7.5v-.75Zm9 4.5a5.25 5.25 0 1 1-10.5 0v-.75a.75.75 0 1 1 1.5 0v.75a3.75 3.75 0 0 0 7.5 0v-.75a.75.75 0 1 1 1.5 0v.75Z" />
                   </svg>
-                  <span className="absolute top-0 end-0 inline-flex items-center py-0.5 px-[0.5rem] rounded-full text-xs font-medium transform -translate-y-1/2 translate-x-1/2 bg-red-500 text-white">0</span>
+                  <span className="absolute top-0 end-0 inline-flex items-center py-0.5 px-[0.5rem] rounded-full text-xs font-medium transform -translate-y-1/2 translate-x-1/2 bg-red-500 text-white">{cartsQty}</span>
                   </button>
 
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

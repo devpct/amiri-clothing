@@ -2,8 +2,49 @@ import React from 'react'
 import Options from '@/components/modules/Product/Options/Options'
 import Info from '@/components/modules/Product/Info'
 import { startCase } from 'lodash';
+import { setCartsQty, setShoppingCarts } from '@/redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { useQuery } from 'react-query';
+import useSWR, { mutate } from 'swr';
 
-export default function ProductInfo({ product }) {
+export default function ProductInfo({ product, isLogin }) {
+  const dispatch = useDispatch();
+  const shoppingCarts = useSelector(state => state.shoppingCarts);
+  const cartsQty = useSelector(state => state.cartsQty);
+
+    const { data: userInfo } = useQuery('UserInfo', () =>
+    axios.get('/api/auth/info').then((res) => res.data))
+
+    const { data: cartItems } = useSWR('Cart', () =>
+    axios.get('http://localhost:4000/cart').then((res) => res.data)
+    );
+
+    const handleShoppingCarts = async (color, size) => {
+      const productAlreadyInCart = cartItems.find(
+        cartItem => cartItem.product_id === +product.id
+        );
+    
+      if (!productAlreadyInCart) {
+        dispatch(setCartsQty(cartsQty + 1));
+        await axios.post('http://localhost:4000/cart', {
+          customer_id: userInfo.id,
+          product_id: +product.id,
+          color_name: color.name,
+          size: size.name,
+          qty: 1,
+        });
+    
+        mutate('Cart');
+        if (!shoppingCarts) {
+          dispatch(setShoppingCarts(true));
+        }
+      } else {
+        console.log('Product is already in the cart');
+        // انجام عملیاتی در صورتی که محصول قبلاً به سبد خرید اضافه شده است
+      }
+    };
+    
 
   return (
     <>
@@ -15,7 +56,7 @@ export default function ProductInfo({ product }) {
             </h1>
           </div>
 
-          <Options product={product}/>
+          <Options product={product} isLogin={isLogin} handleShoppingCarts={handleShoppingCarts}/>
           <Info product={product}/>
 
         </div>

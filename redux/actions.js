@@ -13,3 +13,8 @@ export const setShoppingCarts = (bet) => ({
     payload: bet
 });
 
+export const setCartsQty = (qty) => ({
+    type: 'SET_CARTS_QTY',
+    payload: qty
+});
+

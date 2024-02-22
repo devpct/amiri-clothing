@@ -45,7 +45,7 @@
     "react-toastify": "^10.0.4",
     "redux": "^5.0.1",
     "swiper": "^11.0.5",
-    "swr": "^2.2.4",
+    "swr": "^2.2.5",
     "tw-elements-react": "^1.0.0-alpha2"
   },
   "devDependencies": {

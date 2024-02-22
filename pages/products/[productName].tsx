@@ -4,6 +4,7 @@ import ImageGallery from '@/components/templates/Product/ImageGallery'
 import ProductInfo from '@/components/templates/Product/ProductInfo'
 import Head from "next/head";
 import axios from 'axios';
+import { useQuery } from 'react-query';
 
 
 export default function product({ product, categories }) {
@@ -11,6 +12,10 @@ export default function product({ product, categories }) {
   // useEffect(()=>{
   //   console.log(product[0]);
   // },[])
+
+  let { data } = useQuery('UserInfo', () =>
+  axios.get('/api/auth/info').then((res) => res.data))
+
   return (
     <>
     <Head>
@@ -21,7 +26,7 @@ export default function product({ product, categories }) {
         
       <Address product={product[0]} categories={categories}/>
       <ImageGallery product={product[0]}/>
-      <ProductInfo product={product[0]}/>
+      <ProductInfo product={product[0]} isLogin={data}/>
         
       </div>
     </div>

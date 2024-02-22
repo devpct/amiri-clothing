@@ -1,10 +1,15 @@
+
 import React,{ useEffect, useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
 import { startCase } from 'lodash';
+import Link from 'next/link';
 
-export default function Options({ product }) {
 
+
+
+export default function Options({ product, isLogin, handleShoppingCarts }) {
+  
   const productDetails = {
     price: Number(product.price).toLocaleString(),
 
@@ -26,6 +31,8 @@ export default function Options({ product }) {
     class: product.colors_code[index],
   }));
   
+  const [selectedColor, setSelectedColor] = useState(colors[0])
+  const [selectedSize, setSelectedSize] = useState(productDetails.sizes[2])
   
   productDetails.sizes.forEach((size) => {
     size.inStock = product.size.includes(size.name.toLowerCase());
@@ -33,12 +40,11 @@ export default function Options({ product }) {
   
   const reviews = { href: '#', average: 4, totalCount: 117 }
   
-  const [selectedSize, setSelectedSize] = useState(productDetails.sizes[2])
-  const [selectedColor, setSelectedColor] = useState(colors[0])
 
   useEffect(() =>{
-    // console.log(colors,setSelectedColor);
+    console.log(colors,selectedColor);
   },[selectedColor])
+
   return (
     <>
     <div className="mt-4 lg:row-span-2 lg:mt-0">
@@ -75,20 +81,20 @@ export default function Options({ product }) {
                 <div className="flex items-center space-x-3 ">
                   {colors.map((color) => (
                     <div className={`flex gap-x-3  p-[0.8rem] rounded-full cursor-pointer
-                    ${selectedColor.name === color.name ? 'bg-[#000000]' : ''}
+                    ${selectedColor.name === color.name ? `bg-[#000000]` : ''}
                     `}
                     onClick={()=>setSelectedColor(color)}
                     >
                     <RadioGroup.Option
                       key={color.name}
                       value={color}
+                      style={{backgroundColor : color.class}}
                       className={
                         `
                         border-[0.1rem]
                         border-gray-400
                         w-[2rem]
                         h-[2rem]
-                        bg-[#${color.class}]
                         ${selectedColor.name === color.name ? 'ring-[#757575] ring-[1px] ring-offset-[3px] ' : ''}
                         relative -m-0.5 flex justify-center rounded-full p-0.5 focus:outline-none
                         ${color !== colors[0]  ? 'ml-[8px]' : ''}
@@ -168,14 +174,25 @@ export default function Options({ product }) {
               </RadioGroup>
             </div>
 
-
+            {isLogin === undefined ?
+            <Link href='/login'>
               <button
                 type="submit"
                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-zinc-900 px-8 py-3 text-base font-medium text-white hover:bg-zinc-700 focus:outline-none lg:mb-5"
-              >
+                onClick={()=>handleShoppingCarts(selectedColor,selectedSize)}
+                >
                 Add to bag
               </button>
-
+              </Link>
+              :
+              <button
+              type="button"
+              className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-zinc-900 px-8 py-3 text-base font-medium text-white hover:bg-zinc-700 focus:outline-none lg:mb-5"
+              onClick={()=>handleShoppingCarts(selectedColor,selectedSize)}
+              >
+              Add to bag
+              </button>
+              }
             </form>
 
       </div>
