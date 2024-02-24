@@ -25,7 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setShoppingCarts } from '@/redux/actions';
 
 const pages = ['products', 'women', 'men'];
-const settings = ['Dashboard', 'Logout'];
+const settings = ['Home', 'Dashboard', 'Admin Panel', 'Logout'];
 
 
 
@@ -111,6 +111,12 @@ function Navbar() {
       if(event.target.innerHTML === 'Logout'){
         axios.get('/api/auth/logout')
         queryClient.setQueryData('UserInfo', undefined)
+      }
+      if(event.target.innerHTML === 'Dashboard'){
+        router.push('/dashboard/profile');
+      }
+      if(event.target.innerHTML === 'Home'){
+        router.push('/');
       }
     };
 
@@ -273,9 +279,20 @@ function Navbar() {
                   onClose={handleCloseUserMenu}
                   >
                 {settings.map((setting) => (
+
+// Admin Panel
+
+                  data.role === 'admin' ?
                   <MenuItem key={setting} style={{ padding: '0'}} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center" style={{ padding: '10px 30px', width: '100%', height:'100%'}} onClick={handleOpenMenu}>{setting}</Typography>
                   </MenuItem>
+                  : data.role === 'customer' ?
+                    setting !== 'Admin Panel' &&
+                    <MenuItem key={setting} style={{ padding: '0'}} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center" style={{ padding: '10px 30px', width: '100%', height:'100%'}} onClick={handleOpenMenu}>{setting}</Typography>
+                    </MenuItem>
+                    : null
+
                   ))}
                 </Menu>
               </div>

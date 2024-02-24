@@ -40,7 +40,7 @@ export default function ProductCard({ productsData, searchResult }) {
     <>
       <div className="bg-white lg:mt-[5.5rem] lg:mb-4">
         <div className="w-full px-4 sm:px-6 lg:py-1 lg:px-8">
-          {sortedProducts.length > 0 ? (
+          {sortedProducts?.length > 0 ? (
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5  xl:gap-x flex-wrap">
             {
               sortedProducts.map((product) => (

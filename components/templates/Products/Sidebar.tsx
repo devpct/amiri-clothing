@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
-import CategorySelect from '@/components/modules/Sidebar/CategorySelect'
-import SidebarSearch from '@/components/modules/Sidebar/SidebarSearch'
-import ProductsSort from '@/components/modules/Sidebar/ProductsSort'
+import CategorySelect from '@/components/modules/Product/Sidebar/CategorySelect'
+import SidebarSearch from '@/components/modules/Product/Sidebar/SidebarSearch'
+import ProductsSort from '@/components/modules/Product/Sidebar/ProductsSort'
 
 export default function Sidebar({ categoriesData }) {
 

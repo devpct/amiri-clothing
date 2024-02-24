@@ -19,6 +19,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
   
   const isLoginPage = router.pathname === '/login';
   const isSignupPage = router.pathname === '/signup';
+  const isDashboard = router.pathname.startsWith('/dashboard/');
 
   // Find the page name based on the current route
   const currentPage = pageTitles.find(page => page.route === router.pathname);
@@ -35,9 +36,9 @@ export default function App({ Component, pageProps, router }: AppProps) {
   <Provider store={store}>
   <main className={inter.className}>
   <QueryClientProvider client={queryClient}>
-  {!isLoginPage && !isSignupPage && <Navbar />}
+  {!isLoginPage && !isSignupPage && !isDashboard && <Navbar />}
   <Component {...pageProps} />
-  {!isLoginPage && !isSignupPage && <Footer />}
+  {!isLoginPage && !isSignupPage && !isDashboard && <Footer />}
   <ToastContainer />
   <ShoppingCarts/>
   </QueryClientProvider>

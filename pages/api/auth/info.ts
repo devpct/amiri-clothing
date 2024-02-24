@@ -27,5 +27,5 @@ export default async function handler(
   
     const isUserExist = usersData.find((user) => user.email === tokenPyload.email);
     
-    return res.status(200).json({ id:isUserExist.id, fullname:isUserExist.fullname, email:isUserExist.email, password:isUserExist.password })
+    return res.status(200).json({ id:isUserExist.id, fullname:isUserExist.fullname, email:isUserExist.email, password:isUserExist.password, phonenumber:isUserExist.phonenumber, address:isUserExist.address, role:isUserExist.role})
 }

@@ -1,24 +1,21 @@
 {
   "users": [
     {
-      "id": "c050",
+      "id": "e0bf",
       "fullname": "Mohammad Abdollahzadeh",
       "email": "mrdevpct@gmail.com",
-      "password": "$2a$12$GbDKpKP5FNT9.3fZmvGi2ewGCQ/pUfdJ8mISoPJWxfws.Y1V.3bSu",
-      "role": "customer"
+      "password": "$2a$12$pNlfnJwkqkrU9Hcn9CHt8.z8LvjtmYPLL0z1E1295aWM/6OeAcW0i",
+      "phonenumber": "09215641823",
+      "address": "IR, Qom, Bolvar 15 Khordad, Koche 53, Pelak 10",
+      "role": "admin"
     },
     {
-      "id": "31c9",
+      "id": "817d",
       "fullname": "Rasool Hosseini",
       "email": "rasool@gmail.com",
-      "password": "$2a$12$3jY6hdjShdbhjYpsx4ICbuim77wGjhhcjf7M8qnHuh/gdrQpiZk/W",
-      "role": "customer"
-    },
-    {
-      "id": "93d6",
-      "fullname": "mehdi khalife",
-      "email": "mehdi@gmail.com",
-      "password": "$2a$12$JMg2puOTBFp9I4ntqhO6Du99VO6fNffYzX4ISU.2v58vb.lUZojCe",
+      "password": "$2a$12$iERE6s4ewZjg4eirZCvv/./5hQIKKFH8hW1DRjxJ8M397vftK1CKe",
+      "phonenumber": "",
+      "address": "",
       "role": "customer"
     }
   ],
@@ -88,7 +85,16 @@
       "name": "womens shirt"
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": "1710",
+      "customer_id": "c050",
+      "product_id": 1,
+      "color_name": "white",
+      "size": "S",
+      "qty": 1
+    }
+  ],
   "comments": [
     {
       "id": "1",

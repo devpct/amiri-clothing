@@ -44,6 +44,7 @@ export default function index({ productsData, categoriesData, searchResult }) {
 
 
 export async function getServerSideProps(context) {
+  
   const { query } = context;
 
   const productsData = await axios.get('http://localhost:4000/products').then((res) => res.data)
@@ -53,7 +54,7 @@ export async function getServerSideProps(context) {
     (item) =>
       item.name.toLowerCase().includes(query.q.toLowerCase())
   );
-
+  
   return {
     props: {
       productsData,

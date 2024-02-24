@@ -29,7 +29,7 @@ export default async function handler(
     
     const hashedPassword = await hashPassword(password)
     
-    const user = { fullname, email, password:hashedPassword, role }
+    const user = { fullname, email, password:hashedPassword, phonenumber:'', address:'', role }
 
     const token = generateToken({ email })
 
