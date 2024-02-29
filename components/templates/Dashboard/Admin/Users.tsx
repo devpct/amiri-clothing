@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
-import { Avatar, IconButton } from '@mui/material';
+import { Avatar, Box, IconButton, Modal } from '@mui/material';
 import { startCase } from 'lodash';
 import axios from 'axios';
 import { mutate } from 'swr';
+import Input from '@/components/modules/Input'
 
 export default function Users({ usersData }) {
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [showAdmins, setShowAdmins] = useState(false);
   const [showCustomers, setShowCustomers] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [fullname, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [role, setRole] = useState("");
 
-  const toggleUserSelection = (userId) => {
+  const toggleUserSelection = (userId, isAdmin) => {
     if (selectedUsers.includes(userId)) {
       setSelectedUsers(selectedUsers.filter((id) => id !== userId));
     } else {
@@ -19,10 +27,10 @@ export default function Users({ usersData }) {
   };
 
   const toggleSelectAllUsers = () => {
-    if (selectedUsers.length === usersData.length) {
+    if (selectedUsers.length === filteredUsers.length) {
       setSelectedUsers([]);
     } else {
-      const allUserIds = usersData.map(user => user.id);
+      const allUserIds = filteredUsers.map(user => user.id);
       setSelectedUsers(allUserIds);
     }
   };
@@ -48,28 +56,113 @@ export default function Users({ usersData }) {
     }
     return false;
   });
+  
 
   const getSelectedCount = () => {
-    let count = 0;
-    filteredUsers?.forEach(user => {
-      if (selectedUsers.includes(user.id)) {
-        count++;
-      }
-    });
-    return count;
+    return selectedUsers.length;
   };
 
-  const deleteUsers  = async (userIds) => {
+  const handleOpen = () => setOpen(true);
 
-    await axios.delete(`http://localhost:4000/users/${userIds}`);
+  const handleClose = () => {
+    setOpen(false);
+    setFullName('');
+    setEmail('');
+    setPassword('');
+    setPhoneNumber('');
+    setAddress('');
+    setRole('');
+  };
+
+  const deleteUsers = async () => {
+    let nonAdminUsersToDelete;
+  
+    if (!showAdmins && !showCustomers) {
+      nonAdminUsersToDelete = selectedUsers;
+    } else {
+      nonAdminUsersToDelete = selectedUsers.filter(userId => {
+        const user = usersData.find(u => u.id === userId);
+        if (!showAdmins) {
+          return user && user.role === 'customer';
+        }
+        if (!showCustomers) {
+          return user && user.role === 'admin';
+        }
+        return user && user.role !== 'admin';
+      });
+    }
+    
+    await Promise.all(nonAdminUsersToDelete.map(async (userId) => {
+      await axios.delete(`http://localhost:4000/users/${userId}`);
+    }));
   
     mutate('Users');
+    setSelectedUsers([]);
   };
-
   
+  
+  
+  
+  
+  
+  const addUsers = async () => {
+
+    await axios.post('http://localhost:4000/users', {
+      fullname,
+      email,
+      password,
+      phonenumber : phoneNumber,
+      address,
+      role,
+    });
+
+    mutate('Users')
+
+    setFullName('')
+    setEmail('')
+    setPassword('')
+    setPhoneNumber('')
+    setAddress('')
+    setRole('')
+    setOpen(false)
+  }
+
+  const [clickedCheckbox, setClickedCheckbox] = useState(null);
+
+
+const handleShowAdminsChange = (newValue) => {
+  if (clickedCheckbox === "admins") {
+    setShowAdmins(false);
+    setClickedCheckbox(null);
+  } else {
+    setShowAdmins(true);
+    setShowCustomers(false);
+    setClickedCheckbox("admins");
+  }
+
+    setSelectedUsers([]);
+
+  setShowAdmins(newValue);
+};
+
+const handleShowCustomersChange = (newValue) => {
+  if (clickedCheckbox === "customers") {
+    setShowCustomers(false);
+    setClickedCheckbox(null);
+  } else {
+    setShowCustomers(true);
+    setShowAdmins(false);
+    setClickedCheckbox("customers");
+  }
+
+    setSelectedUsers([]);
+
+  setShowCustomers(newValue);
+};
+
   return (
     <>
-      <section className="container mx-auto">
+      <section className="container mx-auto ">
         <div className="flex items-center justify-between">
           <div className='flex items-center gap-x-3'>
             <h2 className="text-lg font-medium text-gray-800 dark:text-white">Users</h2>
@@ -93,25 +186,25 @@ export default function Users({ usersData }) {
 
           <div className="flex items-center gap-x-8">
 
-            <div className="flex gap-x-2">
-              <input
-                type="checkbox"
-                className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
-                checked={showAdmins}
-                onChange={() => setShowAdmins(!showAdmins)}
-              />
-              <span>Admin</span>
-            </div>
+          <div className="flex gap-x-2">
+            <input
+              type="checkbox"
+              className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+              checked={showAdmins}
+              onChange={(e) => handleShowAdminsChange(e.target.checked)}
+            />
+            <span>Admin</span>
+          </div>
 
-            <div className="flex gap-x-2">
-              <input
-                type="checkbox"
-                className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
-                checked={showCustomers}
-                onChange={() => setShowCustomers(!showCustomers)}
-              />
-              <span>Customer</span>
-            </div>
+          <div className="flex gap-x-2">
+            <input
+              type="checkbox"
+              className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+              checked={showCustomers}
+              onChange={(e) => handleShowCustomersChange(e.target.checked)}
+            />
+            <span>Customer</span>
+          </div>
 
           <div>
           <p className="text-blue-500">
@@ -140,14 +233,80 @@ export default function Users({ usersData }) {
               </svg>
               <p>Edit</p>
             </button>
-            <button className="flex items-center gap-x-2 text-gray-500 transition-colors duration-200 dark:text-gray-300  focus:outline-none border rounded-[10px] p-2 pr-4">
+            <button onClick={handleOpen} className="flex items-center gap-x-2 text-gray-500 transition-colors duration-200 dark:text-gray-300  focus:outline-none border rounded-[10px] p-2 pr-4">
             <svg width="25" height="25" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 5v14"></path>
               <path d="M5 12h14"></path>
             </svg>
             <p>Add</p>
             </button>
-
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',width: 500,height: 'height-fit',bgcolor: 'background.paper',boxShadow: 24,p: 3,}} 
+              className="rounded-[10px]"
+              >
+              <div className="flex justify-between items-center w-full mb-3">
+                <h3 className="font-bold text-[1.5rem] text-gray-800 dark:text-white">
+                  Add User
+                </h3>
+                <button type="button" className="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" data-hs-overlay="#hs-focus-management-modal" onClick={handleClose}>
+                  <span className="sr-only">Close</span>
+                  <svg className="flex-shrink-0 size-7" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+              </div>
+              <hr/>
+              <div className="flex mt-5 flex-col gap-y-5">
+              <Input 
+              label='Full Name' 
+              placeholder='Enter full name to get started'
+              onChange={()=> setFullName(event.target.value)}
+              value={fullname}
+              />
+              <Input 
+              label='Email' 
+              placeholder='Enter email to get started'
+              onChange={()=> setEmail(event.target.value)}
+              value={email}
+              />
+              <Input 
+              label='Password' 
+              placeholder='Enter password to get started'
+              onChange={()=> setPassword(event.target.value)}
+              value={password}
+              />
+              <Input 
+              label='Phone Number' 
+              placeholder='Enter phone number to get started'
+              onChange={()=> setPhoneNumber(event.target.value)}
+              value={phoneNumber}
+              />
+              <Input 
+              label='Address' 
+              placeholder='Enter address to get started'
+              onChange={()=> setAddress(event.target.value)}
+              value={address}
+              />
+              <Input 
+              label='Role' 
+              placeholder='Enter role to get started'
+              onChange={()=> setRole(event.target.value)}
+              value={role}
+              />
+              <div className="flex justify-end items-center gap-x-2 ">
+                <button onClick={handleClose} type="button" className="py-3 px-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" data-hs-overlay="#hs-focus-management-modal">
+                  Close
+                </button>
+                <button onClick={addUsers} type="button" className="py-3 px-5 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gray-600 text-white hover:bg-gray-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                  Save changes
+                </button>
+              </div>
+              </div>
+              </Box>
+            </Modal>
           </div>
         </div>
 
@@ -163,7 +322,7 @@ export default function Users({ usersData }) {
                           <input
                             type="checkbox"
                             className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
-                            checked={selectedUsers.length === usersData?.length}
+                            checked={selectedUsers.length}
                             onChange={toggleSelectAllUsers}
                           />
                           <span>Name</span>

@@ -9,7 +9,7 @@ export default function Navbar({ isOpen, setIsOpen, data }) {
 
   return (
     <>
-    <div className="w-full px-1 flex items-center  justify-between lg:h-[5rem] h-[4rem]  border-b-1 sticky top-0">
+    <div className="w-full px-1 flex items-center  justify-between lg:h-[5rem] h-[4rem]  border-b-1 sticky top-0 z-50 bg-white">
     <div className="w-full flex gap-x-1 lg:justify-between items-center">
     <div className='flex items-center '>
     <IconButton >
