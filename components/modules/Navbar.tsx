@@ -25,7 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setShoppingCarts } from '@/redux/actions';
 
 const pages = ['products', 'women', 'men'];
-const settings = ['Home', 'Dashboard', 'Admin Panel', 'Logout'];
+const settings = ['Dashboard', 'Admin Panel', 'Logout'];
 
 
 
@@ -112,11 +112,11 @@ function Navbar() {
         axios.get('/api/auth/logout')
         queryClient.setQueryData('UserInfo', undefined)
       }
-      if(event.target.innerHTML === 'Dashboard'){
-        router.push('/dashboard/profile');
+      else if(event.target.innerHTML === 'Dashboard'){
+        router.push('/dashboard/user/profile');
       }
-      if(event.target.innerHTML === 'Home'){
-        router.push('/');
+      else if(event.target.innerHTML === 'Admin Panel'){
+        router.push('/dashboard/admin/assessment');
       }
     };
 

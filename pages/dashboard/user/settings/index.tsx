@@ -1,4 +1,4 @@
-import Sidebar from '@/components/templates/Dashboard/Sidebar'
+import Sidebar from '@/components/templates/Dashboard/User/Sidebar'
 import axios from 'axios'
 import React from 'react'
 import { useQuery } from 'react-query'

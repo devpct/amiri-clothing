@@ -1,8 +1,8 @@
 import React from 'react'
 import { useQuery } from 'react-query'
 import axios from 'axios'
-import Sidebar from '@/components/templates/Dashboard/Sidebar'
-import Profile from '@/components/templates/Dashboard/Profile'
+import Sidebar from '@/components/templates/Dashboard/User/Sidebar'
+import Profile from '@/components/templates/Dashboard/User/Profile'
 
 export default function index() {
 
