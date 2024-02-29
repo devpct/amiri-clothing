@@ -322,7 +322,7 @@ const handleShowCustomersChange = (newValue) => {
                           <input
                             type="checkbox"
                             className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
-                            checked={selectedUsers.length}
+                            checked={selectedUsers.length === filteredUsers?.length}
                             onChange={toggleSelectAllUsers}
                           />
                           <span>Name</span>
