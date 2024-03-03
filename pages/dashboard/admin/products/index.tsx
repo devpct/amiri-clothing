@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import Navbar from '@/components/templates/Dashboard/Admin/Navbar'
 import Sidebar from '@/components/templates/Dashboard/Admin/Sidebar'
 import axios from 'axios';
-import Users from '@/components/templates/Dashboard/Admin/Users';
+import Products from '@/components/templates/Dashboard/Admin/Products';
 import useSWR from 'swr';
 
 
-export default function index({ userData }) {
+export default function index({ userData, categoriesData }) {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const { data: usersData } = useSWR('Users', () =>
-  axios.get('http://localhost:4000/users').then((res) => res.data)
+  const { data: productsData } = useSWR('Products', () =>
+  axios.get('http://localhost:4000/products').then((res) => res.data)
   );
 
   return (
@@ -21,7 +21,7 @@ export default function index({ userData }) {
     <Navbar isOpen={isOpen} setIsOpen={setIsOpen} data={userData}/>
 
     <div className='lg:ml-64 my-[3rem]'>
-    <Users usersData={usersData}/>
+    <Products productsData={productsData} categoriesData={categoriesData}/>
     </div>
     </div>
     </>
@@ -50,9 +50,12 @@ export async function getServerSideProps(context) {
         }
     }
 
+    const categoriesData = await axios.get('http://localhost:4000/categories').then((res) => res.data)
+
     return {
       props: {
-        userData
+        userData,
+        categoriesData
       },
     };
-  }
+}
