@@ -355,8 +355,8 @@ export default function UsersModal({ openModalAdd, openModalEdit, setOpenModalEd
     <Input 
     label='Price' 
     placeholder='Enter price to get started'
-    onChange={()=> setPrice(event.target.value)}
-    value={price}
+    onChange={(event) => setPrice(event.target.value)}
+    value={price.toLocaleString()}
     />
     <Input 
     label='Image' 

@@ -107,21 +107,36 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                         />
                         <div className="flex items-center gap-x-2">
                         <div>
-                            <h2 className="font-medium text-gray-800 dark:text-white ">{data.name}</h2>
+                            <h2 className="font-medium text-gray-800 dark:text-white ">{startCase(data.name)}</h2>
                         </div>
                         </div>
                     </div>
                     </td>
-                    <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                        <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-800">
-                        <span className={`h-1.5 w-1.5 rounded-full ${'bg-['+data.colors_code+']'}`}></span>
-                        <h2 className="text-sm font-normal text-gray-500">{startCase(data.colors)}</h2>
+                    <td className="grid grid-cols-2 gap-2 items-center text-sm font-medium text-gray-700 whitespace-nowrap">
+                    {data.colors_code.map((color, index) => (
+                        <div key={index} className="flex items-center px-3 py-1 rounded-full gap-x-2 bg-gray-100 dark:bg-gray-800 w-fit">
+                        <span className={`h-3 w-3 rounded-full`} style={{backgroundColor: color}}></span>
+                        <h2 className="text-[11px] font-normal text-gray-500">{startCase(data.colors[index])}</h2>
                         </div>
+                    ))}
                     </td>
-                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.price}</td>
-                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.images}</td>
-                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.description}</td>
-                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.size}</td>
+                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{Number(data.price).toLocaleString()}</td>
+                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                    {data.images.map((link, index) => (
+                        <div key={index}>
+                        {link.substring(0, 50) + (link.length > 50 ? '...' : '')}
+                        </div>
+                    ))}
+                    </td>
+                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.description.substring(0, 50) + (data.description.length > 50 ? '...' : '')}</td>
+                    <td className="grid grid-cols-2 px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                    {data.size.map(size => (
+                        <div>
+                        {size} ,
+                        </div>
+                    ))
+                    }
+                    </td>
                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.category_id}</td>
                     </>
                     : null
