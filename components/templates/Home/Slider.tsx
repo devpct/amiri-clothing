@@ -18,6 +18,8 @@ interface sliderData {
 const Slider: React.FC<Slider> =({ data }) => {
   return (
     <>
+
+    
     <Swiper 
     className="mySwiper w-full lg:h-[40rem] h-[18rem] cursor-pointer" 
     loop={true} 

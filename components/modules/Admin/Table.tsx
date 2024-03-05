@@ -124,11 +124,14 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                     {data.images.map((link, index) => (
                         <div key={index}>
-                        {link.substring(0, 50) + (link.length > 50 ? '...' : '')}
+                        {link.length <= 50 ? link : link.substring(0, 50) + '...'}
                         </div>
-                    ))}
+                    ))
+                    }
                     </td>
-                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.description.substring(0, 50) + (data.description.length > 50 ? '...' : '')}</td>
+                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                    {data.description.length <= 50 ? data.description : data.description.substring(0, 50) + '...'}
+                    </td>
                     <td className="grid grid-cols-2 px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                     {data.size.map(size => (
                         <div>
@@ -138,6 +141,25 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     }
                     </td>
                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.category_id}</td>
+                    </>
+                    : title === 'categories' ?
+                    <>
+                    <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    <div className="inline-flex items-center gap-x-3">
+                        <input 
+                        type="checkbox" 
+                        className="border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                        checked={selected.includes(data.id)}
+                        onChange={() => toggleSelection(data.id)}
+                        />
+                        <div className="flex items-center gap-x-2">
+                        <div>
+                            <h2 className="font-medium text-gray-800 dark:text-white">{data.id}</h2>
+                        </div>
+                        </div>
+                    </div>
+                    </td>
+                    <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">{startCase(data.name)}</td>
                     </>
                     : null
                     }

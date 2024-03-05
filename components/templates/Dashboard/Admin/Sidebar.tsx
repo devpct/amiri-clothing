@@ -78,28 +78,18 @@ export default function Sidebar({ isOpen, setIsOpen}) {
 
             <li>
               <button
-                className={`w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 ${
-                  router.pathname === '/dashboard/admin/projects' ? 'bg-gray-900 text-white' : ''
+                className={`w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg  ${
+                  router.pathname === '/dashboard/admin/categories' ? 'bg-gray-900 text-white ' : 'hover:bg-gray-100'
                 }`}
-                onClick={() => router.push('/dashboard/admin/projects')}
+                onClick={() => router.push('/dashboard/admin/categories')}
               >
-                <svg
-                  className="size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M15.5 2H8.6c-.4 0-.8.2-1.1.5-.3.3-.5.7-.5 1.1v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8c.4 0 .8-.2 1.1-.5.3-.3.5-.7.5-1.1V6.5L15.5 2z" />
-                  <path d="M3 7.6v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8" />
-                  <path d="M15 2v5h5" />
-                </svg>
-                Projects
+              <svg className="size-4" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 10H3"></path>
+              <path d="M21 6H3"></path>
+              <path d="M21 14H3"></path>
+              <path d="M17 18H3"></path>
+            </svg>
+              Categories
               </button>
             </li>
 

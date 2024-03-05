@@ -7,7 +7,7 @@ import Table from '@/components/modules/Admin/Table';
 import axios from 'axios';
 
 export default function Products({ productsData, categoriesData }) {
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  const [selected, setSelected] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [openModalAdd, setOpenModalAdd] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
@@ -15,7 +15,7 @@ export default function Products({ productsData, categoriesData }) {
   const [colors, setColors] = useState([]);
   const [colorsCode, setColorsCode] = useState([]);
   const [price, setPrice] = useState('');
-  const [images, setImages] = useState('');
+  const [images, setImages] = useState([]);
   const [description, setDescription] = useState('');
   const [size, setSize] = useState([]);
   const [categoryId, setCategoryId] = useState(1);
@@ -34,7 +34,7 @@ export default function Products({ productsData, categoriesData }) {
   
   
   const getSelectedCount = () => {
-    return selectedProducts.length;
+    return selected.length;
   };
 
   const indexOfLast = currentPage * perPage;
@@ -55,10 +55,10 @@ export default function Products({ productsData, categoriesData }) {
           <Search value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
 
           <Buttons 
-          selected={selectedProducts} 
+          selected={selected} 
           setOpenModalAdd={setOpenModalAdd} 
           setOpenModalEdit={setOpenModalEdit} 
-          setSelected={setSelectedProducts} data={productsData} title={'products'}
+          setSelected={setSelected} data={productsData} title={'products'}
           setProductName={setProductName}
           setColors={setColors}
           setColorsCode={setColorsCode}
@@ -91,11 +91,11 @@ export default function Products({ productsData, categoriesData }) {
         setDescription={setDescription}
         setSize={setSize}
         setCategoryId={setCategoryId}
-        selected={selectedProducts}
+        selected={selected}
         categoriesData={categoriesData}
         title={'Product'}/>
 
-        <Table data={current} selected={selectedProducts} setSelected={setSelectedProducts} 
+        <Table data={current} selected={selected} setSelected={setSelected} 
         columnNames={['Name','Colors','Price','Images','Description','size','CategoryId']} title={'products'}/>
 
         <p className="text-blue-500 w-full mt-2  text-right">

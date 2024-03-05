@@ -2,7 +2,32 @@ import axios from 'axios';
 import React from 'react'
 import { mutate } from 'swr';
 
-export default function Buttons({ selected, setOpenModalAdd, setFullName, setEmail, setPassword, setPhoneNumber, setAddress, setRole, showAdmins, showCustomers, data, setSelected, filteredUsers, setOpenModalEdit, title, setProductName, setColors, setColorsCode, setPrice, setImages, setDescription, setSize, setCategoryId}) {
+export default function Buttons({ 
+    selected, 
+    setOpenModalAdd, 
+    setFullName, 
+    setEmail, 
+    setPassword, 
+    setPhoneNumber, 
+    setAddress, 
+    setRole, 
+    showAdmins, 
+    showCustomers,
+    data, 
+    setSelected, 
+    filteredUsers, 
+    setOpenModalEdit, 
+    title, 
+    setProductName, 
+    setColors, 
+    setColorsCode, 
+    setPrice, 
+    setImages, 
+    setDescription, 
+    setSize, 
+    setCategoryId,
+    setCategoryName,
+    }) {
     const handleOpen = () => {
         if(title === 'users'){
             setFullName('');
@@ -16,10 +41,13 @@ export default function Buttons({ selected, setOpenModalAdd, setFullName, setEma
             setColors([]);
             setColorsCode([]);
             setPrice('');
-            setImages('')
+            setImages([])
             setDescription('')
             setSize([])
             setCategoryId(1)
+        }else if (title === 'categories'){
+            setCategoryName('')
+            setCategoryId('')
         }
         setOpenModalAdd(true);
     }
@@ -53,6 +81,11 @@ export default function Buttons({ selected, setOpenModalAdd, setFullName, setEma
             await axios.delete(`http://localhost:4000/products/${productId}`);
         }));
         mutate('Products');
+    }else if (title === 'categories') {
+        await Promise.all(selected.map(async (categoryId) => {
+            await axios.delete(`http://localhost:4000/categories/${categoryId}`);
+        }));
+        mutate('Categories');
     }
     setSelected([]);
     };
@@ -82,7 +115,14 @@ export default function Buttons({ selected, setOpenModalAdd, setFullName, setEma
         setSize(selectedProduct.size || [])
         setCategoryId(selectedProduct.category_id || 1)
         }
-    }
+    }else if (title === 'categories'){
+        const selectedCategoryId = selected[0];
+        const selectedCategory = data.find(category => category.id === selectedCategoryId);
+        if (selectedCategory) {
+        setCategoryName(selectedCategory.name || '');
+        setCategoryId(selectedCategory.id || '')
+        }
+    }   
     setOpenModalEdit(true);
     }
     };

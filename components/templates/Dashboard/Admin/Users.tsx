@@ -7,7 +7,7 @@ import Pagination from '@/components/modules/Admin/Pagination';
 import Table from '@/components/modules/Admin/Table';
 
 export default function Users({ usersData }) {
-  const [selectedUsers, setSelectedUsers] = useState([]);
+  const [selected, setSelected] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [showAdmins, setShowAdmins] = useState(false);
   const [showCustomers, setShowCustomers] = useState(false);
@@ -45,7 +45,7 @@ export default function Users({ usersData }) {
   });
 
   const getSelectedCount = () => {
-    return selectedUsers.length;
+    return selected.length;
   };
 
   const indexOfLast = currentPage * perPage;
@@ -65,14 +65,14 @@ export default function Users({ usersData }) {
 
           <Search value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
 
-         <ChekboxFilter showAdmins={showAdmins} showCustomers={showCustomers} selectedUsers={selectedUsers} setShowAdmins={setShowAdmins} setShowCustomers={setShowCustomers} setSelectedUsers={setSelectedUsers}/>
+         <ChekboxFilter showAdmins={showAdmins} showCustomers={showCustomers} selected={selected} setShowAdmins={setShowAdmins} setShowCustomers={setShowCustomers} setSelected={setSelected}/>
 
-        <Buttons selected={selectedUsers} filteredUsers={filteredUsers}  setOpenModalAdd={setOpenModalAdd} setOpenModalEdit={setOpenModalEdit} setSelected={setSelectedUsers} data={usersData} setAddress={setAddress} setEmail={setEmail} setFullName={setFullName} setPassword={setPassword} setPhoneNumber={setPhoneNumber} setRole={setRole} showAdmins={showAdmins} showCustomers={showCustomers} title={'users'}/>
+        <Buttons selected={selected} filteredUsers={filteredUsers}  setOpenModalAdd={setOpenModalAdd} setOpenModalEdit={setOpenModalEdit} setSelected={setSelected} data={usersData} setAddress={setAddress} setEmail={setEmail} setFullName={setFullName} setPassword={setPassword} setPhoneNumber={setPhoneNumber} setRole={setRole} showAdmins={showAdmins} showCustomers={showCustomers} title={'users'}/>
         </div>
 
-        <Modal address={address} email={email} fullname={fullname} openModalAdd={openModalAdd} openModalEdit={openModalEdit} password={password} phoneNumber={phoneNumber} role={role} setAddress={setAddress} setEmail={setEmail} setFullName={setFullName} setOpenModalAdd={setOpenModalAdd} setOpenModalEdit={setOpenModalEdit} setPassword={setPassword} setPhoneNumber={setPhoneNumber} setRole={setRole} selected={selectedUsers} title={'User'}/>
+        <Modal address={address} email={email} fullname={fullname} openModalAdd={openModalAdd} openModalEdit={openModalEdit} password={password} phoneNumber={phoneNumber} role={role} setAddress={setAddress} setEmail={setEmail} setFullName={setFullName} setOpenModalAdd={setOpenModalAdd} setOpenModalEdit={setOpenModalEdit} setPassword={setPassword} setPhoneNumber={setPhoneNumber} setRole={setRole} selected={selected} title={'User'}/>
 
-        <Table data={current} selected={selectedUsers} setSelected={setSelectedUsers} 
+        <Table data={current} selected={selected} setSelected={setSelected} 
         columnNames={['Name','Status','Phone Number','Email address','Address']} title={'users'}/>
 
             <p className="text-blue-500 w-full mt-2  text-right">
