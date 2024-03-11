@@ -27,6 +27,13 @@ export default function Buttons({
     setSize, 
     setCategoryId,
     setCategoryName,
+    setText,
+    setCustomerId,
+    setProductId,
+    setLike,
+    setImage,
+    setColorName,
+    setQty
     }) {
     const handleOpen = () => {
         if(title === 'users'){
@@ -48,6 +55,19 @@ export default function Buttons({
         }else if (title === 'categories'){
             setCategoryName('')
             setCategoryId('')
+        }else if (title === 'comments'){
+            setText('')
+            setCustomerId('')
+            setProductId(1)
+            setLike(0)            
+        }else if (title === 'sliders'){
+            setImage('')
+        }else if (title === 'cart'){
+            setCustomerId('')
+            setProductId(1)
+            setSize('')
+            setColorName('')
+            setQty(1)
         }
         setOpenModalAdd(true);
     }
@@ -86,6 +106,21 @@ export default function Buttons({
             await axios.delete(`http://localhost:4000/categories/${categoryId}`);
         }));
         mutate('Categories');
+    }else if (title === 'comments'){
+        await Promise.all(selected.map(async (commentId) => {
+            await axios.delete(`http://localhost:4000/comments/${commentId}`);
+        }));
+        mutate('Comments');
+    }else if (title === 'sliders'){
+        await Promise.all(selected.map(async (sliderId) => {
+            await axios.delete(`http://localhost:4000/slider/${sliderId}`);
+        }));
+        mutate('Sliders');
+    }else if (title === 'cart'){
+        await Promise.all(selected.map(async (cartId) => {
+            await axios.delete(`http://localhost:4000/cart/${cartId}`);
+        }));
+        mutate('Cart');
     }
     setSelected([]);
     };
@@ -122,10 +157,35 @@ export default function Buttons({
         setCategoryName(selectedCategory.name || '');
         setCategoryId(selectedCategory.id || '')
         }
-    }   
+    }else if (title === 'comments'){
+        const selectedCommentId = selected[0];
+        const selectedComment = data.find(comment => comment.id === selectedCommentId);
+        if (selectedComment) {
+        setText(selectedComment.text || '')
+        setCustomerId(selectedComment.customer_id || '')
+        setProductId(selectedComment.product_id || 1)
+        setLike(selectedComment.like || 0)    
+        }
+    }else if (title === 'sliders'){
+        const selectedSliderId = selected[0];
+        const selectedSlider = data.find(slider => slider.id === selectedSliderId);
+        if (selectedSlider) {
+            setImage(selectedSlider.image || '');  
+        }
+    }else if (title === 'cart'){
+        const selectedCartId = selected[0];
+        const selectedCart = data.find(cart => cart.id === selectedCartId);
+        if (selectedCart) {
+        setCustomerId(selectedCart.customer_id || '')
+        setProductId(selectedCart.product_id || 1)
+        setSize(selectedCart.size || '')
+        setColorName(selectedCart.color_name || '')    
+        setQty(selectedCart.qty || 1)    
+    }
     setOpenModalEdit(true);
     }
-    };
+    }
+    }
 
   return (
     <>

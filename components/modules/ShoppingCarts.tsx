@@ -81,6 +81,39 @@ export default function ShoppingCarts() {
     mutate('Cart', updatedCartItems);
   };
   
+  const handleCheckout = async () => {
+    try {
+      for (const item of cartItems) {
+        if (item.customer_id === userInfo?.id) {
+          const orderData = {
+            customer_id: item.customer_id,
+            product_id: item.product_id,
+            color_name: item.color_name,
+            size: item.size,
+            qty: item.qty,
+            status: "preparing"
+          };
+          
+          await axios.post('http://localhost:4000/order', orderData);
+        }
+      }
+  
+      // حذف محصولات از سبد خرید
+      const userCartItems = cartItems.filter(item => item.customer_id === userInfo?.id);
+      const deleteRequests = userCartItems.map(item => axios.delete(`http://localhost:4000/cart/${item.id}`));
+      await Promise.all(deleteRequests);
+  
+      mutate('Cart', []);
+      dispatch(setCartsQty(0));
+      handleCloseShoppingCarts();
+  
+      console.log('Order placed successfully');
+    } catch (error) {
+      console.error('Error while placing order:', error);
+    }
+  };
+  
+  
   return (
     <Transition.Root show={shoppingCarts} as={Fragment}>
       <Dialog as="div" className="relative z-40" onClose={handleCloseShoppingCarts} onClick={handleCloseShoppingCarts}>
@@ -143,7 +176,7 @@ export default function ShoppingCarts() {
                                     <div>
                                       <div className="flex justify-between text-base font-medium text-gray-900">
                                         <h3>
-                                          <a href={product?.href}>{product?.name}</a>
+                                          <a className="line-clamp-1" href={product?.href}>{product?.name}</a>
                                         </h3>
                                         <p className="ml-4">${Number(product?.price).toLocaleString()}</p>
                                       </div>
@@ -190,12 +223,12 @@ export default function ShoppingCarts() {
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                       <div className="mt-6">
-                        <a
-                          href="#"
-                          className="flex items-center justify-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-900"
-                        >
-                          Checkout
-                        </a>
+                        <button
+                        className="flex items-center justify-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-900 w-full"
+                        onClick={handleCheckout}
+                      >
+                        Checkout
+                      </button>
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>

@@ -73,7 +73,7 @@ export default function Users({ usersData }) {
         <Modal address={address} email={email} fullname={fullname} openModalAdd={openModalAdd} openModalEdit={openModalEdit} password={password} phoneNumber={phoneNumber} role={role} setAddress={setAddress} setEmail={setEmail} setFullName={setFullName} setOpenModalAdd={setOpenModalAdd} setOpenModalEdit={setOpenModalEdit} setPassword={setPassword} setPhoneNumber={setPhoneNumber} setRole={setRole} selected={selected} title={'User'}/>
 
         <Table data={current} selected={selected} setSelected={setSelected} 
-        columnNames={['Name','Status','Phone Number','Email address','Address']} title={'users'}/>
+        columnNames={['Id','Name','Status','Phone Number','Email address','Address']} title={'users'}/>
 
             <p className="text-blue-500 w-full mt-2  text-right">
             Selected {getSelectedCount()}

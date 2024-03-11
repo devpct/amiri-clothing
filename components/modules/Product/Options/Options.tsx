@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 
 
-export default function Options({ product, isLogin, handleShoppingCarts }) {
+export default function Options({ product, isLogin, handleShoppingCarts, cart }) {
   
   const productDetails = {
     price: Number(product.price).toLocaleString(),

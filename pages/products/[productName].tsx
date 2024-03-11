@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 
 
-export default function product({ product, categories }) {
+export default function product({ product, categories, cart }) {
 
   // useEffect(()=>{
   //   console.log(product[0]);
@@ -26,7 +26,7 @@ export default function product({ product, categories }) {
         
       <Address product={product[0]} categories={categories}/>
       <ImageGallery product={product[0]}/>
-      <ProductInfo product={product[0]} isLogin={data}/>
+      <ProductInfo product={product[0]} isLogin={data} cart={cart}/>
         
       </div>
     </div>
@@ -53,11 +53,13 @@ export async function getStaticProps(context) {
   const product = await axios.get(`http://localhost:4000/products?name=${params.productName}`).then((res) => res.data);
 
   const categories = await axios.get('http://localhost:4000/categories').then((res) => res.data)
+  const cart = await axios.get('http://localhost:4000/cart').then((res) => res.data)
 
   return {
     props: {
       product,
-      categories
+      categories,
+      cart
     },
   };
 }

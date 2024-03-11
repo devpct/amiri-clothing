@@ -16,6 +16,7 @@ export default function Navbar({ isOpen, setIsOpen, data }) {
         <Avatar alt={data.fullname} src="/static/images/avatar/2.jpg" />
     </IconButton>
     <p className='lg:text-[1.3rem] text-[1rem] font-medium'>{data.fullname}</p>
+    <i className="bi bi-amazon"></i>
     </div>
 
     <div className=' items-center gap-x-2 hidden lg:flex'>

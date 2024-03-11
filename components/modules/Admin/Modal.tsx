@@ -3,6 +3,7 @@ import {Box, FormControl, MenuItem, Modal, Select } from '@mui/material';
 import Input from '@/components/modules/Input'
 import axios from 'axios';
 import { mutate } from 'swr';
+import moment from 'moment';
 
 export default function UsersModal({
     openModalAdd,
@@ -41,8 +42,22 @@ export default function UsersModal({
     categoryId,
     selected,
     categoryName,
-    setCategoryName
-  }) {
+    setCategoryName,
+    setText,
+    setCustomerId,
+    setProductId,
+    setLike,
+    text,
+    customerId,
+    productId,
+    like,
+    image,
+    setImage,
+    colorName,
+    qty,
+    setColorName,
+    setQty
+    }) {
     const handleClose = () => {
         if(title === 'User'){
         setFullName('');
@@ -62,7 +77,20 @@ export default function UsersModal({
       }else if (title === 'Categories'){
         setCategoryName('');
         setCategoryId('')
-      }        
+      }else if (title === 'Comments'){
+        setText('')
+        setCustomerId('')
+        setProductId(1)
+        setLike(0)            
+      }else if (title === 'Sliders'){
+        setImage('')
+      }else if (title === 'Cart'){
+        setCustomerId('')
+        setProductId(1)
+        setSize('')
+        setColorName('')
+        setQty(1)
+      }
         setOpenModalAdd(false);
         setOpenModalEdit(false);
       };
@@ -76,6 +104,7 @@ export default function UsersModal({
           phonenumber : phoneNumber,
           address,
           role,
+          createdAt: moment().format('YYYY-MM-DD HH:mm:ss')
         });
     
         mutate('Users')
@@ -121,8 +150,46 @@ export default function UsersModal({
             }else{
               setOpenModalAdd(true)
             }
+          }else if (title === 'Comments'){
+            await axios.post('http://localhost:4000/comments', {
+              text: text,
+              customer_id: customerId,
+              product_id: productId,
+              like: like,
+            });
+            
+            mutate('Comments')
+            
+            setText('')
+            setCustomerId('')
+            setProductId(1)
+            setLike(0)  
+          }else if (title === 'Sliders'){
+            await axios.post('http://localhost:4000/slider', {
+              image: image,
+            });
+            
+            mutate('Sliders')
+            
+            setImage('')
+          }else if (title === 'Cart'){
+            await axios.post('http://localhost:4000/cart', {
+              customer_id: customerId,
+              product_id: productId,
+              color_name: colorName,
+              size,
+              qty
+            });
+            
+            mutate('Cart')
+            
+            setCustomerId('')
+            setProductId(1)
+            setSize('')
+            setColorName('')
+            setQty(1)
           }
-      }
+        }
       const update = async () => {
         setOpenModalEdit(false);
         if(title === 'User'){
@@ -178,6 +245,44 @@ export default function UsersModal({
           }else{
             setOpenModalEdit(true);
           }
+        }else if (title === 'Comments'){
+          await axios.put(`http://localhost:4000/comments/${selected[0]}`, {
+            text: text,
+            customer_id: customerId,
+            product_id: productId,
+            like: like,
+          });
+          
+          mutate('Comments')
+          
+          setText('')
+          setCustomerId('')
+          setProductId(1)
+          setLike(0)  
+        }else if (title === 'Sliders'){
+          await axios.put(`http://localhost:4000/slider/${selected[0]}`, {
+            image: image,
+          });
+          
+          mutate('Sliders')
+          
+          setImage('')
+        }else if (title === 'Cart'){
+          await axios.put(`http://localhost:4000/cart/${selected[0]}`, {
+            customer_id: customerId,
+            product_id: productId,
+            color_name: colorName,
+            size,
+            qty
+          });
+          
+          mutate('Cart')
+          
+          setCustomerId('')
+          setProductId(1)
+          setSize('')
+          setColorName('')
+          setQty(1)
         }
       };
 
@@ -199,7 +304,7 @@ export default function UsersModal({
             boxShadow: 24,
             p: 3,
           }}
-          className={`rounded-[10px] lg:w-[800px] lg:h-fit w-[90%] ${title === 'Categories' ? 'h-fit' : ''} h-[70%] overflow-y-auto`}
+          className={`rounded-[10px] lg:w-[800px] lg:h-fit w-[90%] ${title === 'Categories' ? 'h-fit' : title === 'Sliders' ? 'h-fit' : ''} h-[70%] overflow-y-auto`}
         >
           <div className="flex justify-between items-center w-full mb-3">
             <h3 className="font-bold text-[1.5rem] text-gray-800 dark:text-white">
@@ -359,7 +464,77 @@ export default function UsersModal({
                     value={categoryName}
                     />
               </div>
-            ) : null}
+            ) : title === 'Comments' ? (
+              <div className="lg:grid grid-cols-2 gap-y-6 gap-x-8 flex flex-col">
+                    <Input 
+                    label='Customer Id' 
+                    placeholder='Enter customer Id to get started'
+                    onChange={(event)=> setCustomerId(event.target.value)}
+                    value={customerId}
+                    />
+                    <Input 
+                    label='Product Id' 
+                    placeholder='Enter product id to get started'
+                    onChange={(event) => setProductId(event.target.value)}
+                    value={productId}
+                    />
+                    <Input 
+                    label='Text' 
+                    placeholder='Enter text to get started'
+                    onChange={(event) => setText(event.target.value)}
+                    value={text}
+                    />
+                    <Input 
+                    label='Like' 
+                    placeholder='Enter like to get started'
+                    onChange={(event) => setLike(event.target.value)}
+                    value={like}
+                    />
+              </div>
+            ) : title === 'Sliders' ? (
+              <div>
+                    <Input 
+                    label='Image' 
+                    placeholder='Enter image to get started'
+                    onChange={(event)=> setImage(event.target.value)}
+                    value={image}
+                    />
+              </div>
+            ) : title === 'Cart' ? (
+              <div className="lg:grid grid-cols-2 gap-y-6 gap-x-8 flex flex-col">
+                    <Input 
+                    label='Customer Id' 
+                    placeholder='Enter customer Id to get started'
+                    onChange={(event)=> setCustomerId(event.target.value)}
+                    value={customerId}
+                    />
+                    <Input 
+                    label='Product Id' 
+                    placeholder='Enter product id to get started'
+                    onChange={(event) => setProductId(event.target.value)}
+                    value={productId}
+                    />
+                    <Input 
+                    label='Color Name' 
+                    placeholder='Enter color name to get started'
+                    onChange={(event) => setColorName(event.target.value)}
+                    value={colorName}
+                    />
+                    <Input 
+                    label='Size' 
+                    placeholder='Enter size to get started'
+                    onChange={(event) => setSize(event.target.value)}
+                    value={size}
+                    />
+                    <Input 
+                    label='Qty' 
+                    placeholder='Enter qty to get started'
+                    onChange={(event) => setQty(event.target.value)}
+                    value={qty}
+                    />
+              </div>
+            ) : null
+            }
             <div className="flex justify-end items-center gap-x-2 ">
               <button
                 onClick={handleClose}

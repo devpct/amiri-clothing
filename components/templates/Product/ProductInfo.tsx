@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import useSWR, { mutate } from 'swr';
 
-export default function ProductInfo({ product, isLogin }) {
+export default function ProductInfo({ product, isLogin, cart }) {
   const dispatch = useDispatch();
   const shoppingCarts = useSelector(state => state.shoppingCarts);
   const cartsQty = useSelector(state => state.cartsQty);
@@ -56,7 +56,7 @@ export default function ProductInfo({ product, isLogin }) {
             </h1>
           </div>
 
-          <Options product={product} isLogin={isLogin} handleShoppingCarts={handleShoppingCarts}/>
+          <Options product={product} isLogin={isLogin} cart={cart} handleShoppingCarts={handleShoppingCarts} />
           <Info product={product}/>
 
         </div>
