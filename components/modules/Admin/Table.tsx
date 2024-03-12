@@ -1,6 +1,9 @@
 import { Avatar, IconButton } from '@mui/material';
 import { startCase } from 'lodash';
 import React from 'react'
+import axios from 'axios';
+import { mutate } from 'swr';
+
 
 export default function Table({ selected, setSelected, data, columnNames, title }) {
 
@@ -20,6 +23,23 @@ export default function Table({ selected, setSelected, data, columnNames, title 
           setSelected(allIds);
         }
       };
+
+      const updateStatus = async (id, newStatus) => {
+        const targetData = data.find(item => item.id === id)
+        await axios.put(`http://localhost:4000/order/${id}`, 
+        {
+        id: targetData.id,
+        customer_id: targetData.customer_id,
+        product_id: targetData.product_id,
+        color_name: targetData.color_name,
+        size: targetData.size,
+        qty: targetData.qty,
+        status: newStatus 
+        })
+        mutate('Orders')
+    }
+    
+    
 
   return (
     <>
@@ -232,6 +252,63 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     </td>                    
                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.size}</td>
                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.qty}</td>   
+                    </>
+                    : title === 'orders' ?
+                    <>
+                    <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    <div className="inline-flex items-center gap-x-3">
+                        <input 
+                        type="checkbox" 
+                        className="border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                        checked={selected.includes(data.id)}
+                        onChange={() => toggleSelection(data.id)}
+                        />
+                        <div className="flex items-center gap-x-2">
+                        <div>
+                            <h2 className="font-medium text-gray-800 dark:text-white">{data.customer_id}</h2>
+                        </div>
+                        </div>
+                    </div>
+                    </td>
+                    <td className="px-12 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.product_id}</td>                    
+                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">                    
+                    {data.color_name}
+                    </td>                    
+                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.size}</td>
+                    <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.qty}</td>
+                    <td className="px-4 py-4 text-sm text-black font-bold dark:text-gray-300 whitespace-nowrap">{
+                        data.status === 'preparing' ?
+                            <button className='bg-[#e2e221] flex gap-x-2 p-3 rounded-lg' onClick={() => updateStatus(data.id, 'sending')}>
+                                <svg width="24" height="24" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 3h15v13H1z"></path>
+                                <path d="M16 8h4l3 3v5h-7V8z"></path>
+                                <path d="M5.5 16a2.5 2.5 0 1 0 0 5 2.5 2.5 0 1 0 0-5z"></path>
+                                <path d="M18.5 16a2.5 2.5 0 1 0 0 5 2.5 2.5 0 1 0 0-5z"></path>
+                                </svg>
+                                <p>
+                                Submit
+                                </p>
+                            </button>
+                        : data.status === 'sending' ?
+                            <button className='bg-[#abe221] flex gap-x-2 p-3 rounded-lg' onClick={() => updateStatus(data.id, 'delivery')}>
+                                <svg width="24" height="24" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <path d="M8.5 3a4 4 0 1 0 0 8 4 4 0 1 0 0-8z"></path>
+                                <path d="m17 11 2 2 4-4"></path>
+                                </svg>
+                                <p>
+                                Arrived
+                                </p>
+                            </button>
+                        : data.status === 'delivery'?
+                        <button className=" bg-gray-100 p-1 rounded-full">
+                        <svg width="35" height="35" fill="none" stroke="#008000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                        </button>
+                        : null
+                    }
+                    </td>   
                     </>
                     : null
                     }

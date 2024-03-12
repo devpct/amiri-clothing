@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import axios from 'axios';
+import useSWR from 'swr';
 
 export default function Sidebar({ isOpen, setIsOpen}) {
 
@@ -10,9 +12,13 @@ export default function Sidebar({ isOpen, setIsOpen}) {
     setIsOpen(false);
   };
 
+  const { data: ordersData } = useSWR('Orders', () =>
+  axios.get('http://localhost:4000/order').then((res) => res.data)
+  );
+
   return (
     <>
- <div
+    <div
         id="docs-sidebar"
         className={`lg:mt-20 mt-[63px] hs-overlay z-50 transition-all duration-300 transform  fixed top-0 start-0 bottom-0  lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 ${
           isOpen ? '-translate-x-0 w-full' : '-translate-x-full'
@@ -150,6 +156,12 @@ export default function Sidebar({ isOpen, setIsOpen}) {
                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
               </svg>
                 Orders
+                { ordersData?.filter(order => order.status === 'preparing').length !== 0 ?
+                  <div className={`grid ml-auto w-6 h-6 rounded-full ${
+                    router.pathname === '/dashboard/admin/orders' ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'
+                  }`}><p className='m-auto'>{ordersData?.filter(order => order.status === 'preparing').length}</p></div>
+                  : null
+                }
               </button>
             </li>
         </ul>

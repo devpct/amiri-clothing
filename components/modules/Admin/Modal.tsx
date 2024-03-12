@@ -56,7 +56,9 @@ export default function UsersModal({
     colorName,
     qty,
     setColorName,
-    setQty
+    setQty,
+    status,
+    setStatus
     }) {
     const handleClose = () => {
         if(title === 'User'){
@@ -90,6 +92,13 @@ export default function UsersModal({
         setSize('')
         setColorName('')
         setQty(1)
+      }else if (title === 'Orders'){
+        setCustomerId('')
+        setProductId(1)
+        setSize('')
+        setColorName('')
+        setQty(1)
+        setStatus('preparing')
       }
         setOpenModalAdd(false);
         setOpenModalEdit(false);
@@ -188,6 +197,24 @@ export default function UsersModal({
             setSize('')
             setColorName('')
             setQty(1)
+          }else if (title === 'Orders'){
+            await axios.post('http://localhost:4000/order', {
+              customer_id: customerId,
+              product_id: productId,
+              color_name: colorName,
+              size,
+              qty,
+              status
+            });
+            
+            mutate('Orders')
+            
+            setCustomerId('')
+            setProductId(1)
+            setSize('')
+            setColorName('')
+            setQty(1)
+            setStatus('preparing')
           }
         }
       const update = async () => {
@@ -283,6 +310,24 @@ export default function UsersModal({
           setSize('')
           setColorName('')
           setQty(1)
+        }else if (title === 'Orders'){
+          await axios.put(`http://localhost:4000/order/${selected[0]}`, {
+            customer_id: customerId,
+            product_id: productId,
+            color_name: colorName,
+            size,
+            qty,
+            status
+          });
+          
+          mutate('Orders')
+          
+          setCustomerId('')
+          setProductId(1)
+          setSize('')
+          setColorName('')
+          setQty(1)
+          setStatus('preparing')
         }
       };
 
@@ -532,6 +577,56 @@ export default function UsersModal({
                     onChange={(event) => setQty(event.target.value)}
                     value={qty}
                     />
+              </div>
+            ) : title === 'Orders' ? (
+              <div className="lg:grid grid-cols-2 gap-y-6 gap-x-8 flex flex-col">
+                    <Input 
+                    label='Customer Id' 
+                    placeholder='Enter customer Id to get started'
+                    onChange={(event)=> setCustomerId(event.target.value)}
+                    value={customerId}
+                    />
+                    <Input 
+                    label='Product Id' 
+                    placeholder='Enter product id to get started'
+                    onChange={(event) => setProductId(event.target.value)}
+                    value={productId}
+                    />
+                    <Input 
+                    label='Color Name' 
+                    placeholder='Enter color name to get started'
+                    onChange={(event) => setColorName(event.target.value)}
+                    value={colorName}
+                    />
+                    <Input 
+                    label='Size' 
+                    placeholder='Enter size to get started'
+                    onChange={(event) => setSize(event.target.value)}
+                    value={size}
+                    />
+                    <Input 
+                    label='Qty' 
+                    placeholder='Enter qty to get started'
+                    onChange={(event) => setQty(event.target.value)}
+                    value={qty}
+                    />
+                  <div className="flex flex-col ">
+                    <label  className="text-base font-medium text-gray-900">Status</label>
+                  <FormControl className='mt-3'>
+                        <Select
+                        value={status}
+                        displayEmpty
+                        onChange={(event) => setStatus(event.target.value)}
+                        inputProps={{ 'aria-label': 'Without label' }}
+                        >
+                        
+                        <MenuItem value='preparing'>Preparing</MenuItem>
+                        <MenuItem  value='sending'>Sending</MenuItem>
+                        <MenuItem  value='delivery'>Delivery</MenuItem>
+
+                        </Select>
+                    </FormControl>
+              </div>
               </div>
             ) : null
             }

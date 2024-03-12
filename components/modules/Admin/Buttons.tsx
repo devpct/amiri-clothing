@@ -33,7 +33,8 @@ export default function Buttons({
     setLike,
     setImage,
     setColorName,
-    setQty
+    setQty,
+    setStatus
     }) {
     const handleOpen = () => {
         if(title === 'users'){
@@ -68,6 +69,13 @@ export default function Buttons({
             setSize('')
             setColorName('')
             setQty(1)
+        }else if (title === 'orders'){
+            setCustomerId('')
+            setProductId(1)
+            setSize('')
+            setColorName('')
+            setQty(1)
+            setStatus('preparing')
         }
         setOpenModalAdd(true);
     }
@@ -121,12 +129,18 @@ export default function Buttons({
             await axios.delete(`http://localhost:4000/cart/${cartId}`);
         }));
         mutate('Cart');
+    }else if (title === 'orders'){
+        await Promise.all(selected.map(async (orderId) => {
+            await axios.delete(`http://localhost:4000/order/${orderId}`);
+        }));
+        mutate('Orders');
     }
-    setSelected([]);
+        setSelected([]);
     };
 
     const handleOpenEdit = () => {
     if (selected.length === 1) {
+        setOpenModalEdit(true);
         if(title === 'users'){
         const selectedUserId = selected[0];
         const selectedUser = filteredUsers.find(user => user.id === selectedUserId);
@@ -182,8 +196,17 @@ export default function Buttons({
         setColorName(selectedCart.color_name || '')    
         setQty(selectedCart.qty || 1)    
     }
-    setOpenModalEdit(true);
-    }
+    }else if (title === 'orders'){
+        const selectedOrderId = selected[0];
+        const selectedOrder = data.find(order => order.id === selectedOrderId);
+        if (selectedOrder) {
+        setCustomerId(selectedOrder.customer_id || '')
+        setProductId(selectedOrder.product_id || 1)
+        setSize(selectedOrder.size || '')
+        setColorName(selectedOrder.color_name || '')    
+        setQty(selectedOrder.qty || 1)  
+        setStatus(selectedOrder.status || 'preparing')    
+    }}
     }
     }
 

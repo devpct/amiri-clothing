@@ -21,27 +21,29 @@ export default function ProductInfo({ product, isLogin, cart }) {
     );
 
     const handleShoppingCarts = async (color, size) => {
+      if(userInfo){
       const productAlreadyInCart = cartItems.find(
         cartItem => cartItem.product_id === +product.id
         );
     
-      if (!productAlreadyInCart) {
-        dispatch(setCartsQty(cartsQty + 1));
-        await axios.post('http://localhost:4000/cart', {
-          customer_id: userInfo.id,
-          product_id: +product.id,
-          color_name: color.name,
-          size: size.name,
-          qty: 1,
-        });
-    
-        mutate('Cart');
-        if (!shoppingCarts) {
-          dispatch(setShoppingCarts(true));
+        if (!productAlreadyInCart) {
+          dispatch(setCartsQty(cartsQty + 1));
+          await axios.post('http://localhost:4000/cart', {
+            customer_id: userInfo.id,
+            product_id: +product.id,
+            color_name: color.name,
+            size: size.name,
+            qty: 1,
+          });
+          
+          mutate('Cart');
+          if (!shoppingCarts) {
+            dispatch(setShoppingCarts(true));
+          }
+        } else {
+          console.log('Product is already in the cart');
+          // انجام عملیاتی در صورتی که محصول قبلاً به سبد خرید اضافه شده است
         }
-      } else {
-        console.log('Product is already in the cart');
-        // انجام عملیاتی در صورتی که محصول قبلاً به سبد خرید اضافه شده است
       }
     };
     

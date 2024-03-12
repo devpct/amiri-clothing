@@ -15,6 +15,7 @@ export default function Orders({ ordersData }) {
     const [colorName, setColorName] = useState('');
     const [size, setSize] = useState('');
     const [qty, setQty] = useState(1);
+    const [status, setStatus] = useState('preparing');
     const [currentPage, setCurrentPage] = useState(1);
     const perPage = 6;
   
@@ -24,7 +25,9 @@ export default function Orders({ ordersData }) {
       const customerIdMatch = customerId.includes(searchTermLower);
       const colorName = order.color_name.toLowerCase();
       const colorNameMatch = colorName.includes(searchTermLower);
-      return customerIdMatch || colorNameMatch;
+      const status = order.status.toLowerCase();
+      const statusMatch = status.includes(searchTermLower);
+      return customerIdMatch || colorNameMatch || statusMatch;
     });
     
     
@@ -59,6 +62,7 @@ export default function Orders({ ordersData }) {
             setColorName={setColorName}
             setQty={setQty}
             setSize={setSize}
+            setStatus={setStatus}
             />
           </div>
   
@@ -72,16 +76,18 @@ export default function Orders({ ordersData }) {
           colorName={colorName}
           qty={qty}
           size={size}
+          status={status}
           setCustomerId={setCustomerId}
           setProductId={setProductId}
           setColorName={setColorName}
           setQty={setQty}
           setSize={setSize}
+          setStatus={setStatus}
           selected={selected}
           title={'Orders'}/>
   
           <Table data={current} selected={selected} setSelected={setSelected} 
-          columnNames={['Customer Id','Product Id','Color Name','Size','Qty']} title={'orders'}/>
+          columnNames={['Customer Id','Product Id','Color Name','Size','Qty','Status']} title={'orders'}/>
   
           <p className="text-blue-500 w-full mt-2  text-right">
             Selected {getSelectedCount()}
