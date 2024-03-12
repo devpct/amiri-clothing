@@ -1,5 +1,6 @@
 import { Avatar, IconButton } from '@mui/material';
 import React from 'react'
+import Link from 'next/link';
 
 export default function Navbar({ isOpen, setIsOpen, data }) {
 
@@ -12,9 +13,11 @@ export default function Navbar({ isOpen, setIsOpen, data }) {
     <div className="w-full px-1 flex items-center  justify-between lg:h-[5rem] h-[4rem]  border-b-1 sticky top-0 z-50 bg-white">
     <div className="w-full flex gap-x-1 lg:justify-between items-center">
     <div className='flex items-center '>
-    <IconButton >
+    <Link href='/'>
+    <IconButton>
         <Avatar alt={data.fullname} src="/static/images/avatar/2.jpg" />
     </IconButton>
+    </Link>
     <p className='lg:text-[1.3rem] text-[1rem] font-medium'>{data.fullname}</p>
     <i className="bi bi-amazon"></i>
     </div>
