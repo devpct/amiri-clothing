@@ -65,7 +65,7 @@ export default function Profile({ data }) {
           <Input label='Password' placeholder='Enter your New Password...' value={password} onChange={(event)=> setPassword(event.target.value)}/>
           <Input label='Phone Number' placeholder='Enter your Phone Number...' value={phoneNumber} onChange={(event)=> setPhoneNumber(event.target.value)}/>
           <Input label='Role' value={startCase(data?.role)} InputOff={true} />
-          <div className='w-full mx-9 lg:mx-[6.8rem]'>
+          <div className='w-full mx-5 lg:mx-[6.8rem]'>
             <p className='text-[#232F43] mb-1 '>Address</p>
                 <div className="relative">
                     <textarea className="p-4 pb-12 block w-full h-[120px] bg-[#F7F7FA] border-[#E0DEF7] border rounded-lg text-sm focus:outline-none text-black" placeholder='Enter your Address...' onChange={(event)=> setAddress(event.target.value)} value={address}></textarea>

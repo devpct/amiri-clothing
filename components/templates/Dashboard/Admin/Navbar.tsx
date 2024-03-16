@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function Navbar({ isOpen, setIsOpen, data }) {
 
     const toggleMenu = () => {
-        setIsOpen(!isOpen);
+        setIsOpen(!isOpen)
     }
 
   return (
