@@ -269,31 +269,22 @@
   ],
   "order": [
     {
-      "customer_id": "",
-      "product_id": 1,
-      "color_name": "",
-      "size": "",
-      "qty": 1,
-      "status": "delivery",
-      "id": "eefe"
+      "id": "88ec",
+      "customer_id": "e0bf",
+      "product_id": 2,
+      "color_name": "wormy",
+      "size": "L",
+      "qty": 3,
+      "status": "preparing"
     },
     {
-      "id": "d0fe",
-      "customer_id": "",
+      "id": "b45e",
+      "customer_id": "e0bf",
       "product_id": 1,
-      "color_name": "",
-      "size": "",
+      "color_name": "white",
+      "size": "XL",
       "qty": 1,
-      "status": "delivery"
-    },
-    {
-      "id": "f92d",
-      "customer_id": "",
-      "product_id": 1,
-      "color_name": "",
-      "size": "",
-      "qty": 1,
-      "status": "delivery"
+      "status": "preparing"
     }
   ]
 }

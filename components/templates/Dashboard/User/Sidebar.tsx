@@ -26,12 +26,14 @@ export default function Sidebar({ data }) {
                 </svg>
         </Link>
 
-        <a href="#" className="className text-gray-700 focus:outline-nones transition-colors duration-200 rounded-lg dark:text-gray-200 rounded-full p-1 dark:hover:bg-gray-800 hover:bg-gray-200">
-        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-        <path d="M22 4 12 14.01l-3-3"></path>
-        </svg>
-        </a>
+        <Link href="/dashboard/user/purchased" className={`${
+            router.pathname === '/dashboard/user/purchased' ? 'bg-[#000000]' : 'hover:bg-gray-200'
+            } text-gray-700 focus:outline-none transition-colors duration-200 rounded-full p-1`}>
+            <svg className="w-6 h-6" fill="none" stroke={router.pathname === '/dashboard/user/purchased' ? '#fff' : '#000'}  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <path d="M22 4 12 14.01l-3-3"></path>
+            </svg>
+        </Link>
 
         <a href="#" className="className text-gray-700 focus:outline-nones transition-colors duration-200 rounded-lg dark:text-gray-200 rounded-full p-1 dark:hover:bg-gray-800 hover:bg-gray-200">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">

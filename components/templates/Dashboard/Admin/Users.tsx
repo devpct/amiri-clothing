@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Search from '@/components/modules/Admin/Search';
-import ChekboxFilter from '@/components/modules/Admin/Users/ChekboxFilter';
-import Buttons from '@/components/modules/Admin/Buttons';
-import Modal from '@/components/modules/Admin/Modal';
-import Pagination from '@/components/modules/Admin/Pagination';
-import Table from '@/components/modules/Admin/Table';
+import Search from '@/components/modules/Dashboard/Admin/Search';
+import ChekboxFilter from '@/components/modules/Dashboard/Admin/Users/ChekboxFilter';
+import Buttons from '@/components/modules/Dashboard/Admin/Buttons';
+import Modal from '@/components/modules/Dashboard/Admin/Modal';
+import Pagination from '@/components/modules/Dashboard/Admin/Pagination';
+import Table from '@/components/modules/Dashboard/Admin/Table';
 
 export default function Users({ usersData }) {
   const [selected, setSelected] = useState([]);

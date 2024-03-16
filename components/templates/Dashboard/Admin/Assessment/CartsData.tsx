@@ -1,5 +1,5 @@
 import React from 'react'
-import DataQty from '@/components/modules/Admin/Assessment/DataQty';
+import DataQty from '@/components/modules/Dashboard/Admin/Assessment/DataQty';
 
 export default function CartsData({ usersData, productsData, categoriesData, cartData, commentsData, sliderData }) {
   return (
