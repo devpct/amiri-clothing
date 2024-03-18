@@ -52,7 +52,7 @@ export default function Options({ product, isLogin, handleShoppingCarts, cart })
 
 
             {/* Reviews */}
-            <div className="mt-6">
+            {/* <div className="mt-6">
               <h3 className="sr-only">Reviews</h3>
               <div className="flex items-center">
                 <div className="flex items-center">
@@ -69,7 +69,7 @@ export default function Options({ product, isLogin, handleShoppingCarts, cart })
                   {reviews.totalCount} reviews
                 </a>
               </div>
-            </div>
+            </div> */}
 
 
             <form className="mt-8">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SidebarSearch from '@/components/modules/Product/Sidebar/SidebarSearch'
 import AppBar from '@mui/material/AppBar';
 import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -23,7 +24,6 @@ import { startCase } from 'lodash';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShoppingCarts } from '@/redux/actions';
-
 const pages = ['products', 'women', 'men'];
 const settings = ['Dashboard', 'Admin Panel', 'Logout'];
 
@@ -188,6 +188,7 @@ function Navbar() {
                     </MenuItem>
                     </Link>
                     ))}
+                    <SidebarSearch/>
                 </Menu>
               </Box>
     
@@ -236,6 +237,9 @@ function Navbar() {
               {/* <LocalMallIcon sx={{ color: '#585858', fontSize: '2.5rem', marginRight: '1rem'}}/> */}
               
               {/* Avatar and User Settings */}
+              <div className='mr-3 hidden md:block'>
+              <SidebarSearch/>
+              </div>
 
               <Box>
                   { data === undefined ? (

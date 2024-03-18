@@ -11,9 +11,10 @@ export default function Address({ product, categories }) {
   const breadcrumbs = [
       { id: 1, name: 'Prducts', href: '/products' },
       categoryName.includes('women') || categoryName.includes('men')? 
-      { id: 2, name: categoryName.includes('women') ? 'Women ' : 'Men', href:categoryName.includes('women') ? 'women ' : 'men' }
+      { id: 2, name: categoryName.includes('women') ? 'Women ' : 'Men', href:categoryName.includes('women') ? 'women' : 'men' }
       : null,
-      { id: 2, name: startCase(categoryName.replace(/mens|womens/gi, '')), href: '#' },
+      { id: 3, name: startCase(categoryName.replace(/mens|womens/gi, '')), href: `/products/${categoryName.includes('women') ? 'women' : 'men'}/${categoryName.replace(/\s*(mens|womens)\s*/gi, '')
+    }` },
   ];
   
     

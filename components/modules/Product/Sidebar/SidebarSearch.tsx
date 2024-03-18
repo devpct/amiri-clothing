@@ -32,7 +32,7 @@ export default function SidebarSearch() {
 
   return (
     <>
-    <div className="relative mt-6">
+    <div className="relative">
         <span className="absolute inset-y-0 left-0 flex items-center pl-3">
             <svg  
             onClick={searchHandler}
