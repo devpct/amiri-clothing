@@ -5,6 +5,7 @@ const initialState = {
   selectedSortBy: '',
   shoppingCarts: false,
   cartsQty: 0,
+  darkMode: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -28,6 +29,11 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           cartsQty: action.payload
+        };
+      case 'SET_DARK_MODE':
+        return {
+          ...state,
+          darkMode: action.payload
         };
     default:
       return state;

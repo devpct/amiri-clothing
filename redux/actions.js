@@ -18,3 +18,7 @@ export const setCartsQty = (qty) => ({
     payload: qty
 });
 
+export const setDarkMode = (bet) => ({
+    type: 'SET_DARK_MODE',
+    payload: bet
+});

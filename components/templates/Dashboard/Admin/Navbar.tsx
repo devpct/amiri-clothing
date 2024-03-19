@@ -10,7 +10,7 @@ export default function Navbar({ isOpen, setIsOpen, data }) {
 
   return (
     <>
-    <div className="w-full px-1 flex items-center  justify-between lg:h-[5rem] h-[4rem]  border-b-1 sticky top-0 z-50 bg-white">
+    <div className="w-full px-1 flex items-center  justify-between lg:h-[5rem] h-[4rem]  border-b-1 sticky top-0 z-50">
     <div className="w-full flex gap-x-1 lg:justify-between items-center">
     <div className='flex items-center '>
     <Link href='/'>
@@ -22,8 +22,8 @@ export default function Navbar({ isOpen, setIsOpen, data }) {
     <i className="bi bi-amazon"></i>
     </div>
 
-    <div className=' items-center gap-x-2 hidden lg:flex'>
-    <svg width="24" height="24" fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <div className='items-center gap-x-2 hidden lg:flex'>
+    <svg width="24" height="24" fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M2.4 7.2a2.4 2.4 0 0 1 2.4-2.4h14.4a2.4 2.4 0 0 1 2.4 2.4v9.6a2.4 2.4 0 0 1-2.4 2.4H4.8a2.4 2.4 0 0 1-2.4-2.4V7.2ZM4.8 6a1.2 1.2 0 0 0-1.2 1.2v.26L12 12.5l8.4-5.04V7.2A1.2 1.2 0 0 0 19.2 6H4.8Zm15.6 2.86-5.65 3.39 5.65 3.476V8.859Zm-.04 8.25-6.768-4.165L12 13.9l-1.59-.954-6.77 4.164A1.2 1.2 0 0 0 4.8 18h14.4a1.2 1.2 0 0 0 1.159-.888ZM3.6 15.727l5.65-3.477L3.6 8.86v6.867Z"></path>
     </svg>
     <p className="">{data.email}</p>

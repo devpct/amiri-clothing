@@ -285,6 +285,15 @@
       "size": "XL",
       "qty": 1,
       "status": "sending"
+    },
+    {
+      "id": "79ac",
+      "customer_id": "e0bf",
+      "product_id": 2,
+      "color_name": "wormy",
+      "size": "L",
+      "qty": 5,
+      "status": "delivery"
     }
   ]
 }
