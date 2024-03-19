@@ -66,7 +66,7 @@ export default function Profile({ data }) {
           <Input label='Phone Number' placeholder='Enter your Phone Number...' value={phoneNumber} onChange={(event)=> setPhoneNumber(event.target.value)}/>
           <Input label='Role' value={startCase(data?.role)} InputOff={true} />
           <div className='w-full mx-5 lg:mx-[6.8rem]'>
-            <p className='text-[#232F43] mb-1 '>Address</p>
+            <p className='mb-1 '>Address</p>
                 <div className="relative">
                     <textarea className="p-4 pb-12 block w-full h-[120px] bg-[#F7F7FA] border-[#E0DEF7] border rounded-lg text-sm focus:outline-none text-black" placeholder='Enter your Address...' onChange={(event)=> setAddress(event.target.value)} value={address}></textarea>
                     <div className="absolute bottom-px inset-x-px p-2 rounded-b-md bg-gray-100 ">
@@ -74,7 +74,7 @@ export default function Profile({ data }) {
                 </div>
             </div>
         </div>
-        <button type="button" className="w-[15rem] px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-black border border-transparent rounded-md focus:outline-none hover:bg-gray-800" onClick={update}>Update</button>
+        <button type="button" className="w-[15rem] px-4 py-4 text-base font-semibold  transition-all duration-200border border-transparent rounded-md focus:outline-none dark:bg-[#d2d2d2] dark:text-gray-900 bg-black text-white" onClick={update}>Update</button>
       </div>
     </>
   )

@@ -54,7 +54,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     <div className="flex items-center gap-x-3">
                         <input
                         type="checkbox"
-                        className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                        className="text-blue-500 border-gray-300 rounded  dark:ring-offset-gray-900 dark:border-gray-700"
                         checked={selected.length === data?.length}
                         onChange={toggleSelectAll}
                         />
@@ -69,7 +69,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     }
                 </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                <tbody className="divide-y divide-gray-200 dark:divide-gray-700 ">
                 {data?.length > 0 ? (
                     data.map(data => (
                     <tr
@@ -86,7 +86,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                         <>
                         <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                         <div className="inline-flex items-center gap-x-3">
-                            <input type="checkbox" className=" border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                            <input type="checkbox" className=" border-gray-300 rounded  dark:ring-offset-gray-900 dark:border-gray-700"
                             checked={selected.includes(data.id)}
                             onChange={() => toggleSelection(data.id)}
                             />
@@ -128,7 +128,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     <>
                     <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                     <div className="inline-flex items-center gap-x-3">
-                        <input type="checkbox" className=" border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                        <input type="checkbox" className=" border-gray-300 rounded  dark:ring-offset-gray-900 dark:border-gray-700"
                         checked={selected.includes(data.id)}
                         onChange={() => toggleSelection(data.id)}
                         />
@@ -175,7 +175,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     <div className="inline-flex items-center gap-x-3">
                         <input 
                         type="checkbox" 
-                        className="border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                        className="border-gray-300 rounded  dark:ring-offset-gray-900 dark:border-gray-700"
                         checked={selected.includes(data.id)}
                         onChange={() => toggleSelection(data.id)}
                         />
@@ -194,7 +194,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     <div className="inline-flex items-center gap-x-3">
                         <input 
                         type="checkbox" 
-                        className="border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                        className="border-gray-300 rounded  dark:ring-offset-gray-900 dark:border-gray-700"
                         checked={selected.includes(data.id)}
                         onChange={() => toggleSelection(data.id)}
                         />
@@ -217,7 +217,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     <div className="inline-flex items-center gap-x-3">
                         <input 
                         type="checkbox" 
-                        className="border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                        className="border-gray-300 rounded  dark:ring-offset-gray-900 dark:border-gray-700"
                         checked={selected.includes(data.id)}
                         onChange={() => toggleSelection(data.id)}
                         />
@@ -235,7 +235,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     <div className="inline-flex items-center gap-x-3">
                         <input 
                         type="checkbox" 
-                        className="border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                        className="border-gray-300 rounded  dark:ring-offset-gray-900 dark:border-gray-700"
                         checked={selected.includes(data.id)}
                         onChange={() => toggleSelection(data.id)}
                         />
@@ -259,7 +259,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     <div className="inline-flex items-center gap-x-3">
                         <input 
                         type="checkbox" 
-                        className="border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                        className="border-gray-300 rounded  dark:ring-offset-gray-900 dark:border-gray-700"
                         checked={selected.includes(data.id)}
                         onChange={() => toggleSelection(data.id)}
                         />

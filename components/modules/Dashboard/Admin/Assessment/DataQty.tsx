@@ -8,7 +8,7 @@ export default function DataQty({icon, title, qty }) {
         {icon}
         </svg>
         <p className="text-white font-bold text-[1.3rem]">{title}</p>
-        <p className="bg-white rounded-full mt-5 py-1 font-bold text-[1.3rem]">{qty}</p>
+        <p className="rounded-full mt-5 py-1 font-bold text-[1.3rem]">{qty}</p>
         </div>
     </>
   )

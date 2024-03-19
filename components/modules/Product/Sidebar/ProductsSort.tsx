@@ -21,6 +21,7 @@ export default function ProductsSort() {
           onChange={handleChange}
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
+          className='bg-white'
         >
           <MenuItem value="">
             <em>Default</em>

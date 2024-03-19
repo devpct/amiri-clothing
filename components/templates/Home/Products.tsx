@@ -6,7 +6,7 @@ import Card from '@/components/modules/Card'
 export default function Products({ productsData }) {
   return (
     <>
-    <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100">
+    <section className="py-6 sm:py-12">
 	<div className="w-[70%] mx-auto p-6 space-y-8">
 
 		<div className="space-y-2 text-center">
@@ -25,9 +25,9 @@ export default function Products({ productsData }) {
 
         <div className="w-full text-center">
 		<Link href='/products'>
-        <Button style={{ backgroundColor: '#000', color: '#fff' }} className='rounded-lg w-[9rem] h-[3rem]'>
+        <button className='rounded-lg w-[9rem] h-[3rem] dark:bg-[#d2d2d2] dark:text-gray-900 bg-black text-white'>
 			Show all
-		</Button>
+		</button>
 		</Link>
         </div>
 

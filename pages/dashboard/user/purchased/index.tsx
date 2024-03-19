@@ -10,7 +10,7 @@ export default function index({ userData, productsData, ordersData }) {
     <div className="flex">
     <Sidebar data={userData}/>
     <div className="w-full">
-      <h1 className='bg-white sticky top-0 z-30 font-bold lg:text-[3rem] text-[2rem] w-full h-fit
+      <h1 className='bg-white dark:bg-gray-900 sticky top-0 z-30 font-bold lg:text-[3rem] text-[2rem] w-full h-fit
       py-2 pl-5 border-b-1'>
         Purchased
       </h1>

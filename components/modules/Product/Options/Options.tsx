@@ -48,7 +48,7 @@ export default function Options({ product, isLogin, handleShoppingCarts, cart })
   return (
     <>
     <div className="mt-4 lg:row-span-2 lg:mt-0">
-            <p className="text-3xl tracking-tight text-gray-900">${productDetails.price}</p>
+            <p className="text-3xl tracking-tight">${productDetails.price}</p>
 
 
             {/* Reviews */}
@@ -60,7 +60,7 @@ export default function Options({ product, isLogin, handleShoppingCarts, cart })
                     <StarIcon
                       key={rating}
                       className={`
-                      ${reviews.average < rating ? 'text-gray-200 h-5 w-5 flex-shrink-0' : 'text-gray-900 h-5 w-5 flex-shrink-0' }`}
+                      ${reviews.average < rating ? 'text-gray-200 h-5 w-5 flex-shrink-0' : ' h-5 w-5 flex-shrink-0' }`}
                     aria-hidden="true"
                     />
                   ))}
@@ -76,12 +76,12 @@ export default function Options({ product, isLogin, handleShoppingCarts, cart })
 
            {/* Colors */}
             <div>
-              <h3 className="text-sm font-medium text-gray-900">Color</h3>
+              <h3 className="text-sm font-medium ">Color</h3>
               <RadioGroup value={selectedColor} className="mt-4">
                 <div className="flex items-center space-x-3 ">
                   {colors.map((color) => (
                     <div className={`flex gap-x-3  p-[0.8rem] rounded-full cursor-pointer
-                    ${selectedColor.name === color.name ? `bg-[#000000]` : ''}
+                    ${selectedColor.name === color.name ? `bg-[#000000] dark:bg-white` : ''}
                     `}
                     onClick={()=>setSelectedColor(color)}
                     >
@@ -102,7 +102,7 @@ export default function Options({ product, isLogin, handleShoppingCarts, cart })
                     }
                     />
                     <h1 className={`font-[system-ui] font-medium 
-                    ${selectedColor.name === color.name ? 'text-white' : 'text-gray-700'}
+                    ${selectedColor.name === color.name ? 'text-white dark:text-black' : 'text-gray-700 dark:text-white'}
                     `}>{startCase(color.name)}</h1>
                   </div>
                   ))}
@@ -115,7 +115,7 @@ export default function Options({ product, isLogin, handleShoppingCarts, cart })
             {/* Sizes */}
             <div className="mt-7">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-medium text-gray-900">Size</h3>
+                <h3 className="text-sm font-medium ">Size</h3>
                 <a href="#" className="text-sm font-medium text-zinc-400 hover:text-zinc-300">
                   Size guide
                 </a>
@@ -132,9 +132,9 @@ export default function Options({ product, isLogin, handleShoppingCarts, cart })
                       className={
                       `
                           ${size.inStock
-                            ? 'cursor-pointer text-gray-900 shadow-sm'
+                            ? 'cursor-pointer  shadow-sm'
                             : 'cursor-not-allowed bg-gray-50 text-gray-200'}
-                          ${selectedSize.name === size.name ? 'ring-2 ring-zinc-500 bg-black text-white' : ''}
+                          ${selectedSize.name === size.name ? 'ring-2 ring-zinc-500 bg-black dark:bg-white text-white dark:text-black' : ''}
                           'group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase   sm:flex-1 sm:py-6'
                         `
                       }
@@ -178,7 +178,7 @@ export default function Options({ product, isLogin, handleShoppingCarts, cart })
             <Link href='/login'>
               <button
                 type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-zinc-900 px-8 py-3 text-base font-medium text-white hover:bg-zinc-700 focus:outline-none lg:mb-5"
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-zinc-900 dark:bg-white dark:text-black px-8 py-3 text-base font-medium text-white  focus:outline-none lg:mb-5"
                 onClick={()=>handleShoppingCarts(selectedColor,selectedSize)}
                 >
                 Add to bag
@@ -187,7 +187,7 @@ export default function Options({ product, isLogin, handleShoppingCarts, cart })
               :
               <button
               type="button"
-              className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-zinc-900 px-8 py-3 text-base font-medium text-white hover:bg-zinc-700 focus:outline-none lg:mb-5"
+              className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-zinc-900 dark:bg-white dark:text-black px-8 py-3 text-base font-medium text-white  focus:outline-none lg:mb-5"
               onClick={()=>handleShoppingCarts(selectedColor,selectedSize)}
               >
               Add to bag

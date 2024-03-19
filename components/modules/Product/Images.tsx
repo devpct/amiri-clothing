@@ -9,7 +9,7 @@ export default function ProductImages({ imags }) {
     <img src={imags[1]}
     loading="lazy"
     alt='image 1'
-    className="h-[20rem] w-full object-cover object-center"
+    className="h-[20rem] w-full object-cover object-center dark:brightness-[.85]"
     />
 
     </div>
@@ -18,7 +18,7 @@ export default function ProductImages({ imags }) {
     <img src={imags[2]}
     loading="lazy"
     alt='image 1'
-    className="h-[20rem] w-full object-cover object-center"
+    className="h-[20rem] w-full object-cover object-center dark:brightness-[.85]"
     />
 
     </div>

@@ -82,9 +82,9 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
 
   return (
     <>
-    <section className="bg-white h-[100vh]">
+    <section className="h-[100vh]">
     <div className="grid grid-cols-1 lg:grid-cols-2 h-full" >
-        <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-10 ">
+        <div className="flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8 sm:py-16 lg:py-10 ">
 
             <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto ">
 
@@ -115,7 +115,7 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
                     />
 
                         <div className="flex items-center">
-                            <input type="checkbox" name="agree" id="agree" className="w-5 h-5 text-blue-600 bg-white border-gray-200 rounded" />
+                            <input type="checkbox" name="agree" id="agree" className="w-5 h-5 text-blue-600 border-gray-200 rounded" />
 
                             <label className="ml-3 text-sm font-medium text-gray-500">
                                 I agree to Postcraft’s <a href="#" title="" className="text-blue-600 hover:text-blue-700 hover:underline">Terms of Service</a> and <a href="#" title="" className="text-blue-600 hover:text-blue-700 hover:underline">Privacy Policy</a>
@@ -134,7 +134,7 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
                 <div className="mt-3 space-y-3">
                     <button
                         type="button"
-                        className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
+                        className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
                     >
                         <div className="absolute inset-y-0 left-0 p-4">
                             <svg className="w-6 h-6 text-rose-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -148,7 +148,7 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
 
                     <button
                         type="button"
-                        className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
+                        className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
                     >
                         <div className="absolute inset-y-0 left-0 p-4">
                             <svg className="w-6 h-6 text-[#2563EB]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">

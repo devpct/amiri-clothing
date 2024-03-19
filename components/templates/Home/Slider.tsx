@@ -38,7 +38,7 @@ const Slider: React.FC<Slider> =({ data }) => {
             <img src={slider.image}
             loading="lazy"
             alt='Slider'
-            className='w-full h-full object-fill'
+            className='w-full h-full object-fill dark:brightness-[.85]'
             />
           </SwiperSlide>
         ))

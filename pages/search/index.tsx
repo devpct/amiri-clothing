@@ -30,7 +30,7 @@ export default function index({ productsData, categoriesData, searchResult }) {
     <div className="flex">
       <Sidebar categoriesData={categories}/>
     <div className="w-full">
-      <h1 className='bg-white fixed z-50 font-bold lg:text-[3rem] text-[2rem] w-full h-fit
+      <h1 className='fixed z-50 font-bold lg:text-[3rem] text-[2rem] w-full h-fit
       py-2 pl-5 border-b-1'>
         Search
       </h1>

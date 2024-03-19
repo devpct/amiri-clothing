@@ -24,14 +24,14 @@ export default function Sidebar({ isOpen, setIsOpen}) {
           isOpen ? '-translate-x-0 w-full' : '-translate-x-full'
         }`}
       >
-        <div className={`w-64 border-e h-screen border-gray-200 pt-7 pb-10 z-60 bg-white  ${isOpen ? 'w-[60%]': null}`}>
+        <div className={`w-64 border-e h-screen border-gray-200 pt-7 pb-10 z-60  ${isOpen ? 'w-[60%]': null}`}>
           <div className="px-6">
             <p className="flex-none text-xl font-semibold dark:text-white">Admin Panel</p>
           </div>
           <nav className="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
             <ul className="space-y-1.5">
               <li>
-                <Link  className={`flex items-center gap-x-3.5 py-2 px-2.5  text-sm text-slate-700 rounded-lg  dark:bg-gray-900 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 ${router.pathname === '/dashboard/admin/assessment' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}`} href="assessment">
+                <Link  className={`flex items-center gap-x-3.5 py-2 px-2.5  text-sm text-slate-700 rounded-lg   dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 ${router.pathname === '/dashboard/admin/assessment' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}`} href="assessment">
                   <svg className="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                   Assessment
                 </Link>

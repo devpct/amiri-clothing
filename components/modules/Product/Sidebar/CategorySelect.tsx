@@ -17,12 +17,13 @@ export default function CategorySelect({ categoriesData }) {
   
   return (
     <>
-    <FormControl className='w-full'>
+    <FormControl className='w-full '>
         <Select
           value={selectedCategoryId}
           onChange={handleChange}
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
+          className='bg-white'
         >
           <MenuItem value="">
             <em>All Products</em>

@@ -133,7 +133,7 @@ function Navbar() {
     }
 
     return (
-        <AppBar position="sticky" className='px-[1rem] top-0' sx={{ backgroundColor: 'white', boxShadow: 'none'}}>
+        <AppBar position="sticky" className='px-[1rem] top-0 bg-white dark:bg-gray-900' sx={{ boxShadow: 'none'}}>
             <Toolbar disableGutters >
 
             <Box sx={{ display: { xs: 'none', md: 'block' } }} >
@@ -141,7 +141,7 @@ function Navbar() {
             <img src='https://seeklogo.com/images/A/amiri-logo-0A19AA90E1-seeklogo.com.png'
             loading="lazy"
             alt='AMIRI'
-            className="w-auto h-6 sm:h-7 mr-3"
+            className="w-auto h-6 sm:h-7 mr-3 dark:invert"
             />
             </Link>
             </Box>
@@ -154,9 +154,9 @@ function Navbar() {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
-                  color="inherit"
+                  className='text-black dark:text-white'
                 >
-                  <MenuIcon sx={{ color: 'black'}} />
+                  <MenuIcon />
                 </IconButton >
                 <Menu
                     id="menu-appbar"
@@ -204,9 +204,9 @@ function Navbar() {
                   fontWeight: 'bold',
                   fontSize: '2rem',
                   letterSpacing: '0.5rem',
-                  color: 'black',
                   textDecoration: 'none',
                 }}
+                className='text-black dark:text-white'
               >
                 AMIRI
               </Typography>
@@ -215,6 +215,7 @@ function Navbar() {
               {pages.map((page) => (
                 <Link href={page === 'products' ? '/products' : `/products/${page}`} key={page}>
                   <Button
+                    className='text-black dark:text-white'
                     onClick={() => handleClick(page)}
                     sx={{
                       my: 2,
@@ -222,7 +223,7 @@ function Navbar() {
                       fontSize: '1rem',
                     }}
                     style={{
-                      color: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'white' : 'black',
+                      color: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'white' : '',
                       backgroundColor: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'black' : 'transparent', 
                     }}                    
                   >
@@ -256,7 +257,7 @@ function Navbar() {
 
                   <button onClick={handleShoppingCarts} className="mt-2 lg:mt-0 relative z-50 inline-flex justify-center items-center h-[2.5rem] w-[2.5rem] 
                   lg:h-[2.8rem] lg:w-[3rem]
-                  text-sm font-semibold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                  text-sm font-semibold rounded-lg border border-gray-200 text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                   <svg className="flex-shrink-0 w-[1.9rem] lg:w-[2.2rem]"  fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M21.312 7.94a1.49 1.49 0 0 0-1.062-.44h-3v-.75a5.25 5.25 0 1 0-10.5 0v.75h-3A1.5 1.5 0 0 0 2.25 9v10.125c0 1.828 1.547 3.375 3.375 3.375h12.75c.884 0 1.734-.346 2.366-.963a3.256 3.256 0 0 0 1.009-2.353V9a1.489 1.489 0 0 0-.438-1.06ZM8.25 6.75a3.75 3.75 0 0 1 7.5 0v.75h-7.5v-.75Zm9 4.5a5.25 5.25 0 1 1-10.5 0v-.75a.75.75 0 1 1 1.5 0v.75a3.75 3.75 0 0 0 7.5 0v-.75a.75.75 0 1 1 1.5 0v.75Z" />
                   </svg>

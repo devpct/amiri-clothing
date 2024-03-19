@@ -23,12 +23,12 @@ export default function Info({ product }) {
             <div>
               <h3 className="sr-only">Description</h3>
               <div className="space-y-6">
-                <p className="text-base text-gray-900">{productDetails.description}</p>
+                <p className="text-base ">{productDetails.description}</p>
               </div>
             </div>
 
             <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
+              <h3 className="text-sm font-medium ">Highlights</h3>
               <div className="mt-4">
                 <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
                   {productDetails.highlights.map((highlight) => (
@@ -41,7 +41,7 @@ export default function Info({ product }) {
             </div>
 
             <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900">Details</h2>
+              <h2 className="text-sm font-medium">Details</h2>
               <div className="mt-4 space-y-6">
                 <p className="text-sm text-gray-600">{productDetails.details}</p>
               </div>

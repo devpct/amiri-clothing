@@ -12,6 +12,8 @@ import pageTitles from '@/pageTitles'
 import { Provider } from 'react-redux';
 import store from '@/redux/store';
 import ShoppingCarts from "@/components/modules/ShoppingCarts";
+import Theme from '@/components/modules/ButtonTheme'
+import React, { useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,6 +27,8 @@ export default function App({ Component, pageProps, router }: AppProps) {
   const currentPage = pageTitles.find(page => page.route === router.pathname);
   const title = currentPage?.title;
 
+  const [darkMode, setDarkMode] = useState(false)
+
   return (
   <>
   <Head>
@@ -36,11 +40,14 @@ export default function App({ Component, pageProps, router }: AppProps) {
   <Provider store={store}>
   <main className={inter.className}>
   <QueryClientProvider client={queryClient}>
+  <div className={`${darkMode?'dark':''} dark:bg-black`}>
   {!isLoginPage && !isSignupPage && !isDashboard && <Navbar />}
   <Component {...pageProps} />
   {!isLoginPage && !isSignupPage && !isDashboard && <Footer />}
   <ToastContainer />
   <ShoppingCarts/>
+  <Theme darkMode={darkMode} setDarkMode={setDarkMode}/>
+  </div>
   </QueryClientProvider>
   </main>
   </Provider>

@@ -5,8 +5,8 @@ import React from 'react'
 export default function Footer() {
   return (
     <>
-    <div className="border-t-1 px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-full md:px-24 lg:px-8">
-      <div className="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
+    <div className="border-t-1 dark:border-gray-500 px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-full md:px-24 lg:px-8">
+      <div className="grid gap-16 row-gap-10 mb-[33px] lg:grid-cols-6">
         <div className="md:max-w-md lg:col-span-2">
           <a
             href="/"
@@ -29,16 +29,16 @@ export default function Footer() {
               <rect x="14" y="1" width="7" height="6" />
               <rect x="14" y="11" width="7" height="12" />
             </svg>
-            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+            <span className="ml-2 text-xl font-bold tracking-wide  uppercase">
               Company
             </span>
           </a>
           <div className="mt-4 lg:max-w-sm">
-            <p className="text-sm text-gray-800">
+            <p className="text-sm ">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam.
             </p>
-            <p className="mt-4 text-sm text-gray-800">
+            <p className="mt-4 text-sm ">
               Eaque ipsa quae ab illo inventore veritatis et quasi architecto
               beatae vitae dicta sunt explicabo.
             </p>
@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
         <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
           <div>
-            <p className="font-semibold tracking-wide text-gray-800">
+            <p className="font-semibold tracking-wide ">
               Category
             </p>
             <ul className="mt-2 space-y-2">
@@ -85,7 +85,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="font-semibold tracking-wide text-gray-800">
+            <p className="font-semibold tracking-wide ">
               Business
             </p>
             <ul className="mt-2 space-y-2">
@@ -132,7 +132,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="font-semibold tracking-wide text-gray-800">Apples</p>
+            <p className="font-semibold tracking-wide ">Apples</p>
             <ul className="mt-2 space-y-2">
               <li>
                 <a
@@ -177,7 +177,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="font-semibold tracking-wide text-gray-800">Cherry</p>
+            <p className="font-semibold tracking-wide ">Cherry</p>
             <ul className="mt-2 space-y-2">
               <li>
                 <a
@@ -215,7 +215,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-between pt-5 pb-4 border-t sm:flex-row">
+      <div className="flex flex-col justify-between pt-5 pb-4 border-t dark:border-gray-500 sm:flex-row">
         <p className="text-sm text-gray-600">
           © Copyright 2020 Lorem Inc. All rights reserved.
         </p>

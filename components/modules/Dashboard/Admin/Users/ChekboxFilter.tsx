@@ -40,7 +40,7 @@ export default function ChekboxFilter({ showAdmins, showCustomers, selectedUsers
         <div className="flex gap-x-2">
             <input
                 type="checkbox"
-                className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                className="text-blue-500 border-gray-300 rounded  dark:ring-offset-gray-900 dark:border-gray-700"
                 checked={showAdmins}
                 onChange={(e) => handleShowAdminsChange(e.target.checked)}
             />
@@ -50,7 +50,7 @@ export default function ChekboxFilter({ showAdmins, showCustomers, selectedUsers
             <div className="flex gap-x-2">
             <input
                 type="checkbox"
-                className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
+                className="text-blue-500 border-gray-300 rounded  dark:ring-offset-gray-900 dark:border-gray-700"
                 checked={showCustomers}
                 onChange={(e) => handleShowCustomersChange(e.target.checked)}
             />

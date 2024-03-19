@@ -22,6 +22,7 @@ html,body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  color: black;
 }
 
 @layer utilities {
@@ -120,4 +121,9 @@ body {
 
 .css-6hp17o-MuiList-root-MuiMenu-list {
   padding: 0;
+}
+
+.dark{
+  background-color: rgb(17 24 39 / 100%);
+  color: white;
 }

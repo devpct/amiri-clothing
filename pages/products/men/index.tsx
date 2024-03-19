@@ -41,7 +41,7 @@ export default function index({ productsData, categoriesData }) {
     <div className="flex">
       <Sidebar categoriesData={categories}/>
     <div className="w-full">
-      <h1 className='bg-white fixed z-50 font-bold lg:text-[3rem] text-[2rem] w-full h-fit
+      <h1 className='bg-white dark:bg-gray-900  fixed z-50 font-bold lg:text-[3rem] text-[2rem] w-full h-fit
       py-2 pl-5 border-b-1'>
         {
           selectedCategoryId === '' ? 'All Products' : startCase(categories[+selectedCategoryId-selectedCategoryId].name)

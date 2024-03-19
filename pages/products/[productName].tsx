@@ -21,7 +21,7 @@ export default function product({ product, categories, cart }) {
     <Head>
         <title>AMIRI - {product[0].name.toUpperCase()}</title>
     </Head>
-     <div className="bg-white font-[system-ui]">
+     <div className=" font-[system-ui]">
       <div className="pt-6">
         
       <Address product={product[0]} categories={categories}/>

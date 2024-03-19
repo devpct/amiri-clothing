@@ -13,8 +13,8 @@ export default function Address({ product, categories }) {
       categoryName.includes('women') || categoryName.includes('men')? 
       { id: 2, name: categoryName.includes('women') ? 'Women ' : 'Men', href:categoryName.includes('women') ? 'women' : 'men' }
       : null,
-      { id: 3, name: startCase(categoryName.replace(/mens|womens/gi, '')), href: `/products/${categoryName.includes('women') ? 'women' : 'men'}/${categoryName.replace(/\s*(mens|womens)\s*/gi, '')
-    }` },
+      { id: 3, name: startCase(categoryName.replace(/mens|womens/gi, '')), 
+      href:'#'}
   ];
   
     
@@ -25,12 +25,12 @@ export default function Address({ product, categories }) {
 
   return (
     <>
-    <nav aria-label="Breadcrumb" className='lg:sticky lg:top-[7.5%] lg:bg-white lg:pb-5'>
+    <nav aria-label="Breadcrumb" className='lg:sticky dark:bg-gray-900 bg-white z-20 lg:top-[7.5%] lg:lg:pb-5 '>
           <ol role="list" className="flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             {breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
-                  <Link href={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900">
+                  <Link href={breadcrumb.href} className="mr-2 text-sm font-medium ">
                     {breadcrumb.name}
                   </Link>
                   <svg
