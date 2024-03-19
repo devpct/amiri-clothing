@@ -2,9 +2,11 @@ import { Avatar, IconButton } from '@mui/material'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { useSelector } from "react-redux";
 
 export default function Sidebar({ data }) {
     const router = useRouter();
+    const darkMode = useSelector((state) => state.darkMode);
   return (
     <>
      <aside className="flex sticky top-0 z-30 flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0  dark:border-gray-700">
@@ -18,18 +20,18 @@ export default function Sidebar({ data }) {
         </Link>
 
         <Link href="/dashboard/user/profile" className={`${
-            router.pathname === '/dashboard/user/profile' ? 'bg-[#000000] dark:bg-gray-500 ' : 'hover:bg-gray-200'
+            router.pathname === '/dashboard/user/profile' ? 'bg-[#000000] dark:bg-white ' : ''
             } text-gray-700 focus:outline-none transition-colors duration-200 rounded-full p-1`}>
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill={!darkMode?router.pathname === '/dashboard/user/profile' ? '#fff':' black':router.pathname === '/dashboard/user/profile'?'black':'white'} xmlns="http://www.w3.org/2000/svg">
                     <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width={router.pathname === '/dashboard/user/profile' ? '0' : '2'} stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width={router.pathname === '/dashboard/user/profile' ? '0' : '2'} stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
         </Link>
 
         <Link href="/dashboard/user/purchased" className={`${
-            router.pathname === '/dashboard/user/purchased' ? 'bg-[#000000] dark:bg-gray-500' : 'hover:bg-gray-200'
+            router.pathname === '/dashboard/user/purchased' ? 'bg-[#000000] dark:bg-white' : ''
             } text-gray-700 focus:outline-none transition-colors duration-200 rounded-full p-1`}>
-            <svg className="w-6 h-6" fill="none" stroke={router.pathname === '/dashboard/user/purchased' ? '#fff':' black'}  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-6 h-6" fill="none" stroke={!darkMode?router.pathname === '/dashboard/user/purchased' ? '#fff':' black':router.pathname === '/dashboard/user/purchased'?'black':'white'}  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
             <path d="M22 4 12 14.01l-3-3"></path>
             </svg>
