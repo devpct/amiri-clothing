@@ -2,7 +2,7 @@ import React from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import moment from 'moment';
 
-export default function Charts({ width, usersData }) {
+export default function Charts({ width, usersData, darkMode }) {
 
     const allMonths = moment.months();
     const currentMonthIndex = moment().month();
@@ -33,7 +33,7 @@ export default function Charts({ width, usersData }) {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="users" name='User Signup' stroke="#000000" />
+            <Line type="monotone" dataKey="users" name='User Signup' stroke={darkMode?'white':'black'}  />
         </LineChart>
     </div>
     </>
