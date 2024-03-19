@@ -50,7 +50,7 @@ export default function Navbar({ isOpen, setIsOpen, data }) {
       {isOpen ? (
         <svg
           className="flex-shrink-0 size-6 ml-4"
-          fill="currentColor"
+          fill={darkMode?'white':'black'}
           viewBox="0 0 16 16"
         >
           <path
@@ -61,7 +61,7 @@ export default function Navbar({ isOpen, setIsOpen, data }) {
       ) : (
         <svg
           className="flex-shrink-0 size-6 ml-4"
-          fill="currentColor"
+          fill={darkMode?'white':'black'}
           viewBox="0 0 16 16"
         >
           <path

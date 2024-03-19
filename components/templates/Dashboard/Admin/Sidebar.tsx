@@ -34,7 +34,7 @@ export default function Sidebar({ isOpen, setIsOpen}) {
           <nav className="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
             <ul className="space-y-1.5">
               <li>
-                <Link  className={`flex items-center gap-x-3.5 py-2 px-2.5  text-sm text-slate-700 rounded-lg   dark:focus:outline-none dark:focus:ring-1  ${router.pathname === '/dashboard/admin/assessment' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white'}`} href="assessment">
+                <Link  className={`flex items-center gap-x-3.5 py-2 px-2.5  text-sm text-slate-700 rounded-lg   dark:focus:outline-none dark:focus:ring-1  ${router.pathname === '/dashboard/admin/assessment' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white dark:hover:text-black'}`} href="assessment">
                   <svg className="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                   Assessment
                 </Link>
@@ -43,7 +43,7 @@ export default function Sidebar({ isOpen, setIsOpen}) {
               <li>
               <button
                 className={`w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg  ${
-                  router.pathname === '/dashboard/admin/users' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white'
+                  router.pathname === '/dashboard/admin/users' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white dark:hover:text-black'
                 }`}
                 onClick={() => router.push('/dashboard/admin/users')}
               >
@@ -71,7 +71,7 @@ export default function Sidebar({ isOpen, setIsOpen}) {
             <li>
               <button
                 className={`w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg  ${
-                  router.pathname === '/dashboard/admin/products' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white'
+                  router.pathname === '/dashboard/admin/products' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white dark:hover:text-black'
                 }`}
                 onClick={() => router.push('/dashboard/admin/products')}
               >
@@ -88,7 +88,7 @@ export default function Sidebar({ isOpen, setIsOpen}) {
             <li>
               <button
                 className={`w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg  ${
-                  router.pathname === '/dashboard/admin/categories' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white'
+                  router.pathname === '/dashboard/admin/categories' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white dark:hover:text-black'
                 }`}
                 onClick={() => router.push('/dashboard/admin/categories')}
               >
@@ -106,7 +106,7 @@ export default function Sidebar({ isOpen, setIsOpen}) {
             <li>
               <button
                 className={`w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg  ${
-                  router.pathname === '/dashboard/admin/comments' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white'
+                  router.pathname === '/dashboard/admin/comments' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white dark:hover:text-black'
                 }`}
                 onClick={() => router.push('/dashboard/admin/comments')}
               >
@@ -120,7 +120,7 @@ export default function Sidebar({ isOpen, setIsOpen}) {
             <li>
               <button
                 className={`w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg  ${
-                  router.pathname === '/dashboard/admin/sliders' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white'
+                  router.pathname === '/dashboard/admin/sliders' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white dark:hover:text-black'
                 }`}
                 onClick={() => router.push('/dashboard/admin/sliders')}
               >
@@ -134,7 +134,7 @@ export default function Sidebar({ isOpen, setIsOpen}) {
             <li>
               <button
                 className={`w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg  ${
-                  router.pathname === '/dashboard/admin/cart' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white'
+                  router.pathname === '/dashboard/admin/cart' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white dark:hover:text-black'
                 }`}
                 onClick={() => router.push('/dashboard/admin/cart')}
               >
@@ -150,7 +150,7 @@ export default function Sidebar({ isOpen, setIsOpen}) {
             <li>
               <button
                 className={`w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg  ${
-                  router.pathname === '/dashboard/admin/orders' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white'
+                  router.pathname === '/dashboard/admin/orders' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white dark:hover:text-black'
                 }`}
                 onClick={() => router.push('/dashboard/admin/orders')}
               >
@@ -161,7 +161,7 @@ export default function Sidebar({ isOpen, setIsOpen}) {
                 Orders
                 { ordersData?.filter(order => order.status === 'preparing').length !== 0 ?
                   <div className={`grid ml-auto w-6 h-6 rounded-full ${
-                    router.pathname === '/dashboard/admin/orders' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white'
+                    router.pathname === '/dashboard/admin/orders' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white dark:hover:text-black'
                   }`}><p className='m-auto'>{ordersData?.filter(order => order.status === 'preparing').length}</p></div>
                   : null
                 }
