@@ -1,12 +1,18 @@
 import { Avatar, IconButton } from '@mui/material'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
-import { useSelector } from "react-redux";
-
+import React, { useEffect, useState } from 'react'
 export default function Sidebar({ data }) {
     const router = useRouter();
-    const darkMode = useSelector((state) => state.darkMode);
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        const storedDarkMode = localStorage.getItem("darkMode");
+        if (storedDarkMode) {
+            setDarkMode(storedDarkMode === "true");
+        }
+    }, []);
+
   return (
     <>
      <aside className="flex sticky top-0 z-30 flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0  dark:border-gray-700">

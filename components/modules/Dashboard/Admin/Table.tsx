@@ -76,7 +76,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                         key={data.id}
                         className={`${
                         selected.includes(data.id)
-                            ? 'bg-blue-100'
+                            ? 'bg-blue-100 dark:bg-gray-500'
                             : ''
                         }`}
                         onClick={() => toggleSelection(data.id)}
@@ -171,7 +171,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     </>
                     : title === 'categories' ?
                     <>
-                    <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    <td className="px-4 py-4 text-sm font-medium  whitespace-nowrap">
                     <div className="inline-flex items-center gap-x-3">
                         <input 
                         type="checkbox" 
@@ -186,7 +186,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                         </div>
                     </div>
                     </td>
-                    <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">{startCase(data.name)}</td>
+                    <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">{startCase(data.name)}</td>
                     </>
                     : title === 'comments' ?
                     <>
@@ -276,7 +276,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     </td>                    
                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.size}</td>
                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{data.qty}</td>
-                    <td className="px-4 py-4 text-sm text-black font-bold dark:text-gray-300 whitespace-nowrap">{
+                    <td className="px-4 py-4 text-sm text-black font-bold whitespace-nowrap">{
                         data.status === 'preparing' ?
                             <button className='bg-[#e2e221] flex gap-x-2 p-3 rounded-lg' onClick={() => updateStatus(data.id, 'sending')}>
                                 <svg width="24" height="24" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

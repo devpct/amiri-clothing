@@ -20,7 +20,7 @@ export default function index({ userData }) {
     <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
     <Navbar isOpen={isOpen} setIsOpen={setIsOpen} data={userData}/>
 
-    <div className='lg:ml-64 my-[3rem]'>
+    <div className='min-[100px]:h-screen h-full lg:ml-64 my-[3rem]'>
     <Orders ordersData={ordersData}/>
     </div>
     </div>

@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import moment from 'moment';
 
-export default function Charts({ width, usersData, darkMode }) {
+export default function Charts({ width, usersData }) {
 
     const allMonths = moment.months();
     const currentMonthIndex = moment().month();
@@ -24,16 +24,25 @@ export default function Charts({ width, usersData, darkMode }) {
         return monthData;
     })
 
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        const storedDarkMode = localStorage.getItem("darkMode");
+        if (storedDarkMode) {
+            setDarkMode(storedDarkMode === "true");
+        }
+    }, []);
+
   return (
     <>
     <div className="w-full mt-[5rem]">
-        <LineChart width={width} height={400} data={userDataByDay}>
-            <CartesianGrid strokeDasharray="3 3" />
+        <LineChart className='text-black' width={width} height={400} data={userDataByDay}>
+            <CartesianGrid className='text-black' strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
-            <Tooltip />
+            <Tooltip/>
             <Legend />
-            <Line type="monotone" dataKey="users" name='User Signup' stroke={darkMode?'white':'black'}  />
+            <Line type="monotone" dataKey="users" name='User Signup' stroke={darkMode?'rgb(156 163 175)':'black'}  />
         </LineChart>
     </div>
     </>

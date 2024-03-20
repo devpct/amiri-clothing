@@ -24,6 +24,7 @@ import { startCase } from 'lodash';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShoppingCarts } from '@/redux/actions';
+
 const pages = ['products', 'women', 'men'];
 const settings = ['Dashboard', 'Admin Panel', 'Logout'];
 
@@ -111,6 +112,7 @@ function Navbar() {
       if(event.target.innerHTML === 'Logout'){
         axios.get('/api/auth/logout')
         queryClient.setQueryData('UserInfo', undefined)
+        window.location.reload();
       }
       else if(event.target.innerHTML === 'Dashboard'){
         router.push('/dashboard/user/profile');
@@ -132,8 +134,17 @@ function Navbar() {
       }
     }
 
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        const storedDarkMode = localStorage.getItem("darkMode");
+        if (storedDarkMode) {
+            setDarkMode(storedDarkMode === "true");
+        }
+    }, []);
+
     return (
-        <AppBar position="sticky" className='px-[1rem] top-0 bg-white dark:bg-gray-900' sx={{ boxShadow: 'none'}}>
+        <AppBar position="sticky" className='px-[1rem] top-0 bg-white dark:bg-gray-900' sx={{ backgroundColor: 'white', boxShadow: 'none'}}>
             <Toolbar disableGutters >
 
             <Box sx={{ display: { xs: 'none', md: 'block' } }} >
@@ -179,7 +190,7 @@ function Navbar() {
                     >
                     {pages.map((page) => (
                     <Link href={page === 'products' ? '/products':`/products/${page}`}>
-                    <MenuItem key={page} onClick={handleCloseNavMenu}
+                    <MenuItem key={page} onClick={handleCloseNavMenu} 
                     style={{
                       color: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'white' : 'black',
                       backgroundColor: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'black' : 'transparent', 
@@ -223,7 +234,7 @@ function Navbar() {
                       fontSize: '1rem',
                     }}
                     style={{
-                      color: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'white' : '',
+                      color: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'white' : !darkMode?'black':'',
                       backgroundColor: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'black' : 'transparent', 
                     }}                    
                   >
@@ -246,11 +257,11 @@ function Navbar() {
                   { data === undefined ? (
                     
                     <Tooltip title="Signup">
-                      <Link href='/signup'>
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <a href='/signup'>
+                  <IconButton onClick={(event)=>{setAnchorElUser(event.currentTarget); localStorage.removeItem("darkMode");}} sx={{ p: 0 }}>
                       <Avatar alt="" src="/static/images/avatar/2.jpg" />
                   </IconButton>
-                      </Link>
+                      </a>
                 </Tooltip>
                   ) : (
                     <div className='flex gap-x-5 items-center'>

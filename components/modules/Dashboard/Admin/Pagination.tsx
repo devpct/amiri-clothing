@@ -9,12 +9,13 @@ export default function Paginations({ perPage, total, paginate }) {
   }
 
   return (
-    <div className="flex justify-center w-full mt-4">
+    <div className="flex justify-center w-full mt-4 ">
       <Pagination
         count={pageNumbers.length}
         onChange={(event, page) => paginate(page)}
         variant="outlined"
         shape="rounded"
+        className='dark:bg-white dark:rounded-lg'
       />
     </div>
   );

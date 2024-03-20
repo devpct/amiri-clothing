@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useSWR from 'swr';
-import { useSelector } from "react-redux";
 
 export default function Sidebar({ isOpen, setIsOpen}) {
   
@@ -17,7 +16,14 @@ export default function Sidebar({ isOpen, setIsOpen}) {
   axios.get('http://localhost:4000/order').then((res) => res.data)
   );
 
-  const darkMode = useSelector((state) => state.darkMode);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+      const storedDarkMode = localStorage.getItem("darkMode");
+      if (storedDarkMode) {
+          setDarkMode(storedDarkMode === "true");
+      }
+  }, []);
 
   return (
     <>

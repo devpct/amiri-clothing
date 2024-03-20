@@ -1,5 +1,5 @@
 import { Avatar, IconButton } from '@mui/material';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import { useSelector } from "react-redux";
 
@@ -9,7 +9,14 @@ export default function Navbar({ isOpen, setIsOpen, data }) {
         setIsOpen(!isOpen)
     }
 
-    const darkMode = useSelector((state) => state.darkMode);
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        const storedDarkMode = localStorage.getItem("darkMode");
+        if (storedDarkMode) {
+            setDarkMode(storedDarkMode === "true");
+        }
+    }, []);
 
   return (
     <>

@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function DataQty({icon, title, qty, darkMode }) {
+export default function DataQty({icon, title, qty }) {
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+      const storedDarkMode = localStorage.getItem("darkMode");
+      if (storedDarkMode) {
+          setDarkMode(storedDarkMode === "true");
+      }
+  }, []);
+
   return (
     <>
         <div className="text-white dark:text-black bg-black dark:bg-white w-[10rem] p-5 text-center rounded-[25px] grid gap-y-2">
