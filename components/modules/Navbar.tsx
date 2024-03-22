@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+  import React, { useEffect, useState } from 'react';
 import SidebarSearch from '@/components/modules/Product/Sidebar/SidebarSearch'
 import AppBar from '@mui/material/AppBar';
 import { styled, alpha } from '@mui/material/styles';
@@ -234,8 +234,9 @@ function Navbar() {
                       fontSize: '1rem',
                     }}
                     style={{
-                      color: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'white' : !darkMode?'black':'',
-                      backgroundColor: (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'black' : 'transparent', 
+                      color: !darkMode? (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'white' : 'black':
+                      (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'black' : 'white',
+                      backgroundColor: !darkMode? (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'black' : 'transparent': (isProductPage() && router.pathname === `/products/${page}`) || (page === 'products' && router.pathname === '/products') ? 'white' : 'transparent', 
                     }}                    
                   >
                     {page}

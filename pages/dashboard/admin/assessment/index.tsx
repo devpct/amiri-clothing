@@ -13,7 +13,7 @@ export default function assessment({userData, usersData, productsData, categorie
     <div className="flex flex-col">
     <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
     <Navbar isOpen={isOpen} setIsOpen={setIsOpen} data={userData}/>
-      <div className='min-[2000px]:h-screen h-full lg:ml-64 py-[3rem]'>
+      <div className='min-[1000px]:h-screen h-full lg:ml-64 py-[3rem]'>
       <Assessment usersData={usersData} productsData={productsData} categoriesData={categoriesData} cartData={cartData} commentsData={commentsData} sliderData={sliderData} />
       </div>
     </div>
