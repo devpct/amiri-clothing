@@ -3,6 +3,7 @@ import Navbar from '@/components/templates/Dashboard/Admin/Navbar';
 import Sidebar from '@/components/templates/Dashboard/Admin/Sidebar';
 import axios from 'axios';
 import React, { useState } from 'react'
+import localhostBackend from '@/localhost';
 
 export default function assessment({userData, usersData, productsData, categoriesData, cartData, 
   commentsData, sliderData}) {
@@ -24,13 +25,13 @@ export default function assessment({userData, usersData, productsData, categorie
 
 export async function getServerSideProps(context) {
   const { token } = context.req.cookies
-  const usersData = await axios.get('http://localhost:4000/users').then((res) => res.data)
-  const productsData = await axios.get('http://localhost:4000/products').then((res) => res.data)
-  const categoriesData = await axios.get('http://localhost:4000/categories').then((res) => res.data)
-  const cartData = await axios.get('http://localhost:4000/cart').then((res) => res.data)
-  const commentsData = await axios.get('http://localhost:4000/comments').then((res) => res.data)
-  const sliderData = await axios.get('http://localhost:4000/slider').then((res) => res.data)
-  const userData = await axios.post('http://localhost:3000/api/auth/info',{ token }).then((res) => res.data).catch((err) =>{
+  const usersData = await axios.get(`${localhostBackend}/users`).then((res) => res.data)
+  const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data)
+  const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data)
+  const cartData = await axios.get(`${localhostBackend}/cart`).then((res) => res.data)
+  const commentsData = await axios.get(`${localhostBackend}/comments`).then((res) => res.data)
+  const sliderData = await axios.get(`${localhostBackend}/slider`).then((res) => res.data)
+  const userData = await axios.post('/api/auth/info',{ token }).then((res) => res.data).catch((err) =>{
     if(err.response.status === 401){
       return {
         redirect:{

@@ -5,6 +5,7 @@ import ProductInfo from '@/components/templates/Product/ProductInfo'
 import Head from "next/head";
 import axios from 'axios';
 import { useQuery } from 'react-query';
+import localhostBackend from '@/localhost';
 
 
 export default function product({ product, categories, cart }) {
@@ -35,7 +36,7 @@ export default function product({ product, categories, cart }) {
 }
 
 export async function getStaticPaths(context) {
-  const products = await axios.get('http://localhost:4000/products').then((res) => res.data);
+  const products = await axios.get(`${localhostBackend}/products`).then((res) => res.data);
 
   const paths = products.map((product) => ({
     params: { productName: product.name },
@@ -50,10 +51,10 @@ export async function getStaticPaths(context) {
 export async function getStaticProps(context) {
   const { params } = context;
 
-  const product = await axios.get(`http://localhost:4000/products?name=${params.productName}`).then((res) => res.data);
+  const product = await axios.get(`${localhostBackend}/products?name=${params.productName}`).then((res) => res.data);
 
-  const categories = await axios.get('http://localhost:4000/categories').then((res) => res.data)
-  const cart = await axios.get('http://localhost:4000/cart').then((res) => res.data)
+  const categories = await axios.get(`${localhostBackend}/categories`).then((res) => res.data)
+  const cart = await axios.get(`${localhostBackend}/cart`).then((res) => res.data)
 
   return {
     props: {

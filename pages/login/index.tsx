@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import localhostBackend from '@/localhost';
 
 interface IndexProps {
     sliderData: any;
@@ -23,7 +24,7 @@ interface sliderData {
 const Index: React.FC<IndexProps> = ({ sliderData }) => {
 
     const { data } = useQuery('Slider', () =>
-    axios.get('https://amiri-clothing-server.liara.run/slider').then((res) => res.data),
+    axios.get(`${localhostBackend}/slider`).then((res) => res.data),
     {
       initialData: sliderData,
       staleTime: 900000,
@@ -198,7 +199,7 @@ export async function getServerSideProps(context) {
         }
     }
 
-    const sliderData = await axios.get('https://amiri-clothing-server.liara.run/slider').then((res) => res.data)
+    const sliderData = await axios.get(`${localhostBackend}/slider`).then((res) => res.data)
   
     return {
       props: {

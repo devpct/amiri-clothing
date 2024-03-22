@@ -4,11 +4,12 @@ import Sidebar from '@/components/templates/Products/Sidebar'
 import axios from 'axios'
 import React from 'react'
 import { useQuery } from 'react-query'
+import localhostBackend from '@/localhost';
 
 export default function index({ productsData, categoriesData, searchResult }) {
 
   const { data:products } = useQuery('Products', () =>
-  axios.get('http://localhost:4000/products').then((res) => res.data),
+  axios.get(`${localhostBackend}/products`).then((res) => res.data),
   {
     initialData: productsData,
     staleTime: 900000,
@@ -17,7 +18,7 @@ export default function index({ productsData, categoriesData, searchResult }) {
   )
 
   const { data:categories } = useQuery('Categories', () =>
-  axios.get('http://localhost:4000/categories').then((res) => res.data),
+  axios.get(`${localhostBackend}/categories`).then((res) => res.data),
   {
     initialData: categoriesData,
     staleTime: 900000,
@@ -47,8 +48,8 @@ export async function getServerSideProps(context) {
   
   const { query } = context;
 
-  const productsData = await axios.get('http://localhost:4000/products').then((res) => res.data)
-  const categoriesData = await axios.get('http://localhost:4000/categories').then((res) => res.data)
+  const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data)
+  const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data)
   
   const searchResult = productsData.filter(
     (item) =>

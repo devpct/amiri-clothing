@@ -4,6 +4,7 @@ import Sidebar from '@/components/templates/Dashboard/Admin/Sidebar'
 import axios from 'axios';
 import Orders from '@/components/templates/Dashboard/Admin/Orders';
 import useSWR from 'swr';
+import localhostBackend from '@/localhost';
 
 
 export default function index({ userData }) {
@@ -11,7 +12,7 @@ export default function index({ userData }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const { data: ordersData } = useSWR('Orders', () =>
-  axios.get('http://localhost:4000/order').then((res) => res.data)
+  axios.get(`${localhostBackend}/order`).then((res) => res.data)
   );
 
   return (
@@ -31,7 +32,7 @@ export default function index({ userData }) {
 export async function getServerSideProps(context) {
     const { token } = context.req.cookies
   
-    const userData = await axios.post('http://localhost:3000/api/auth/info',{ token }).then((res) => res.data).catch((err) =>{
+    const userData = await axios.post('/api/auth/info',{ token }).then((res) => res.data).catch((err) =>{
       if(err.response.status === 401){
         return {
           redirect:{

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import { mutate } from 'swr';
+import localhostBackend from '@/localhost';
 
 export default function Buttons({ 
     selected, 
@@ -100,38 +101,38 @@ export default function Buttons({
     }
     
     await Promise.all(nonAdminUsersToDelete.map(async (userId) => {
-        await axios.delete(`http://localhost:4000/users/${userId}`);
+        await axios.delete(`${localhostBackend}/users/${userId}`);
     }));
     
     mutate('Users');
     }else if (title === 'products') {
         await Promise.all(selected.map(async (productId) => {
-            await axios.delete(`http://localhost:4000/products/${productId}`);
+            await axios.delete(`${localhostBackend}/products/${productId}`);
         }));
         mutate('Products');
     }else if (title === 'categories') {
         await Promise.all(selected.map(async (categoryId) => {
-            await axios.delete(`http://localhost:4000/categories/${categoryId}`);
+            await axios.delete(`${localhostBackend}/categories/${categoryId}`);
         }));
         mutate('Categories');
     }else if (title === 'comments'){
         await Promise.all(selected.map(async (commentId) => {
-            await axios.delete(`http://localhost:4000/comments/${commentId}`);
+            await axios.delete(`${localhostBackend}/comments/${commentId}`);
         }));
         mutate('Comments');
     }else if (title === 'sliders'){
         await Promise.all(selected.map(async (sliderId) => {
-            await axios.delete(`http://localhost:4000/slider/${sliderId}`);
+            await axios.delete(`${localhostBackend}/slider/${sliderId}`);
         }));
         mutate('Sliders');
     }else if (title === 'cart'){
         await Promise.all(selected.map(async (cartId) => {
-            await axios.delete(`http://localhost:4000/cart/${cartId}`);
+            await axios.delete(`${localhostBackend}/cart/${cartId}`);
         }));
         mutate('Cart');
     }else if (title === 'orders'){
         await Promise.all(selected.map(async (orderId) => {
-            await axios.delete(`http://localhost:4000/order/${orderId}`);
+            await axios.delete(`${localhostBackend}/order/${orderId}`);
         }));
         mutate('Orders');
     }

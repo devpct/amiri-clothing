@@ -6,13 +6,14 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { startCase } from 'lodash';
+import localhostBackend from '@/localhost';
 
 export default function index({ productsData, categoriesData }) {
 
   const selectedCategoryId = useSelector(state => state.selectedCategoryId);
 
   const { data:products } = useQuery('Products', () =>
-  axios.get('http://localhost:4000/products').then((res) => res.data),
+  axios.get(`${localhostBackend}/products`).then((res) => res.data),
   {
     initialData: productsData,
     staleTime: 900000,
@@ -21,7 +22,7 @@ export default function index({ productsData, categoriesData }) {
   )
 
   const { data:categories } = useQuery('Categories', () =>
-  axios.get('http://localhost:4000/categories').then((res) => res.data),
+  axios.get(`${localhostBackend}/categories`).then((res) => res.data),
   {
     initialData: categoriesData,
     staleTime: 900000,
@@ -51,8 +52,8 @@ export default function index({ productsData, categoriesData }) {
 
 
 export async function getStaticProps() {
-  const productsData = await axios.get('http://localhost:4000/products').then((res) => res.data)
-  const categoriesData = await axios.get('http://localhost:4000/categories').then((res) => res.data)
+  const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data)
+  const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data)
   
   return {
     props: {

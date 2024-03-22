@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import useSWR, { mutate } from 'swr';
+import localhostBackend from '@/localhost';
 
 export default function ProductInfo({ product, isLogin, cart }) {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export default function ProductInfo({ product, isLogin, cart }) {
     axios.get('/api/auth/info').then((res) => res.data))
 
     const { data: cartItems } = useSWR('Cart', () =>
-    axios.get('http://localhost:4000/cart').then((res) => res.data)
+    axios.get(`${localhostBackend}/cart`).then((res) => res.data)
     );
 
     const handleShoppingCarts = async (color, size) => {
@@ -28,7 +29,7 @@ export default function ProductInfo({ product, isLogin, cart }) {
     
         if (!productAlreadyInCart) {
           dispatch(setCartsQty(cartsQty + 1));
-          await axios.post('http://localhost:4000/cart', {
+          await axios.post(`${localhostBackend}/cart`, {
             customer_id: userInfo.id,
             product_id: +product.id,
             color_name: color.name,

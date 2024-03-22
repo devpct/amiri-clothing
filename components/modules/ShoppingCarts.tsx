@@ -6,17 +6,18 @@ import { setShoppingCarts, setCartsQty } from '@/redux/actions';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import useSWR, { mutate } from 'swr';
+import localhostBackend from '@/localhost';
 
 export default function ShoppingCarts() {
   const { data: products } = useQuery('Products', () =>
-    axios.get('http://localhost:4000/products').then((res) => res.data)
+    axios.get(`${localhostBackend}/products`).then((res) => res.data)
   );
 
   const { data: userInfo } = useQuery('UserInfo', () =>
   axios.get('/api/auth/info').then((res) => res.data))
 
   const { data: cartItems } = useSWR('Cart', () =>
-    axios.get('http://localhost:4000/cart').then((res) => res.data)
+    axios.get(`${localhostBackend}/cart`).then((res) => res.data)
   );
 
   
@@ -54,7 +55,7 @@ export default function ShoppingCarts() {
       return item;
     });
 
-    await axios.put(`http://localhost:4000/cart/${item.id}`, { ...item, qty: updatedCartItems.find(item => item.product_id === itemId).qty });
+    await axios.put(`${localhostBackend}/cart/${item.id}`, { ...item, qty: updatedCartItems.find(item => item.product_id === itemId).qty });
 
     mutate('Cart', updatedCartItems);
   };
@@ -67,7 +68,7 @@ export default function ShoppingCarts() {
       return item;
     });
   
-      await axios.put(`http://localhost:4000/cart/${item.id}`, { ...item, qty: updatedCartItems.find(item => item.product_id === itemId).qty });
+      await axios.put(`${localhostBackend}/cart/${item.id}`, { ...item, qty: updatedCartItems.find(item => item.product_id === itemId).qty });
             
       mutate('Cart', updatedCartItems);
   };
@@ -76,7 +77,7 @@ export default function ShoppingCarts() {
     dispatch(setCartsQty(cartsQty - 1))
     const updatedCartItems = cartItems.filter(item => item.product_id !== itemId);
   
-    await axios.delete(`http://localhost:4000/cart/${itemId}`);
+    await axios.delete(`${localhostBackend}/cart/${itemId}`);
   
     mutate('Cart', updatedCartItems);
   };
@@ -94,13 +95,13 @@ export default function ShoppingCarts() {
             status: "preparing"
           };
           
-          await axios.post('http://localhost:4000/order', orderData);
+          await axios.post(`${localhostBackend}/order`, orderData);
         }
       }
   
       // حذف محصولات از سبد خرید
       const userCartItems = cartItems.filter(item => item.customer_id === userInfo?.id);
-      const deleteRequests = userCartItems.map(item => axios.delete(`http://localhost:4000/cart/${item.id}`));
+      const deleteRequests = userCartItems.map(item => axios.delete(`${localhostBackend}/cart/${item.id}`));
       await Promise.all(deleteRequests);
   
       mutate('Cart', []);

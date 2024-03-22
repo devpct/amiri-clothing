@@ -4,6 +4,7 @@ import Input from '@/components/modules/Input'
 import axios from 'axios';
 import { mutate } from 'swr';
 import moment from 'moment';
+import localhostBackend from '@/localhost';
 
 export default function UsersModal({
     openModalAdd,
@@ -106,7 +107,7 @@ export default function UsersModal({
       const add = async () => {
         setOpenModalAdd(false)
         if(title === 'User'){
-        await axios.post('http://localhost:4000/users', {
+        await axios.post(`${localhostBackend}/users`, {
           fullname,
           email,
           password,
@@ -124,7 +125,7 @@ export default function UsersModal({
         setPhoneNumber('')
         setAddress('')
         }else if (title === 'Product'){
-            await axios.post('http://localhost:4000/products', {
+            await axios.post(`${localhostBackend}/products`, {
                 name: productName,
                 colors,
                 colors_code: colorsCode,
@@ -147,7 +148,7 @@ export default function UsersModal({
               setCategoryId(1)
           }else if (title === 'Categories'){
             if(categoryId){
-              await axios.post('http://localhost:4000/categories', {
+              await axios.post(`${localhostBackend}/categories`, {
                 id: categoryId,
                 name: categoryName,
               });
@@ -160,7 +161,7 @@ export default function UsersModal({
               setOpenModalAdd(true)
             }
           }else if (title === 'Comments'){
-            await axios.post('http://localhost:4000/comments', {
+            await axios.post(`${localhostBackend}/comments`, {
               text: text,
               customer_id: customerId,
               product_id: productId,
@@ -174,7 +175,7 @@ export default function UsersModal({
             setProductId(1)
             setLike(0)  
           }else if (title === 'Sliders'){
-            await axios.post('http://localhost:4000/slider', {
+            await axios.post(`${localhostBackend}/slider`, {
               image: image,
             });
             
@@ -182,7 +183,7 @@ export default function UsersModal({
             
             setImage('')
           }else if (title === 'Cart'){
-            await axios.post('http://localhost:4000/cart', {
+            await axios.post(`${localhostBackend}/cart`, {
               customer_id: customerId,
               product_id: productId,
               color_name: colorName,
@@ -198,7 +199,7 @@ export default function UsersModal({
             setColorName('')
             setQty(1)
           }else if (title === 'Orders'){
-            await axios.post('http://localhost:4000/order', {
+            await axios.post(`${localhostBackend}/order`, {
               customer_id: customerId,
               product_id: productId,
               color_name: colorName,
@@ -220,7 +221,7 @@ export default function UsersModal({
       const update = async () => {
         setOpenModalEdit(false);
         if(title === 'User'){
-        await axios.put(`http://localhost:4000/users/${selected[0]}`, {
+        await axios.put(`${localhostBackend}/users/${selected[0]}`, {
           fullname,
           email,
           password,
@@ -237,7 +238,7 @@ export default function UsersModal({
         setPhoneNumber('');
         setAddress('');
         }else if (title === 'Product'){
-            await axios.put(`http://localhost:4000/products/${selected[0]}`, {
+            await axios.put(`${localhostBackend}/products/${selected[0]}`, {
                 name: productName,
                 colors,
                 colors_code: colorsCode,
@@ -260,7 +261,7 @@ export default function UsersModal({
               setCategoryId(1)
         }else if (title === 'Categories'){
           if(categoryId){
-              await axios.put(`http://localhost:4000/categories/${selected[0]}`, {
+              await axios.put(`${localhostBackend}/categories/${selected[0]}`, {
                   id: categoryId,
                   name: categoryName,
                 });
@@ -273,7 +274,7 @@ export default function UsersModal({
             setOpenModalEdit(true);
           }
         }else if (title === 'Comments'){
-          await axios.put(`http://localhost:4000/comments/${selected[0]}`, {
+          await axios.put(`${localhostBackend}/comments/${selected[0]}`, {
             text: text,
             customer_id: customerId,
             product_id: productId,
@@ -287,7 +288,7 @@ export default function UsersModal({
           setProductId(1)
           setLike(0)  
         }else if (title === 'Sliders'){
-          await axios.put(`http://localhost:4000/slider/${selected[0]}`, {
+          await axios.put(`${localhostBackend}/slider/${selected[0]}`, {
             image: image,
           });
           
@@ -295,7 +296,7 @@ export default function UsersModal({
           
           setImage('')
         }else if (title === 'Cart'){
-          await axios.put(`http://localhost:4000/cart/${selected[0]}`, {
+          await axios.put(`${localhostBackend}/cart/${selected[0]}`, {
             customer_id: customerId,
             product_id: productId,
             color_name: colorName,
@@ -311,7 +312,7 @@ export default function UsersModal({
           setColorName('')
           setQty(1)
         }else if (title === 'Orders'){
-          await axios.put(`http://localhost:4000/order/${selected[0]}`, {
+          await axios.put(`${localhostBackend}/order/${selected[0]}`, {
             customer_id: customerId,
             product_id: productId,
             color_name: colorName,

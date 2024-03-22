@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { generateToken, verifyPassword } from '@/utils/auth'
 import { serialize } from 'cookie'
 import axios from 'axios';
+import localhostBackend from '@/localhost';
 
 type Data = {
   message: string
@@ -13,7 +14,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
 
-    const usersData = await axios.get('http://localhost:4000/users').then((res) => res.data);
+    const usersData = await axios.get(`${localhostBackend}/users`).then((res) => res.data);
 
     const { email, password } = req.body
 

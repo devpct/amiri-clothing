@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useSWR from 'swr';
+import localhostBackend from '@/localhost';
 
 export default function Sidebar({ isOpen, setIsOpen}) {
   
@@ -13,7 +14,7 @@ export default function Sidebar({ isOpen, setIsOpen}) {
   };
   
   const { data: ordersData } = useSWR('Orders', () =>
-  axios.get('http://localhost:4000/order').then((res) => res.data)
+  axios.get(`${localhostBackend}/order`).then((res) => res.data)
   );
 
   const [darkMode, setDarkMode] = useState(false);
