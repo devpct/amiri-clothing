@@ -1,7 +1,7 @@
 import React from 'react'
 import DataQty from '@/components/modules/Dashboard/Admin/Assessment/DataQty';
 
-export default function CartsData({ usersData, productsData, categoriesData, cartData, commentsData, sliderData }) {
+export default function CartsData({ usersData, productsData, categoriesData, cartData, commentsData, sliderData }:{ usersData:any, productsData:any, categoriesData:any, cartData:any, commentsData:any, sliderData:any }) {
   return (
     <>
     <div className=" sm:pl-10 pl-6  grid grid-cols-2 w-full sm:flex flex-wrap justify-center gap-y-3  gap-x-10">

@@ -5,8 +5,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import localhostBackend from '@/localhost';
 
-export default function assessment({userData, usersData, productsData, categoriesData, cartData, 
-  commentsData, sliderData}) {
+export default function assessment({userData, usersData, productsData, categoriesData, cartData,commentsData, sliderData}:{userData:any, usersData:any, productsData:any, categoriesData:any, cartData:any,commentsData:any, sliderData:any}) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

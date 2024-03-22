@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import moment from 'moment';
 
-export default function Charts({ width, usersData }) {
+export default function Charts({ width, usersData }:{ width:any, usersData:any }) {
 
     const allMonths = moment.months();
     const currentMonthIndex = moment().month();

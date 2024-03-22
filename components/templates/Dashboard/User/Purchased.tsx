@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '@/components/modules/Dashboard/User/Purchased/Card';
 
-export default function Purchased({ userData, productsData, ordersData }) {
+export default function Purchased({ userData, productsData, ordersData }:{ userData:any, productsData:any, ordersData:any }) {
   const userOrders = ordersData.filter(order => order.customer_id === userData.id);
 
   return (

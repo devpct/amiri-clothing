@@ -5,7 +5,7 @@ import Modal from '@/components/modules/Dashboard/Admin/Modal';
 import Pagination from '@/components/modules/Dashboard/Admin/Pagination';
 import Table from '@/components/modules/Dashboard/Admin/Table';
 
-export default function Orders({ ordersData }) {
+export default function Orders({ ordersData }:{ ordersData:any }) {
     const [selected, setSelected] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [openModalAdd, setOpenModalAdd] = useState(false);

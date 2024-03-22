@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import localhostBackend from '@/localhost';
 
 
-export default function index({ userData, categoriesData }) {
+export default function index({ userData, categoriesData }:{ userData:any, categoriesData:any }) {
 
   const [isOpen, setIsOpen] = useState(false);
 

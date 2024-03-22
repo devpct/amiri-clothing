@@ -6,7 +6,7 @@ import { mutate } from 'swr';
 import localhostBackend from '@/localhost';
 
 
-export default function Table({ selected, setSelected, data, columnNames, title }) {
+export default function Table({ selected, setSelected, data, columnNames, title }:{ selected:any, setSelected:any, data:any, columnNames:any, title:any }) {
 
     const toggleSelection = (mainId) => {
         if (selected.includes(mainId)) {

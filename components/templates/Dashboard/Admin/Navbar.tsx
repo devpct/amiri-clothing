@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import { useSelector } from "react-redux";
 
-export default function Navbar({ isOpen, setIsOpen, data }) {
+export default function Navbar({ isOpen, setIsOpen, data }:{ isOpen:any, setIsOpen:any, data:any }) {
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)

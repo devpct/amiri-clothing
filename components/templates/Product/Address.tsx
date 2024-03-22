@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { startCase } from 'lodash';
 
 
-export default function Address({ product, categories }) {
+export default function Address({ product, categories }:{product:any,categories:any}) {
 
   const categoryName = categories[product.category_id - 1].name;
 

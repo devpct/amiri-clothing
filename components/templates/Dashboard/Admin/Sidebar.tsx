@@ -5,7 +5,7 @@ import axios from 'axios';
 import useSWR from 'swr';
 import localhostBackend from '@/localhost';
 
-export default function Sidebar({ isOpen, setIsOpen}) {
+export default function Sidebar({ isOpen, setIsOpen}:{ isOpen:any, setIsOpen:any}) {
   
   const router = useRouter();
   

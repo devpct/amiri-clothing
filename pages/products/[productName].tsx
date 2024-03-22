@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Address from '@/components/templates/Product/Address'
 import ImageGallery from '@/components/templates/Product/ImageGallery'
 import ProductInfo from '@/components/templates/Product/ProductInfo'
@@ -8,11 +8,7 @@ import { useQuery } from 'react-query';
 import localhostBackend from '@/localhost';
 
 
-export default function product({ product, categories, cart }) {
-
-  // useEffect(()=>{
-  //   console.log(product[0]);
-  // },[])
+export default function product({ product, categories, cart }:{product:any,categories:any,cart:any}) {
 
   let { data } = useQuery('UserInfo', () =>
   axios.get('/api/auth/info').then((res) => res.data))
@@ -35,7 +31,7 @@ export default function product({ product, categories, cart }) {
   )
 }
 
-export async function getStaticPaths(context) {
+export async function getStaticPaths() {
   const products = await axios.get(`${localhostBackend}/products`).then((res) => res.data);
 
   const paths = products.map((product) => ({

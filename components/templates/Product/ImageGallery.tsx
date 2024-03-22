@@ -2,7 +2,7 @@ import React from 'react'
 import Image from '@/components/modules/Product/Image'
 import Images from '@/components/modules/Product/Images'
 
-export default function ImageGallery({ product }) {
+export default function ImageGallery({ product }:{ product:any }) {
 
   return (
     <>

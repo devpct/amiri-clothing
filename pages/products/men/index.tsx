@@ -10,7 +10,7 @@ import { setCategoryId } from '@/redux/actions';
 import { useEffect } from 'react';
 import localhostBackend from '@/localhost';
 
-export default function index({ productsData, categoriesData }) {
+export default function index({ productsData, categoriesData }:{productsData:any,categoriesData:any}) {
 
   const dispatch = useDispatch();
   useEffect(()=>{

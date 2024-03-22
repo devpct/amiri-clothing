@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { startCase } from 'lodash';
 
-export default function Card({ product, order }) {
+export default function Card({ product, order }:{ product:any, order:any }) {
 
   return (
     <>

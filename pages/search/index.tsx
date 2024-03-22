@@ -6,7 +6,7 @@ import React from 'react'
 import { useQuery } from 'react-query'
 import localhostBackend from '@/localhost';
 
-export default function index({ productsData, categoriesData, searchResult }) {
+export default function index({ productsData, categoriesData, searchResult }:{productsData:any,categoriesData:any,searchResult:any }) {
 
   const { data:products } = useQuery('Products', () =>
   axios.get(`${localhostBackend}/products`).then((res) => res.data),

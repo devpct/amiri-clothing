@@ -6,7 +6,7 @@ import Modal from '@/components/modules/Dashboard/Admin/Modal';
 import Pagination from '@/components/modules/Dashboard/Admin/Pagination';
 import Table from '@/components/modules/Dashboard/Admin/Table';
 
-export default function Users({ usersData }) {
+export default function Users({ usersData }:{ usersData:any }) {
   const [selected, setSelected] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [showAdmins, setShowAdmins] = useState(false);

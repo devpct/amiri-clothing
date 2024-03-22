@@ -6,7 +6,7 @@ import Pagination from '@/components/modules/Dashboard/Admin/Pagination';
 import Table from '@/components/modules/Dashboard/Admin/Table';
 import axios from 'axios';
 
-export default function Products({ productsData, categoriesData }) {
+export default function Products({ productsData, categoriesData }:{ productsData:any, categoriesData:any }) {
   const [selected, setSelected] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [openModalAdd, setOpenModalAdd] = useState(false);

@@ -4,7 +4,7 @@ import { startCase } from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { Bounce, toast } from 'react-toastify';
 
-export default function Profile({ data }) {
+export default function Profile({ data }:{data:any}) {
 
   const [fullname, setFullname] = useState('')
   const [email, setEmail] = useState("")

@@ -9,7 +9,7 @@ import { useQuery } from 'react-query';
 import useSWR, { mutate } from 'swr';
 import localhostBackend from '@/localhost';
 
-export default function ProductInfo({ product, isLogin, cart }) {
+export default function ProductInfo({ product, isLogin, cart }:{product:any,isLogin:any,cart:any}) {
   const dispatch = useDispatch();
   const shoppingCarts = useSelector(state => state.shoppingCarts);
   const cartsQty = useSelector(state => state.cartsQty);

@@ -36,6 +36,40 @@ export default function Buttons({
     setColorName,
     setQty,
     setStatus
+    }:
+    { 
+    selected:any, 
+    setOpenModalAdd:any, 
+    setFullName:any, 
+    setEmail:any, 
+    setPassword:any, 
+    setPhoneNumber:any, 
+    setAddress:any, 
+    setRole:any, 
+    showAdmins:any, 
+    showCustomers:any,
+    data:any, 
+    setSelected:any, 
+    filteredUsers:any, 
+    setOpenModalEdit:any, 
+    title:any, 
+    setProductName:any, 
+    setColors:any, 
+    setColorsCode:any, 
+    setPrice:any, 
+    setImages:any, 
+    setDescription:any, 
+    setSize:any, 
+    setCategoryId:any,
+    setCategoryName:any,
+    setText:any,
+    setCustomerId:any,
+    setProductId:any,
+    setLike:any,
+    setImage:any,
+    setColorName:any,
+    setQty:any,
+    setStatus:any
     }) {
     const handleOpen = () => {
         if(title === 'users'){

@@ -4,7 +4,7 @@ import Sidebar from '@/components/templates/Dashboard/User/Sidebar'
 import Purchased from '@/components/templates/Dashboard/User/Purchased'
 import localhostBackend from '@/localhost';
 
-export default function index({ userData, productsData, ordersData }) {
+export default function index({ userData, productsData, ordersData }:{ userData:any, productsData:any, ordersData:any }) {
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function ChekboxFilter({ showAdmins, showCustomers, selectedUsers, setShowAdmins, setShowCustomers, setSelectedUsers  }) {
+export default function ChekboxFilter({ showAdmins, showCustomers, selectedUsers, setShowAdmins, setShowCustomers, setSelectedUsers  }:{ showAdmins:any, showCustomers:any, selectedUsers:any, setShowAdmins:any, setShowCustomers:any, setSelectedUsers:any  }) {
 
   const [clickedCheckbox, setClickedCheckbox] = useState(null);
 
