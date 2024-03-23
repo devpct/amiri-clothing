@@ -45,7 +45,7 @@ export default async function handler(
       return res.status(401).json({ message: 'You are not login !!' })  
     }
 
-    const isUserExist = usersData.find((user) => user.email === tokenPyload.email);
+    const isUserExist = usersData.find((user:any) => user.email === tokenPyload.email);
     
     return res.status(200).json({ id:isUserExist.id, fullname:isUserExist.fullname, email:isUserExist.email, password:isUserExist.password, phonenumber:isUserExist.phonenumber, address:isUserExist.address, role:isUserExist.role})
   }
