@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react'
 export default function SidebarSearch() {
 
   const route = useRouter() 
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState<string>('')
 
-  useEffect(()=>{
-      setSearch(route.query.q)
-  },[])
-
+  useEffect(() => {
+      setSearch(route.query.q as string || '')
+  }, [])
+  
   const searchHandlerWithEnter = (event:any) => {
       if (event.keyCode === 13) {
           if (search.trim()) {
