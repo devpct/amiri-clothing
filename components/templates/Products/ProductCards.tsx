@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Card from '@/components/modules/Card';
 import { useSelector } from 'react-redux';
 
-export default function ProductCard({ productsData, searchResult }:{ productsData:any, searchResult:any}) {
+export default function ProductCard({ productsData, searchResult }:{ productsData?:any, searchResult?:any}) {
   
   const selectedCategoryId = useSelector((state:any) => state.selectedCategoryId);
   const selectedSortBy = useSelector((state:any) => state.selectedSortBy);

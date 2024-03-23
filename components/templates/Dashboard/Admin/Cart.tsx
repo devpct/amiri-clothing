@@ -4,7 +4,6 @@ import Buttons from '@/components/modules/Dashboard/Admin/Buttons';
 import Modal from '@/components/modules/Dashboard/Admin/Modal';
 import Pagination from '@/components/modules/Dashboard/Admin/Pagination';
 import Table from '@/components/modules/Dashboard/Admin/Table';
-import axios from 'axios';
 
 export default function Cart({ cartData }:{ cartData:any }) {
   const [selected, setSelected] = useState([]);
