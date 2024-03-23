@@ -20,7 +20,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
         if (selected.length === data.length) {
           setSelected([]);
         } else {
-          const allIds = data.map((data:{data:any}) => data.id);
+          const allIds = data.map((data:{id:any}) => data.id);
           setSelected(allIds);
         }
       };
