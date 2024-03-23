@@ -24,7 +24,7 @@ export default function Profile({ data }:{data:any}) {
 
     const customer = { fullname, email, password, phoneNumber, address, role: data?.role }
 
-    axios.put('/api/auth/info-update', customer)
+    axios.put('http://localhost:3000/api/auth/info-update', customer)
       .then((res) => {
         if (res.status === 200) {
             toast.success('The update was done successfully ((:', {

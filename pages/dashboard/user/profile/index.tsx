@@ -7,7 +7,7 @@ import Profile from '@/components/templates/Dashboard/User/Profile'
 export default function index() {
 
   let { data } = useQuery('UserInfo', () =>
-  axios.get('/api/auth/info').then((res) => res.data))
+  axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
 
   return (
     <>

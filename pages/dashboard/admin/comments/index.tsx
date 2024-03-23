@@ -32,7 +32,7 @@ export default function index({ userData }:{ userData:any }) {
 export async function getServerSideProps(context) {
     const { token } = context.req.cookies
   
-    const userData = await axios.post('/api/auth/info',{ token }).then((res) => res.data).catch((err) =>{
+    const userData = await axios.post('http://localhost:3000/auth/info',{ token }).then((res) => res.data).catch((err) =>{
       if(err.response.status === 401){
         return {
           redirect:{

@@ -106,11 +106,11 @@ function Navbar() {
     const queryClient = useQueryClient();
 
     let { data } = useQuery('UserInfo', () =>
-    axios.get('/api/auth/info').then((res) => res.data))
+    axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
 
     const handleOpenMenu = (event) => {
       if(event.target.innerHTML === 'Logout'){
-        axios.get('/api/auth/logout')
+        axios.get('http://localhost:3000/api/auth/logout')
         queryClient.setQueryData('UserInfo', undefined)
         window.location.reload();
       }

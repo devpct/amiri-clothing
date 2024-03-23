@@ -15,7 +15,7 @@ export default function ProductInfo({ product, isLogin, cart }:{product:any,isLo
   const cartsQty = useSelector(state => state.cartsQty);
 
     const { data: userInfo } = useQuery('UserInfo', () =>
-    axios.get('/api/auth/info').then((res) => res.data))
+    axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
 
     const { data: cartItems } = useSWR('Cart', () =>
     axios.get(`${localhostBackend}/cart`).then((res) => res.data)

@@ -33,7 +33,7 @@ export async function getServerSideProps(context) {
       }
   }
 
-  const userData = await axios.post('/api/auth/info',{ token }).then((res) => res.data)
+  const userData = await axios.post('http://localhost:3000/api/auth/info',{ token }).then((res) => res.data)
 
   const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data)
 

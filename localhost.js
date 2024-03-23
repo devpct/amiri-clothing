@@ -1,3 +1,3 @@
-const localhostBackend = 'http://localhost:4000';
+const localhostBackend = 'https://amiri-clothing-server.liara.run';
 
 export default localhostBackend;

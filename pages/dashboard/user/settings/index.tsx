@@ -6,7 +6,7 @@ import { useQuery } from 'react-query'
 export default function settings() {
 
     let { data } = useQuery('UserInfo', () =>
-    axios.get('/api/auth/info').then((res) => res.data))
+    axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
 
   return (
     <>

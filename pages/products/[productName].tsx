@@ -11,7 +11,7 @@ import localhostBackend from '@/localhost';
 export default function product({ product, categories, cart }:{product:any,categories:any,cart:any}) {
 
   let { data } = useQuery('UserInfo', () =>
-  axios.get('/api/auth/info').then((res) => res.data))
+  axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
 
   return (
     <>

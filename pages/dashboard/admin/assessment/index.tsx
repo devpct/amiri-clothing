@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
   const cartData = await axios.get(`${localhostBackend}/cart`).then((res) => res.data)
   const commentsData = await axios.get(`${localhostBackend}/comments`).then((res) => res.data)
   const sliderData = await axios.get(`${localhostBackend}/slider`).then((res) => res.data)
-  const userData = await axios.post('/api/auth/info',{ token }).then((res) => res.data).catch((err) =>{
+  const userData = await axios.post('http://localhost:3000/api/auth/info',{ token }).then((res) => res.data).catch((err) =>{
     if(err.response.status === 401){
       return {
         redirect:{

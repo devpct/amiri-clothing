@@ -42,7 +42,7 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
 
     const customer = { fullname, email, password, role: "customer" }
 
-    axios.post('/api/auth/signup', customer)
+    axios.post('http://localhost:3000/api/auth/signup', customer)
       .then((res) => {        
         if (res.status === 201) {        
           setFullname("");
