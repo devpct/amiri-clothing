@@ -3,6 +3,38 @@ import React from 'react'
 import { mutate } from 'swr';
 import localhostBackend from '@/localhost';
 
+interface user {
+    id: any;
+}
+
+interface product {
+    id: any;
+}
+
+interface category {
+    id: any;
+}
+
+interface comment {
+    id: any;
+}
+
+interface comment {
+    id: any;
+}
+
+interface slider {
+    id: any;
+}
+
+interface cart {
+    id: any;
+}
+
+interface order {
+    id: any;
+}
+
 export default function Buttons({ 
     selected, 
     setOpenModalAdd, 
@@ -123,8 +155,7 @@ export default function Buttons({
         nonAdminUsersToDelete = selected;
     } else {
         nonAdminUsersToDelete = selected.filter((userId:{userId:any}) => {
-        const user = data.find((u: { id: string }) => u.id === userId);
-
+        const user = data.find((u:user) => u.id === userId);
         if (!showAdmins) {
             return user && user.role === 'customer';
         }
@@ -179,7 +210,7 @@ export default function Buttons({
         setOpenModalEdit(true);
         if(title === 'users'){
         const selectedUserId = selected[0];
-        const selectedUser = filteredUsers.find((user:{user:any}) => user.id === selectedUserId);
+        const selectedUser = filteredUsers.find((user:user) => user.id === selectedUserId);
         if (selectedUser) {
         setFullName(selectedUser.fullname || '');
         setEmail(selectedUser.email || '');
@@ -189,7 +220,7 @@ export default function Buttons({
     }
     }else if (title === 'products'){
         const selectedProductId = selected[0];
-        const selectedProduct = data.find((product:{product:any}) => product.id === selectedProductId);
+        const selectedProduct = data.find((product:product) => product.id === selectedProductId);
         if (selectedProduct) {
         setProductName(selectedProduct.name || '');
         setColors(selectedProduct.colors || []);
@@ -202,14 +233,14 @@ export default function Buttons({
         }
     }else if (title === 'categories'){
         const selectedCategoryId = selected[0];
-        const selectedCategory = data.find((category:{category:any}) => category.id === selectedCategoryId);
+        const selectedCategory = data.find((category:category) => category.id === selectedCategoryId);
         if (selectedCategory) {
         setCategoryName(selectedCategory.name || '');
         setCategoryId(selectedCategory.id || '')
         }
     }else if (title === 'comments'){
         const selectedCommentId = selected[0];
-        const selectedComment = data.find((comment:{comment:any}) => comment.id === selectedCommentId);
+        const selectedComment = data.find((comment:comment) => comment.id === selectedCommentId);
         if (selectedComment) {
         setText(selectedComment.text || '')
         setCustomerId(selectedComment.customer_id || '')
@@ -218,13 +249,13 @@ export default function Buttons({
         }
     }else if (title === 'sliders'){
         const selectedSliderId = selected[0];
-        const selectedSlider = data.find((slider:{slider:any}) => slider.id === selectedSliderId);
+        const selectedSlider = data.find((slider:slider) => slider.id === selectedSliderId);
         if (selectedSlider) {
             setImage(selectedSlider.image || '');  
         }
     }else if (title === 'cart'){
         const selectedCartId = selected[0];
-        const selectedCart = data.find((cart:{cart:any}) => cart.id === selectedCartId);
+        const selectedCart = data.find((cart:cart) => cart.id === selectedCartId);
         if (selectedCart) {
         setCustomerId(selectedCart.customer_id || '')
         setProductId(selectedCart.product_id || 1)
@@ -234,7 +265,7 @@ export default function Buttons({
     }
     }else if (title === 'orders'){
         const selectedOrderId = selected[0];
-        const selectedOrder = data.find((order:{order:any}) => order.id === selectedOrderId);
+        const selectedOrder = data.find((order:order) => order.id === selectedOrderId);
         if (selectedOrder) {
         setCustomerId(selectedOrder.customer_id || '')
         setProductId(selectedOrder.product_id || 1)
