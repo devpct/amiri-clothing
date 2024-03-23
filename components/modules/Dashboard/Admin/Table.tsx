@@ -8,7 +8,7 @@ import localhostBackend from '@/localhost';
 
 export default function Table({ selected, setSelected, data, columnNames, title }:{ selected:any, setSelected:any, data:any, columnNames:any, title:any }) {
 
-    const toggleSelection = (mainId) => {
+    const toggleSelection = (mainId:{id:any}) => {
         if (selected.includes(mainId)) {
             setSelected(selected.filter((id:{id:any}) => id !== mainId));
         } else {
