@@ -6,27 +6,29 @@ import { mutate } from 'swr';
 import localhostBackend from '@/localhost';
   
 interface Data {
-    id: string;
-    fullname: string;
-    role: string;
-    phonenumber: string;
-    email: string;
-    address: string;
-    name: string;
-    colors_code: string[];
-    colors: string[];
-    price: { price: number };
-    description: string;
-    size: string[];
-    category_id: string;
-    customer_id: string;
-    product_id: string;
-    text: string;
-    like: number;
-    image: string[];
-    color_name: string;
-    qty: number;
-    status: string;
+    id: any;
+    fullname: any;
+    role: any;
+    phonenumber: any;
+    email: any;
+    address: any;
+    name: any;
+    colors_code: any[];
+    colors: any[];
+    price: { price: any };
+    description: any;
+    size: any[];
+    category_id: any;
+    customer_id: any;
+    product_id: any;
+    text: any;
+    like: any;
+    image: any[];
+    color_name: any;
+    qty: any;
+    status: any;
+    images: any[];
+    newStatus:any;
   }
 
 export default function Table({ selected, setSelected, data, columnNames, title }:{ selected:any, setSelected:any, data:any, columnNames:any, title:any }) {
@@ -48,7 +50,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
         }
       };
 
-      const updateStatus = async ({id, newStatus}:{id:any, newStatus:any}) => {
+      const updateStatus = async (id, newStatus) => {
         const targetData = data.find((item:{id:any}) => item.id === id)
         await axios.put(`${localhostBackend}/order/${id}`, 
         {
@@ -173,7 +175,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     </td>
                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{Number(data.price).toLocaleString()}</td>
                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                    {data.images.map((link, index:{link:any}) => (
+                    {data.images.map((link, index) => (
                         <div key={index}>
                         {link.length <= 50 ? link : link.substring(0, 50) + '...'}
                         </div>
