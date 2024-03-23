@@ -442,7 +442,7 @@ export default function UsersModal({
                         <Input 
                         label='Full Name' 
                         placeholder='Enter full name to get started'
-                        onChange={()=> setFullName(event.target.value)}
+                        onChange={(event)=> setFullName(event.target.value)}
                         value={fullname}
                         />
                         <Input 
@@ -504,7 +504,7 @@ export default function UsersModal({
                     <Input 
                     label='Colors Code' 
                     placeholder='Enter colors code to get started'
-                    onChange={()=> setColorsCode(event.target.value.split(','))}
+                    onChange={(event)=> setColorsCode(event.target.value.split(','))}
                     value={colorsCode.join(',')}
                     />
                     <Input 
@@ -516,7 +516,7 @@ export default function UsersModal({
                     <Input 
                     label='Image' 
                     placeholder='Enter image to get started'
-                    onChange={()=> setImages(event.target.value.split(','))}
+                    onChange={(event)=> setImages(event.target.value.split(','))}
                     value={images.join(',')}
                     />
                     <Input 
