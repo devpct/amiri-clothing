@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 
 export default function ChekboxFilter({ showAdmins, showCustomers, selectedUsers, setShowAdmins, setShowCustomers, setSelectedUsers  }:{ showAdmins:any, showCustomers:any, selectedUsers:any, setShowAdmins:any, setShowCustomers:any, setSelectedUsers:any  }) {
 
-  const [clickedCheckbox, setClickedCheckbox] = useState(null);
+  const [clickedCheckbox, setClickedCheckbox] = useState("");
 
     const handleShowAdminsChange = (newValue:any) => {
       if (clickedCheckbox === "admins") {
         setShowAdmins(false);
-        setClickedCheckbox(null);
+        setClickedCheckbox('');
       } else {
         setShowAdmins(true);
         setShowCustomers(false);
@@ -22,7 +22,7 @@ export default function ChekboxFilter({ showAdmins, showCustomers, selectedUsers
     const handleShowCustomersChange = (newValue:any) => {
       if (clickedCheckbox === "customers") {
         setShowCustomers(false);
-        setClickedCheckbox(null);
+        setClickedCheckbox('');
       } else {
         setShowCustomers(true);
         setShowAdmins(false);
