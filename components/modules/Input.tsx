@@ -1,10 +1,10 @@
 import React from 'react'
 
 interface InputProps {
-    label: string;
-    placeholder: string;
-    value: any;
-    onChange: any;
+    label?: string;
+    placeholder?: string;
+    value?: any;
+    onChange?: any;
     InputOff?: boolean; 
 }
 
