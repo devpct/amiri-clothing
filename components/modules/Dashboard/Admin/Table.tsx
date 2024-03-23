@@ -4,7 +4,30 @@ import React from 'react'
 import axios from 'axios';
 import { mutate } from 'swr';
 import localhostBackend from '@/localhost';
-
+  
+interface Data {
+    id: string;
+    fullname: string;
+    role: string;
+    phonenumber: string;
+    email: string;
+    address: string;
+    name: string;
+    colors_code: string[];
+    colors: string[];
+    price: { price: number };
+    description: string;
+    size: string[];
+    category_id: string;
+    customer_id: string;
+    product_id: string;
+    text: string;
+    like: number;
+    image: string[];
+    color_name: string;
+    qty: number;
+    status: string;
+  }
 
 export default function Table({ selected, setSelected, data, columnNames, title }:{ selected:any, setSelected:any, data:any, columnNames:any, title:any }) {
 
@@ -25,8 +48,8 @@ export default function Table({ selected, setSelected, data, columnNames, title 
         }
       };
 
-      const updateStatus = async (id, newStatus) => {
-        const targetData = data.find(item => item.id === id)
+      const updateStatus = async ({id, newStatus}:{id:any, newStatus:any}) => {
+        const targetData = data.find((item:{id:any}) => item.id === id)
         await axios.put(`${localhostBackend}/order/${id}`, 
         {
         id: targetData.id,
@@ -64,7 +87,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     </th>
                     <th scope="col" className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">{columnNames[1]}</th>
                     {
-                     columnNames.slice(2,columnNames.length).map((name:{name:any}) =>(
+                     columnNames.slice(2,columnNames.length).map(({name}:{name:any}) =>(
                         <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">{name}</th>
                      ))
                     }
@@ -72,7 +95,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                 </thead>
                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700 ">
                 {data?.length > 0 ? (
-                    data.map((data:{data:any}) => (
+                    data.map((data:Data) => (
                     <tr
                         key={data.id}
                         className={`${
@@ -141,7 +164,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     </div>
                     </td>
                     <td className="grid grid-cols-2 gap-2 items-center text-sm font-medium text-gray-700 whitespace-nowrap">
-                    {data.colors_code.map((color, index:{color:any}) => (
+                    {data.colors_code.map((color, index) => (
                         <div key={index} className="flex items-center px-3 py-1 rounded-full gap-x-2 bg-gray-100 dark:bg-gray-800 w-fit">
                         <span className={`h-3 w-3 rounded-full`} style={{backgroundColor: color}}></span>
                         <h2 className="text-[11px] font-normal text-gray-500">{startCase(data.colors[index])}</h2>
@@ -161,7 +184,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     {data.description.length <= 50 ? data.description : data.description.substring(0, 50) + '...'}
                     </td>
                     <td className="grid grid-cols-2 px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                    {data.size.map((size:{size:any}) => (
+                    {data.size.map((size) => (
                         <div>
                         {size} ,
                         </div>
