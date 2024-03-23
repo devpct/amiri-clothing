@@ -22,7 +22,7 @@ export default async function handler(
     }
 
     const usersData = await axios.get(`${localhostBackend}/users`).then((res) => res.data);
-    const userToUpdate = usersData.find((user) => user.email === email);
+    const userToUpdate = usersData.find((user:any) => user.email === email);
     if (!userToUpdate) {
       return res.status(404).json({ message: 'User not found!' });
     }
