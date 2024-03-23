@@ -123,7 +123,7 @@ export default function Buttons({
         nonAdminUsersToDelete = selected;
     } else {
         nonAdminUsersToDelete = selected.filter((userId:{userId:any}) => {
-        const user = data.find(u => u.id === userId);
+        const user = data.find((u:{u:any}) => u.id === userId);
         if (!showAdmins) {
             return user && user.role === 'customer';
         }
