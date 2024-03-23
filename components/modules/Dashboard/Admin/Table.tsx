@@ -342,7 +342,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     ))
                 ) : (
                     <tr>
-                    <td colSpan="5" className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap text-center">No matching users found</td>
+                    <td colSpan={5} className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap text-center">No matching users found</td>
                     </tr>
                 )}
                 </tbody>
