@@ -10,7 +10,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
 
     const toggleSelection = (mainId) => {
         if (selected.includes(mainId)) {
-            setSelected(selected.filter((id) => id !== mainId));
+            setSelected(selected.filter((id:{id:any}) => id !== mainId));
         } else {
             setSelected([...selected, mainId]);
         }
@@ -20,7 +20,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
         if (selected.length === data.length) {
           setSelected([]);
         } else {
-          const allIds = data.map(data => data.id);
+          const allIds = data.map((data:{data:any}) => data.id);
           setSelected(allIds);
         }
       };
@@ -64,7 +64,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     </th>
                     <th scope="col" className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">{columnNames[1]}</th>
                     {
-                     columnNames.slice(2,columnNames.length).map(name =>(
+                     columnNames.slice(2,columnNames.length).map((name:{name:any}) =>(
                         <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">{name}</th>
                      ))
                     }
@@ -72,7 +72,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                 </thead>
                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700 ">
                 {data?.length > 0 ? (
-                    data.map(data => (
+                    data.map((data:{data:any}) => (
                     <tr
                         key={data.id}
                         className={`${
@@ -141,7 +141,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     </div>
                     </td>
                     <td className="grid grid-cols-2 gap-2 items-center text-sm font-medium text-gray-700 whitespace-nowrap">
-                    {data.colors_code.map((color, index) => (
+                    {data.colors_code.map((color, index:{color:any}) => (
                         <div key={index} className="flex items-center px-3 py-1 rounded-full gap-x-2 bg-gray-100 dark:bg-gray-800 w-fit">
                         <span className={`h-3 w-3 rounded-full`} style={{backgroundColor: color}}></span>
                         <h2 className="text-[11px] font-normal text-gray-500">{startCase(data.colors[index])}</h2>
@@ -150,7 +150,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     </td>
                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{Number(data.price).toLocaleString()}</td>
                     <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                    {data.images.map((link, index) => (
+                    {data.images.map((link, index:{link:any}) => (
                         <div key={index}>
                         {link.length <= 50 ? link : link.substring(0, 50) + '...'}
                         </div>
@@ -161,7 +161,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     {data.description.length <= 50 ? data.description : data.description.substring(0, 50) + '...'}
                     </td>
                     <td className="grid grid-cols-2 px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                    {data.size.map(size => (
+                    {data.size.map((size:{size:any}) => (
                         <div>
                         {size} ,
                         </div>

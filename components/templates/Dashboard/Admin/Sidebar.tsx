@@ -169,7 +169,7 @@ export default function Sidebar({ isOpen, setIsOpen}:{ isOpen:any, setIsOpen:any
                 { ordersData?.filter(order => order.status === 'preparing').length !== 0 ?
                   <div className={`grid ml-auto w-6 h-6 rounded-full ${
                     router.pathname === '/dashboard/admin/orders' ? 'bg-gray-900 text-white dark:bg-white dark:text-black' : 'hover:bg-gray-100 dark:text-white dark:hover:text-black'
-                  }`}><p className='m-auto'>{ordersData?.filter(order => order.status === 'preparing').length}</p></div>
+                  }`}><p className='m-auto'>{ordersData?.filter((order:{order:any}) => order.status === 'preparing').length}</p></div>
                   : null
                 }
               </button>

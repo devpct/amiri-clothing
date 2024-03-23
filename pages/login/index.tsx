@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from 'swiper/modules';
-import Head from "next/head";
 import Input from '@/components/modules/Input'
 import { toast, Bounce } from 'react-toastify';
 // Import Swiper styles

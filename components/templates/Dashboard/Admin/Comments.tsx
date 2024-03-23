@@ -18,7 +18,7 @@ export default function Comments({ commentsData }:{ commentsData:any }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredComments = commentsData?.filter(comment => {
+  const filteredComments = commentsData?.filter((comment:{comment:any}) => {
     const searchTermLower = searchTerm.toLowerCase();
     const text = comment.text.toLowerCase();
     const textMatch = text.includes(searchTermLower);

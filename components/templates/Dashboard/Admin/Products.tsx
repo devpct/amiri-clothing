@@ -22,7 +22,7 @@ export default function Products({ productsData, categoriesData }:{ productsData
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredProducts = productsData?.filter(product => {
+  const filteredProducts = productsData?.filter((product:{product:any}) => {
     const searchTermLower = searchTerm.toLowerCase();
     const productName = product.name.toLowerCase();
     const nameMatch = productName.includes(searchTermLower);

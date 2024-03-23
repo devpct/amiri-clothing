@@ -15,7 +15,7 @@ export default function Sliders({ slidersData }:{ slidersData:any }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredSliders = slidersData?.filter(slider => {
+  const filteredSliders = slidersData?.filter((slider:{slider:any}) => {
     const searchTermLower = searchTerm.toLowerCase();
     const image = slider.image.toLowerCase();
     const imageMatch = image.includes(searchTermLower);

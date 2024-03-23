@@ -19,7 +19,7 @@ export default function Cart({ cartData }:{ cartData:any }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredCart = cartData?.filter(cart => {
+  const filteredCart = cartData?.filter((cart:{cart:any}) => {
     const searchTermLower = searchTerm.toLowerCase();
     const customerId = cart.customer_id.toLowerCase();
     const customerIdMatch = customerId.includes(searchTermLower);

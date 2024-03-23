@@ -122,7 +122,7 @@ export default function Buttons({
     if (!showAdmins && !showCustomers) {
         nonAdminUsersToDelete = selected;
     } else {
-        nonAdminUsersToDelete = selected.filter(userId => {
+        nonAdminUsersToDelete = selected.filter((userId:{userId:any}) => {
         const user = data.find(u => u.id === userId);
         if (!showAdmins) {
             return user && user.role === 'customer';
@@ -134,38 +134,38 @@ export default function Buttons({
         });
     }
     
-    await Promise.all(nonAdminUsersToDelete.map(async (userId) => {
+    await Promise.all(nonAdminUsersToDelete.map(async (userId:{userId:any}) => {
         await axios.delete(`${localhostBackend}/users/${userId}`);
     }));
     
     mutate('Users');
     }else if (title === 'products') {
-        await Promise.all(selected.map(async (productId) => {
+        await Promise.all(selected.map(async (productId:{productId:any}) => {
             await axios.delete(`${localhostBackend}/products/${productId}`);
         }));
         mutate('Products');
     }else if (title === 'categories') {
-        await Promise.all(selected.map(async (categoryId) => {
+        await Promise.all(selected.map(async (categoryId:{categoryId:any}) => {
             await axios.delete(`${localhostBackend}/categories/${categoryId}`);
         }));
         mutate('Categories');
     }else if (title === 'comments'){
-        await Promise.all(selected.map(async (commentId) => {
+        await Promise.all(selected.map(async (commentId:{commentId:any}) => {
             await axios.delete(`${localhostBackend}/comments/${commentId}`);
         }));
         mutate('Comments');
     }else if (title === 'sliders'){
-        await Promise.all(selected.map(async (sliderId) => {
+        await Promise.all(selected.map(async (sliderId:{sliderId:any}) => {
             await axios.delete(`${localhostBackend}/slider/${sliderId}`);
         }));
         mutate('Sliders');
     }else if (title === 'cart'){
-        await Promise.all(selected.map(async (cartId) => {
+        await Promise.all(selected.map(async (cartId:{cartId:any}) => {
             await axios.delete(`${localhostBackend}/cart/${cartId}`);
         }));
         mutate('Cart');
     }else if (title === 'orders'){
-        await Promise.all(selected.map(async (orderId) => {
+        await Promise.all(selected.map(async (orderId:{orderId:any}) => {
             await axios.delete(`${localhostBackend}/order/${orderId}`);
         }));
         mutate('Orders');
@@ -178,7 +178,7 @@ export default function Buttons({
         setOpenModalEdit(true);
         if(title === 'users'){
         const selectedUserId = selected[0];
-        const selectedUser = filteredUsers.find(user => user.id === selectedUserId);
+        const selectedUser = filteredUsers.find((user:{user:any}) => user.id === selectedUserId);
         if (selectedUser) {
         setFullName(selectedUser.fullname || '');
         setEmail(selectedUser.email || '');
@@ -188,7 +188,7 @@ export default function Buttons({
     }
     }else if (title === 'products'){
         const selectedProductId = selected[0];
-        const selectedProduct = data.find(product => product.id === selectedProductId);
+        const selectedProduct = data.find((product:{product:any}) => product.id === selectedProductId);
         if (selectedProduct) {
         setProductName(selectedProduct.name || '');
         setColors(selectedProduct.colors || []);
@@ -201,14 +201,14 @@ export default function Buttons({
         }
     }else if (title === 'categories'){
         const selectedCategoryId = selected[0];
-        const selectedCategory = data.find(category => category.id === selectedCategoryId);
+        const selectedCategory = data.find((category:{category:any}) => category.id === selectedCategoryId);
         if (selectedCategory) {
         setCategoryName(selectedCategory.name || '');
         setCategoryId(selectedCategory.id || '')
         }
     }else if (title === 'comments'){
         const selectedCommentId = selected[0];
-        const selectedComment = data.find(comment => comment.id === selectedCommentId);
+        const selectedComment = data.find((comment:{comment:any}) => comment.id === selectedCommentId);
         if (selectedComment) {
         setText(selectedComment.text || '')
         setCustomerId(selectedComment.customer_id || '')
@@ -217,13 +217,13 @@ export default function Buttons({
         }
     }else if (title === 'sliders'){
         const selectedSliderId = selected[0];
-        const selectedSlider = data.find(slider => slider.id === selectedSliderId);
+        const selectedSlider = data.find((slider:{slider:any}) => slider.id === selectedSliderId);
         if (selectedSlider) {
             setImage(selectedSlider.image || '');  
         }
     }else if (title === 'cart'){
         const selectedCartId = selected[0];
-        const selectedCart = data.find(cart => cart.id === selectedCartId);
+        const selectedCart = data.find((cart:{cart:any}) => cart.id === selectedCartId);
         if (selectedCart) {
         setCustomerId(selectedCart.customer_id || '')
         setProductId(selectedCart.product_id || 1)
@@ -233,7 +233,7 @@ export default function Buttons({
     }
     }else if (title === 'orders'){
         const selectedOrderId = selected[0];
-        const selectedOrder = data.find(order => order.id === selectedOrderId);
+        const selectedOrder = data.find((order:{order:any}) => order.id === selectedOrderId);
         if (selectedOrder) {
         setCustomerId(selectedOrder.customer_id || '')
         setProductId(selectedOrder.product_id || 1)

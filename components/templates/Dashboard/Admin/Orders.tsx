@@ -19,7 +19,7 @@ export default function Orders({ ordersData }:{ ordersData:any }) {
     const [currentPage, setCurrentPage] = useState(1);
     const perPage = 6;
   
-    const filteredOrders = ordersData?.filter(order => {
+    const filteredOrders = ordersData?.filter((order:{order:any}) => {
       const searchTermLower = searchTerm.toLowerCase();
       const customerId = order.customer_id.toLowerCase();
       const customerIdMatch = customerId.includes(searchTermLower);

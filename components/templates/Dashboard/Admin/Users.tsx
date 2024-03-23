@@ -22,7 +22,7 @@ export default function Users({ usersData }:{ usersData:any }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredUsers = usersData?.filter(user => {
+  const filteredUsers = usersData?.filter((user:{user:any}) => {
     const isSingleWord = searchTerm.trim().indexOf(' ') === -1;
     const searchEmail = searchTerm.trim().toLowerCase();
     if (isSingleWord) {
@@ -34,7 +34,7 @@ export default function Users({ usersData }:{ usersData:any }) {
     } else {
       return user.fullname.toLowerCase().includes(searchEmail) || user.phonenumber.includes(searchTerm);
     }
-  }).filter(user => {
+  }).filter((user:{user:any}) => {
     if ((showAdmins && user.role === 'admin') || (showCustomers && user.role === 'customer')) {
       return true;
     }

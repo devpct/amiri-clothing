@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
   const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data)
   
   const searchResult = productsData.filter(
-    (item) =>
+    (item:{item:any}) =>
       item.name.toLowerCase().includes(query.q.toLowerCase())
   );
   

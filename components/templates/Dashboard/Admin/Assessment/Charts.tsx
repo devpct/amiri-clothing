@@ -12,7 +12,7 @@ export default function Charts({ width, usersData }:{ width:any, usersData:any }
         const daysInMonth = moment().month(month).daysInMonth();
         const monthData = [];
         for (let day = 1; day <= daysInMonth; day++) {
-            const usersRegisteredOnDay = usersData.filter(user => {
+            const usersRegisteredOnDay = usersData.filter((user:{user:any}) => {
                 const userDay = moment(user.createdAt).date();
                 const userMonth = moment(user.createdAt).format('MMMM');
                 return userMonth === month && userDay === day;

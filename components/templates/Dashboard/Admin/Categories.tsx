@@ -16,7 +16,7 @@ export default function Categories({ categoriesData }:{ categoriesData:any }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredCategories = categoriesData?.filter(category => {
+  const filteredCategories = categoriesData?.filter((category:{category:any}) => {
     const searchTermLower = searchTerm.toLowerCase();
     const categoryName = category.name.toLowerCase();
     const nameMatch = categoryName.includes(searchTermLower);

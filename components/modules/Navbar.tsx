@@ -81,7 +81,7 @@ function Navbar() {
     return router.pathname.startsWith('/products');
   };
 
-  const handleClick = (page) => {
+  const handleClick = (page:{page:any}) => {
     setSelectedPage(page);
   };
 
@@ -123,8 +123,8 @@ function Navbar() {
     };
 
     const dispatch = useDispatch();
-    const shoppingCarts = useSelector(state => state.shoppingCarts);
-    const cartsQty = useSelector(state => state.cartsQty);
+    const shoppingCarts = useSelector((state:{state:any}) => state.shoppingCarts);
+    const cartsQty = useSelector((state:{state:any}) => state.cartsQty);
 
     const handleShoppingCarts = ()=>{      
       if (shoppingCarts) {

@@ -1,7 +1,6 @@
 import { Avatar, IconButton } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
-import { useSelector } from "react-redux";
 
 export default function Navbar({ isOpen, setIsOpen, data }:{ isOpen:any, setIsOpen:any, data:any }) {
 

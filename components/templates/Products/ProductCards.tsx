@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 
 export default function ProductCard({ productsData, searchResult }:{ productsData:any, searchResult:any}) {
   
-  const selectedCategoryId = useSelector(state => state.selectedCategoryId);
-  const selectedSortBy = useSelector(state => state.selectedSortBy);
+  const selectedCategoryId = useSelector((state:{state:any}) => state.selectedCategoryId);
+  const selectedSortBy = useSelector((state:{state:any}) => state.selectedSortBy);
 
   let products;
   if (searchResult){
@@ -43,7 +43,7 @@ export default function ProductCard({ productsData, searchResult }:{ productsDat
           {sortedProducts?.length > 0 ? (
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5  xl:gap-x flex-wrap">
             {
-              sortedProducts.map((product) => (
+              sortedProducts.map((product:{product:any}) => (
                 (selectedCategoryId === '' || product.category_id === selectedCategoryId) && (
                   <Card key={product.id} productsData={product} />
                   )

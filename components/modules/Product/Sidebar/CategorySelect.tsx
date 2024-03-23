@@ -29,7 +29,7 @@ export default function CategorySelect({ categoriesData }) {
             <em>All Products</em>
           </MenuItem>
           {
-            categoriesData?.map(category => (
+            categoriesData?.map((category:{category:any}) => (
               <MenuItem key={category.id} value={category.id}>{startCase(category.name)}</MenuItem>
             ))
           }
