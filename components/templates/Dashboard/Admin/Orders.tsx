@@ -19,7 +19,7 @@ export default function Orders({ ordersData }:{ ordersData:any }) {
     const [currentPage, setCurrentPage] = useState(1);
     const perPage = 6;
   
-    const filteredOrders = ordersData?.filter((order:{order:any}) => {
+    const filteredOrders = ordersData?.filter((order:any) => {
       const searchTermLower = searchTerm.toLowerCase();
       const customerId = order.customer_id.toLowerCase();
       const customerIdMatch = customerId.includes(searchTermLower);
@@ -39,7 +39,7 @@ export default function Orders({ ordersData }:{ ordersData:any }) {
     const indexOfFirst = indexOfLast - perPage;
     const current = filteredOrders?.slice(indexOfFirst, indexOfLast);
   
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber:any) => setCurrentPage(pageNumber);
   
     return (
       <>
@@ -50,7 +50,7 @@ export default function Orders({ ordersData }:{ ordersData:any }) {
               <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{ordersData?.length} Orders</span>
             </div>
   
-            <Search value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+            <Search value={searchTerm} onChange={(e:any) => setSearchTerm(e.target.value)}/>
   
             <Buttons 
             selected={selected} 

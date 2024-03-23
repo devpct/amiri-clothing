@@ -1,7 +1,7 @@
 import React from 'react'
 import { startCase } from 'lodash';
 
-export default function Info({ product }) {
+export default function Info({ product }:{ product:any }) {
 
     const productDetails = {
         name: startCase(product.name),

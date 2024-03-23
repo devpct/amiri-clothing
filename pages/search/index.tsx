@@ -44,7 +44,7 @@ export default function index({ productsData, categoriesData, searchResult }:{pr
 }
 
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context:any) {
   
   const { query } = context;
 
@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
   const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data)
   
   const searchResult = productsData.filter(
-    (item:{item:any}) =>
+    (item:any) =>
       item.name.toLowerCase().includes(query.q.toLowerCase())
   );
   

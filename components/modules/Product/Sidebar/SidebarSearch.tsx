@@ -10,7 +10,7 @@ export default function SidebarSearch() {
       setSearch(route.query.q)
   },[])
 
-  const searchHandlerWithEnter = (event) => {
+  const searchHandlerWithEnter = (event:any) => {
       if (event.keyCode === 13) {
           if (search.trim()) {
               route.push(`/search?q=${search}`)

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import Card from '@/components/modules/Card'
 
-export default function Products({ productsData }) {
+export default function Products({ productsData }:{productsData:any}) {
   return (
     <>
     <section className="py-6 sm:py-12">
@@ -16,7 +16,7 @@ export default function Products({ productsData }) {
 
 
 		<div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
-			{productsData.slice(0,4).map((product:{product:any}) =>(
+			{productsData.slice(0,4).map((product:any) =>(
 				<Card key={product.id} productsData={product}/>
 			))
 			}

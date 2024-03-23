@@ -16,7 +16,7 @@ export default function Categories({ categoriesData }:{ categoriesData:any }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredCategories = categoriesData?.filter((category:{category:any}) => {
+  const filteredCategories = categoriesData?.filter((category:any) => {
     const searchTermLower = searchTerm.toLowerCase();
     const categoryName = category.name.toLowerCase();
     const nameMatch = categoryName.includes(searchTermLower);
@@ -33,7 +33,7 @@ export default function Categories({ categoriesData }:{ categoriesData:any }) {
   const indexOfFirst = indexOfLast - perPage;
   const current = filteredCategories?.slice(indexOfFirst, indexOfLast);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber:any) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -44,7 +44,7 @@ export default function Categories({ categoriesData }:{ categoriesData:any }) {
             <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{categoriesData?.length} Categories</span>
           </div>
 
-          <Search value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+          <Search value={searchTerm} onChange={(e:any) => setSearchTerm(e.target.value)}/>
 
           <Buttons 
           selected={selected} 

@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 
 export default function ProductCard({ productsData, searchResult }:{ productsData:any, searchResult:any}) {
   
-  const selectedCategoryId = useSelector((state:{state:any}) => state.selectedCategoryId);
-  const selectedSortBy = useSelector((state:{state:any}) => state.selectedSortBy);
+  const selectedCategoryId = useSelector((state:any) => state.selectedCategoryId);
+  const selectedSortBy = useSelector((state:any) => state.selectedSortBy);
 
   let products;
   if (searchResult){
@@ -14,7 +14,7 @@ export default function ProductCard({ productsData, searchResult }:{ productsDat
     products = productsData
   }
 
-  const compareByPrice = (a, b) => {
+  const compareByPrice = (a:any, b:any) => {
     const priceA = parseFloat(a.price);
     const priceB = parseFloat(b.price);
 
@@ -25,7 +25,7 @@ export default function ProductCard({ productsData, searchResult }:{ productsDat
     }
   };
 
-  const sortByProductId = (a, b) => {
+  const sortByProductId = (a:any, b:any) => {
     return a.id - b.id;
   };
 
@@ -43,7 +43,7 @@ export default function ProductCard({ productsData, searchResult }:{ productsDat
           {sortedProducts?.length > 0 ? (
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5  xl:gap-x flex-wrap">
             {
-              sortedProducts.map((product:{product:any}) => (
+              sortedProducts.map((product:any) => (
                 (selectedCategoryId === '' || product.category_id === selectedCategoryId) && (
                   <Card key={product.id} productsData={product} />
                   )

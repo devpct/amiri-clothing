@@ -81,7 +81,7 @@ function Navbar() {
     return router.pathname.startsWith('/products');
   };
 
-  const handleClick = (page:{page:any}) => {
+  const handleClick = (page:any) => {
     setSelectedPage(page);
   };
 
@@ -108,7 +108,7 @@ function Navbar() {
     let { data } = useQuery('UserInfo', () =>
     axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
 
-    const handleOpenMenu = (event) => {
+    const handleOpenMenu = (event:any) => {
       if(event.target.innerHTML === 'Logout'){
         axios.get('http://localhost:3000/api/auth/logout')
         queryClient.setQueryData('UserInfo', undefined)
@@ -123,8 +123,8 @@ function Navbar() {
     };
 
     const dispatch = useDispatch();
-    const shoppingCarts = useSelector((state:{state:any}) => state.shoppingCarts);
-    const cartsQty = useSelector((state:{state:any}) => state.cartsQty);
+    const shoppingCarts = useSelector((state:any) => state.shoppingCarts);
+    const cartsQty = useSelector((state:any) => state.cartsQty);
 
     const handleShoppingCarts = ()=>{      
       if (shoppingCarts) {

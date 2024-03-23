@@ -37,7 +37,7 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const signup = (event) => {
+  const signup = (event:any) => {
     event.preventDefault()
 
     const customer = { fullname, email, password, role: "customer" }
@@ -98,21 +98,21 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
                     label='Full Name' 
                     placeholder='Enter your full name' 
                     value={fullname} 
-                    onChange={event=> setFullname(event.target.value)}
+                    onChange={(event:any)=> setFullname(event.target.value)}
                     />
 
                     <Input 
                     label='Email address' 
                     placeholder='Enter email to get started'
                     value={email} 
-                    onChange={event=> setEmail(event.target.value)}
+                    onChange={(event:any)=> setEmail(event.target.value)}
                     />
                     
                     <Input 
                     label='Password' 
                     placeholder='Enter your password'
                     value={password} 
-                    onChange={event=> setPassword(event.target.value)}
+                    onChange={(event:any)=> setPassword(event.target.value)}
                     />
 
                         <div className="flex items-center">
@@ -196,7 +196,7 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
 
 export default Index
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context:any) {
     const { token } = context.req.cookies
 
     if (token) {

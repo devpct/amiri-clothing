@@ -50,7 +50,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
         }
       };
 
-      const updateStatus = async (id, newStatus) => {
+      const updateStatus = async (id: any, newStatus: any) => {
         const targetData = data.find((item:{id:any}) => item.id === id)
         await axios.put(`${localhostBackend}/order/${id}`, 
         {

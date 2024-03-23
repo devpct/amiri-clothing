@@ -8,6 +8,7 @@ import axios from 'axios';
 
 interface IndexProps {
   sliderData: any;
+  productsData:any;
 }
 
 const Index: React.FC<IndexProps> = ({ sliderData, productsData }) => {

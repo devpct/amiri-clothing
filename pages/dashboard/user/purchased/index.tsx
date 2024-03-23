@@ -22,7 +22,7 @@ export default function index({ userData, productsData, ordersData }:{ userData:
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context:any) {
   const { token } = context.req.cookies
 
   if (!token) {

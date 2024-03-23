@@ -22,20 +22,20 @@ export default function ShoppingCarts() {
 
   
   const dispatch = useDispatch();
-  const shoppingCarts = useSelector(state => state.shoppingCarts);
-  const cartsQty = useSelector(state => state.cartsQty);
+  const shoppingCarts = useSelector((state:any) => state.shoppingCarts);
+  const cartsQty = useSelector((state:any) => state.cartsQty);
 
   useEffect(() => {
     if (userInfo) {
-      const totalQuantity = cartItems.filter(item => item.customer_id === userInfo.id);
+      const totalQuantity = cartItems.filter((item:any) => item.customer_id === userInfo.id);
       dispatch(setCartsQty(totalQuantity.length));
     }
 
   }, [userInfo]);
 
-  const totalPrice = cartItems?.reduce((accumulator, item) => {
+  const totalPrice = cartItems?.reduce((accumulator:any, item:any) => {
     if (item.customer_id === userInfo?.id) {
-      const product = products?.find((p) => p.id.toString() === item.product_id.toString());
+      const product = products?.find((p:any) => p.id.toString() === item.product_id.toString());
       if (product) {
         return accumulator + (product.price * item.qty);
       }
@@ -47,35 +47,35 @@ export default function ShoppingCarts() {
     dispatch(setShoppingCarts(false));
   };
 
-  const handleIncrement = async (itemId,item) => {
-    const updatedCartItems = cartItems.map(item => {
+  const handleIncrement = async (itemId:any,item:any) => {
+    const updatedCartItems = cartItems.map((item:any) => {
       if (item.product_id === itemId) {
         return { ...item, qty: item.qty + 1 }
       }
       return item;
     });
 
-    await axios.put(`${localhostBackend}/cart/${item.id}`, { ...item, qty: updatedCartItems.find(item => item.product_id === itemId).qty });
+    await axios.put(`${localhostBackend}/cart/${item.id}`, { ...item, qty: updatedCartItems.find((item:any) => item.product_id === itemId).qty });
 
     mutate('Cart', updatedCartItems);
   };
 
-  const handleDecrement = async (itemId,item) => {            
-    const updatedCartItems = cartItems.map(item => {
+  const handleDecrement = async (itemId:any,item:any) => {            
+    const updatedCartItems = cartItems.map((item:any) => {
       if (item.product_id === itemId && item.qty > 1) {
         return { ...item, qty: item.qty - 1 }
       }
       return item;
     });
   
-      await axios.put(`${localhostBackend}/cart/${item.id}`, { ...item, qty: updatedCartItems.find(item => item.product_id === itemId).qty });
+      await axios.put(`${localhostBackend}/cart/${item.id}`, { ...item, qty: updatedCartItems.find((item:any) => item.product_id === itemId).qty });
             
       mutate('Cart', updatedCartItems);
   };
 
-  const handleRemove = async (itemId) => {
+  const handleRemove = async (itemId:any) => {
     dispatch(setCartsQty(cartsQty - 1))
-    const updatedCartItems = cartItems.filter(item => item.product_id !== itemId);
+    const updatedCartItems = cartItems.filter((item:any) => item.product_id !== itemId);
   
     await axios.delete(`${localhostBackend}/cart/${itemId}`);
   
@@ -100,8 +100,8 @@ export default function ShoppingCarts() {
       }
   
       // حذف محصولات از سبد خرید
-      const userCartItems = cartItems.filter(item => item.customer_id === userInfo?.id);
-      const deleteRequests = userCartItems.map(item => axios.delete(`${localhostBackend}/cart/${item.id}`));
+      const userCartItems = cartItems.filter((item:any) => item.customer_id === userInfo?.id);
+      const deleteRequests = userCartItems.map((item:any) => axios.delete(`${localhostBackend}/cart/${item.id}`));
       await Promise.all(deleteRequests);
   
       mutate('Cart', []);
@@ -161,8 +161,8 @@ export default function ShoppingCarts() {
                       <div className="mt-8">
                         <div className="flow-root">
                           <ul role="list" className="-my-6 divide-y divide-gray-200">
-                            {cartItems?.map((item) => {
-                              const product = products?.find((p) => p.id.toString() === item.product_id.toString());
+                            {cartItems?.map((item:any) => {
+                              const product = products?.find((p:any) => p.id.toString() === item.product_id.toString());
                               return item.customer_id === userInfo?.id ? (
                                 <li key={item.product_id} className="flex py-6">
                                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">

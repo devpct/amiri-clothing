@@ -6,12 +6,12 @@ import { startCase } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCategoryId } from '@/redux/actions';
 
-export default function CategorySelect({ categoriesData }) {
+export default function CategorySelect({ categoriesData }:{ categoriesData:any }) {
 
   const dispatch = useDispatch();
-  const selectedCategoryId = useSelector(state => state.selectedCategoryId);
+  const selectedCategoryId = useSelector((state:any) => state.selectedCategoryId);
 
-  const handleChange = (event) => {    
+  const handleChange = (event:any) => {    
     dispatch(setCategoryId(event.target.value));
   };
   
@@ -29,7 +29,7 @@ export default function CategorySelect({ categoriesData }) {
             <em>All Products</em>
           </MenuItem>
           {
-            categoriesData?.map((category:{category:any}) => (
+            categoriesData?.map((category:{id:any,name:any}) => (
               <MenuItem key={category.id} value={category.id}>{startCase(category.name)}</MenuItem>
             ))
           }

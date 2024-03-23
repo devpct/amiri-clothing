@@ -34,7 +34,7 @@ export default function product({ product, categories, cart }:{product:any,categ
 export async function getStaticPaths() {
   const products = await axios.get(`${localhostBackend}/products`).then((res) => res.data);
 
-  const paths = products.map((product:{product:any}) => ({
+  const paths = products.map((product:any) => ({
     params: { productName: product.name },
   }));
 
@@ -44,7 +44,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps(context:any) {
   const { params } = context;
 
   const product = await axios.get(`${localhostBackend}/products?name=${params.productName}`).then((res) => res.data);

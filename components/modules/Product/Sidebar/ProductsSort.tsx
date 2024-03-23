@@ -7,9 +7,9 @@ import { setSortBy } from '@/redux/actions';
 export default function ProductsSort() {
 
   const dispatch = useDispatch();
-  const selectedSortBy = useSelector(state => state.selectedSortBy);
+  const selectedSortBy = useSelector((state:any) => state.selectedSortBy);
 
-  const handleChange = (event) => {
+  const handleChange = (event:any) => {
     dispatch(setSortBy(event.target.value));
   };
   

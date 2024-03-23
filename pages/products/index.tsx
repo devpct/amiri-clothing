@@ -10,7 +10,7 @@ import localhostBackend from '@/localhost';
 
 export default function index({ productsData, categoriesData }:{productsData:any,categoriesData:any}) {
 
-  const selectedCategoryId = useSelector((state:{state:any}) => state.selectedCategoryId);
+  const selectedCategoryId = useSelector((state:any) => state.selectedCategoryId);
 
   const { data:products } = useQuery('Products', () =>
   axios.get(`${localhostBackend}/products`).then((res) => res.data),

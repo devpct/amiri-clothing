@@ -22,7 +22,7 @@ export default function Users({ usersData }:{ usersData:any }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredUsers = usersData?.filter((user:{user:any}) => {
+  const filteredUsers = usersData?.filter((user:any) => {
     const isSingleWord = searchTerm.trim().indexOf(' ') === -1;
     const searchEmail = searchTerm.trim().toLowerCase();
     if (isSingleWord) {
@@ -34,7 +34,7 @@ export default function Users({ usersData }:{ usersData:any }) {
     } else {
       return user.fullname.toLowerCase().includes(searchEmail) || user.phonenumber.includes(searchTerm);
     }
-  }).filter((user:{user:any}) => {
+  }).filter((user:any) => {
     if ((showAdmins && user.role === 'admin') || (showCustomers && user.role === 'customer')) {
       return true;
     }
@@ -52,7 +52,7 @@ export default function Users({ usersData }:{ usersData:any }) {
   const indexOfFirst = indexOfLast - perPage;
   const current = filteredUsers?.slice(indexOfFirst, indexOfLast);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber:any) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -63,9 +63,9 @@ export default function Users({ usersData }:{ usersData:any }) {
             <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{`${filteredUsers?.length} ${showAdmins ? 'Admin': showCustomers ? 'Customer': 'User'}`}</span>
           </div>
 
-          <Search value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+          <Search value={searchTerm} onChange={(e:any) => setSearchTerm(e.target.value)}/>
 
-         <ChekboxFilter showAdmins={showAdmins} showCustomers={showCustomers} selected={selected} setShowAdmins={setShowAdmins} setShowCustomers={setShowCustomers} setSelected={setSelected}/>
+         <ChekboxFilter showAdmins={showAdmins} showCustomers={showCustomers} selectedUsers={selected} setShowAdmins={setShowAdmins} setShowCustomers={setShowCustomers} setSelectedUsers={setSelected}/>
 
         <Buttons selected={selected} filteredUsers={filteredUsers}  setOpenModalAdd={setOpenModalAdd} setOpenModalEdit={setOpenModalEdit} setSelected={setSelected} data={usersData} setAddress={setAddress} setEmail={setEmail} setFullName={setFullName} setPassword={setPassword} setPhoneNumber={setPhoneNumber} setRole={setRole} showAdmins={showAdmins} showCustomers={showCustomers} title={'users'}/>
         </div>

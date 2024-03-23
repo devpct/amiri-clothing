@@ -29,7 +29,7 @@ export default function index({ userData, categoriesData }:{ userData:any, categ
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context:any) {
     const { token } = context.req.cookies
   
     const userData = await axios.post('http://localhost:3000/api/auth/info',{ token }).then((res) => res.data).catch((err) =>{

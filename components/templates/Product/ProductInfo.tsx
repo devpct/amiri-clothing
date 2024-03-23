@@ -11,8 +11,8 @@ import localhostBackend from '@/localhost';
 
 export default function ProductInfo({ product, isLogin, cart }:{product:any,isLogin:any,cart:any}) {
   const dispatch = useDispatch();
-  const shoppingCarts = useSelector(state => state.shoppingCarts);
-  const cartsQty = useSelector(state => state.cartsQty);
+  const shoppingCarts = useSelector((state:any) => state.shoppingCarts);
+  const cartsQty = useSelector((state:any) => state.cartsQty);
 
     const { data: userInfo } = useQuery('UserInfo', () =>
     axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
@@ -21,10 +21,10 @@ export default function ProductInfo({ product, isLogin, cart }:{product:any,isLo
     axios.get(`${localhostBackend}/cart`).then((res) => res.data)
     );
 
-    const handleShoppingCarts = async (color, size) => {
+    const handleShoppingCarts = async (color:any, size:any) => {
       if(userInfo){
       const productAlreadyInCart = cartItems.find(
-        cartItem => cartItem.product_id === +product.id
+        (cartItem:any) => cartItem.product_id === +product.id
         );
     
         if (!productAlreadyInCart) {
@@ -59,7 +59,7 @@ export default function ProductInfo({ product, isLogin, cart }:{product:any,isLo
             </h1>
           </div>
 
-          <Options product={product} isLogin={isLogin} cart={cart} handleShoppingCarts={handleShoppingCarts} />
+          <Options product={product} isLogin={isLogin} handleShoppingCarts={handleShoppingCarts} />
           <Info product={product}/>
 
         </div>

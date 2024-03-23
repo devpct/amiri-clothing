@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ProductImage({ imag }) {
+export default function ProductImage({ imag }: {imag:any}) {
   return (
     <>
     <img src={imag}

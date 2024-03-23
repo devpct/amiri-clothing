@@ -22,7 +22,7 @@ export default function assessment({userData, usersData, productsData, categorie
 }
 
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context:any) {
   const { token } = context.req.cookies
   const usersData = await axios.get(`${localhostBackend}/users`).then((res) => res.data)
   const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data)

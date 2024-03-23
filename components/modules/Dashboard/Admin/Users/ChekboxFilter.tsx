@@ -4,7 +4,7 @@ export default function ChekboxFilter({ showAdmins, showCustomers, selectedUsers
 
   const [clickedCheckbox, setClickedCheckbox] = useState(null);
 
-    const handleShowAdminsChange = (newValue) => {
+    const handleShowAdminsChange = (newValue:any) => {
       if (clickedCheckbox === "admins") {
         setShowAdmins(false);
         setClickedCheckbox(null);
@@ -19,7 +19,7 @@ export default function ChekboxFilter({ showAdmins, showCustomers, selectedUsers
       setShowAdmins(newValue);
     };
     
-    const handleShowCustomersChange = (newValue) => {
+    const handleShowCustomersChange = (newValue:any) => {
       if (clickedCheckbox === "customers") {
         setShowCustomers(false);
         setClickedCheckbox(null);

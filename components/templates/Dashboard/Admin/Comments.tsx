@@ -18,7 +18,7 @@ export default function Comments({ commentsData }:{ commentsData:any }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredComments = commentsData?.filter((comment:{comment:any}) => {
+  const filteredComments = commentsData?.filter((comment:any) => {
     const searchTermLower = searchTerm.toLowerCase();
     const text = comment.text.toLowerCase();
     const textMatch = text.includes(searchTermLower);
@@ -37,7 +37,7 @@ export default function Comments({ commentsData }:{ commentsData:any }) {
   const indexOfFirst = indexOfLast - perPage;
   const current = filteredComments?.slice(indexOfFirst, indexOfLast);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber:any) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -48,7 +48,7 @@ export default function Comments({ commentsData }:{ commentsData:any }) {
             <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{commentsData?.length} Comments</span>
           </div>
 
-          <Search value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+          <Search value={searchTerm} onChange={(e:any) => setSearchTerm(e.target.value)}/>
 
           <Buttons 
           selected={selected} 

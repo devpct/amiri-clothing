@@ -15,7 +15,7 @@ export default function Sliders({ slidersData }:{ slidersData:any }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredSliders = slidersData?.filter((slider:{slider:any}) => {
+  const filteredSliders = slidersData?.filter((slider:any) => {
     const searchTermLower = searchTerm.toLowerCase();
     const image = slider.image.toLowerCase();
     const imageMatch = image.includes(searchTermLower);
@@ -31,7 +31,7 @@ export default function Sliders({ slidersData }:{ slidersData:any }) {
   const indexOfFirst = indexOfLast - perPage;
   const current = filteredSliders?.slice(indexOfFirst, indexOfLast);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber:any) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -42,7 +42,7 @@ export default function Sliders({ slidersData }:{ slidersData:any }) {
             <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{slidersData?.length} Sliders</span>
           </div>
 
-          <Search value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+          <Search value={searchTerm} onChange={(e:any) => setSearchTerm(e.target.value)}/>
 
           <Buttons 
           selected={selected} 

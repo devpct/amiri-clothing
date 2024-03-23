@@ -35,7 +35,7 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
     const [email, setEmail] = useState("")
     const [password ,setPassword] = useState("")
 
-    const login = (event)=> {
+    const login = (event:any)=> {
         event.preventDefault()
 
         const user = { email, password}
@@ -94,14 +94,14 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
                     label='Email address' 
                     placeholder='Enter email to get started'
                     value={email} 
-                    onChange={event=> setEmail(event.target.value)}
+                    onChange={(event:any)=> setEmail(event.target.value)}
                     />
 
                     <Input 
                     label='Password' 
                     placeholder='Enter your password'
                     value={password} 
-                    onChange={event=> setPassword(event.target.value)}
+                    onChange={(event:any)=> setPassword(event.target.value)}
                     />
 
 
@@ -187,7 +187,7 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
 
 export default Index
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context:any) {
     const { token } = context.req.cookies
 
     if (token) {
