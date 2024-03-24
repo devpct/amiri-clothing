@@ -5,7 +5,14 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import localhostBackend from '@/localhost';
 
 type Data = {
-  message: string
+  message?: string;
+  id?: any;
+  fullname?: any;
+  email?: any;
+  password?: any;
+  phonenumber?: any;
+  address?: any;
+  role?: any;
 }
 
 export default async function handler(
@@ -30,7 +37,7 @@ export default async function handler(
     const isUserExist = usersData.find((user:any) => user.email === tokenPyload.email);
     
     return res.status(200).json({ id:isUserExist.id, fullname:isUserExist.fullname, email:isUserExist.email, password:isUserExist.password, phonenumber:isUserExist.phonenumber, address:isUserExist.address, role:isUserExist.role})
-  }else{
+  } else {
     const usersData = await axios.get(`${localhostBackend}/users`).then((res) => res.data);
 
     const { token } = req.body
@@ -50,3 +57,4 @@ export default async function handler(
     return res.status(200).json({ id:isUserExist.id, fullname:isUserExist.fullname, email:isUserExist.email, password:isUserExist.password, phonenumber:isUserExist.phonenumber, address:isUserExist.address, role:isUserExist.role})
   }
 }
+
