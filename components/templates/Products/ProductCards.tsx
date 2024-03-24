@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '@/components/modules/Card';
 import { useSelector } from 'react-redux';
+import Image from 'next/image';
 
 export default function ProductCard({ productsData, searchResult }:{ productsData?:any, searchResult?:any}) {
   
@@ -52,7 +53,14 @@ export default function ProductCard({ productsData, searchResult }:{ productsDat
           </div>
             ) : (
               <div className='grid text-center gap-[1.2rem] mt-8'>
-              <img className='m-auto w-[19rem]' src="/noData.svg" alt="" />
+              <Image 
+              src="/noData.svg"
+              alt=''             
+              className='m-auto w-[19rem]'
+              width={500}
+              height={500}
+              quality={100}
+              />
               <p className='text-[2rem] font-medium'>No product found</p>
               </div>
             )}

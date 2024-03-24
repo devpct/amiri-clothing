@@ -4,6 +4,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 
 // Import Swiper styles
 import "swiper/css";
+import Image from 'next/image';
 
 interface Slider {
   data: any;
@@ -35,11 +36,14 @@ const Slider: React.FC<Slider> =({ data }) => {
       {
         data.map((slider:sliderData) => (
           <SwiperSlide key={slider.id}>
-            <img src={slider.image}
-            loading="lazy"
-            alt='Slider'
-            className='w-full h-full object-fill dark:brightness-[.85]'
-            />
+          <Image 
+          src={slider.image}
+          alt=''             
+          className='w-full h-full object-fill dark:brightness-[.85]'
+          width={500}
+          height={500}
+          quality={100}
+          />
           </SwiperSlide>
         ))
       }

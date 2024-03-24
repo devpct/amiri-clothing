@@ -1,4 +1,5 @@
 import { Avatar, IconButton } from '@mui/material'
+import Image from 'next/image';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -18,11 +19,14 @@ export default function Sidebar({ data }) {
      <aside className="flex sticky top-0 z-30 flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0  dark:border-gray-700">
     <nav className="flex flex-col items-center flex-1 space-y-9">
         <Link href="/">
-            <img src='https://seeklogo.com/images/A/amiri-logo-0A19AA90E1-seeklogo.com.png'
-            loading="lazy"
-            alt='AMIRI'
-            className="w-auto h-6 sm:h-7 dark:invert"
-            />
+        <Image 
+        src='https://seeklogo.com/images/A/amiri-logo-0A19AA90E1-seeklogo.com.png'          
+        alt='AMIRI'
+        className="w-auto h-6 sm:h-7 dark:invert"
+        width={500}
+        height={500}
+        quality={100}
+        />
         </Link>
 
         <Link href="/dashboard/user/profile" className={`${

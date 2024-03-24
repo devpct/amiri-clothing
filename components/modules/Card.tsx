@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { startCase } from 'lodash';
+import Image from 'next/image';
 
 
 export default function Card({ productsData }) {
@@ -7,11 +8,14 @@ export default function Card({ productsData }) {
     <>
     <div className="group relative">
         <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-          <img src={ productsData.images[0]}
-            loading="lazy"
-            alt={productsData.name}
-            className="h-full w-full object-cover object-center lg:h-full lg:w-full dark:brightness-[.85]"
-            />
+          <Image 
+          src={ productsData.images[0] } 
+          alt={productsData.name}             
+          className="h-full w-full object-cover object-center lg:h-full lg:w-full dark:brightness-[.85]"
+          width={500}
+          height={500}
+          quality={100}
+          />
         </div>
         <div className="mt-4 flex justify-between">
           <div>

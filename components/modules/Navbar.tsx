@@ -20,6 +20,7 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShoppingCarts } from '@/redux/actions';
 import { localhostBackend } from '@/localhost';
+import Image from 'next/image';
 
 const pages = ['products', 'women', 'men'];
 const settings = ['Dashboard', 'Admin Panel', 'Logout'];
@@ -145,11 +146,16 @@ function Navbar() {
 
             <Box sx={{ display: { xs: 'none', md: 'block' } }} >
             <Link href="/">
-            <img src='https://seeklogo.com/images/A/amiri-logo-0A19AA90E1-seeklogo.com.png'
-            loading="lazy"
+
+            <Image 
+            src='https://seeklogo.com/images/A/amiri-logo-0A19AA90E1-seeklogo.com.png'
             alt='AMIRI'
             className="w-auto h-6 sm:h-7 mr-3 dark:invert"
+            width={500}
+            height={500}
+            quality={100}
             />
+
             </Link>
             </Box>
     

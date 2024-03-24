@@ -10,6 +10,7 @@ import { useQuery } from 'react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {localhostDatabase, localhostBackend} from '@/localhost';
+import Image from 'next/image';
 
 interface IndexProps {
     sliderData: any;
@@ -168,10 +169,13 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
         {
         data.map((slider:sliderData) => (
           <SwiperSlide key={slider.id}>
-            <img src={slider.image}
-            loading="lazy"
-            alt='Slider'
+            <Image 
+            src={slider.image}
+            alt=''             
             className='w-full h-full object-fill'
+            width={500}
+            height={500}
+            quality={100}
             />
           </SwiperSlide>
         ))

@@ -7,6 +7,7 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import useSWR, { mutate } from 'swr';
 import { localhostDatabase, localhostBackend } from '@/localhost';
+import Image from 'next/image';
 
 export default function ShoppingCarts() {
   const { data: products } = useQuery('Products', () =>
@@ -165,10 +166,13 @@ export default function ShoppingCarts() {
                               return item.customer_id === userInfo?.id ? (
                                 <li key={item.product_id} className="flex py-6">
                                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                    <img
-                                      src={product?.images[0]}
+                                    <Image 
+                                      src={ product?.images[0] } 
                                       alt={product?.name}
                                       className="h-full w-full object-cover object-center"
+                                      width={500}
+                                      height={500}
+                                      quality={100}
                                     />
                                   </div>
 

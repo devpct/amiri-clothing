@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { startCase } from 'lodash';
+import Image from 'next/image';
 
 export default function Card({ product, order }) {
 
@@ -8,11 +9,14 @@ export default function Card({ product, order }) {
     <>
     <div className="cursor-pointer group relative rounded-md overflow-hidden text-white dark:text-black sm:block flex sm:h-fit h-[7rem] w-full sm:w-fit text-left ">
         <div className="aspect-h-1 aspect-w-1 overflow-hidden lg:aspect-none  group-hover:opacity-75 ">
-          <img src={ product.images[0]}
-            loading="lazy"
+          <Image 
+            src={product.images[0]} 
             alt={product.name}
             className="sm:h-[15rem] sm:w-[15rem] h-full w-[7rem] object-cover object-center dark:brightness-[.85]"
-            />
+            width={500}
+            height={500}
+            quality={100}
+          />
         </div>
         <div className='sm:w-full w-[78%]'>
         <div className="p-2 bg-black dark:bg-white">
