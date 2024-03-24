@@ -9,7 +9,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import localhostBackend from '@/localhost';
+import {localhostDatabase, localhostBackend} from '@/localhost';
 
 interface IndexProps {
     sliderData: any;
@@ -23,7 +23,7 @@ interface sliderData {
 const Index: React.FC<IndexProps> = ({ sliderData }) => {
 
     const { data } = useQuery('Slider', () =>
-    axios.get(`${localhostBackend}/slider`).then((res) => res.data),
+    axios.get(`${localhostDatabase}/slider`).then((res) => res.data),
     {
       initialData: sliderData,
       staleTime: 900000,
@@ -40,7 +40,7 @@ const Index: React.FC<IndexProps> = ({ sliderData }) => {
 
         const user = { email, password}
     
-        axios.post('http://localhost:3000/api/auth/login', user)
+        axios.post(`${localhostBackend}/api/auth/login`, user)
           .then((res) => {        
             if (res.status === 200) {   
               setEmail("");
@@ -198,7 +198,7 @@ export async function getServerSideProps(context) {
         }
     }
 
-    const sliderData = await axios.get(`${localhostBackend}/slider`).then((res) => res.data)
+    const sliderData = await axios.get(`${localhostDatabase}/slider`).then((res) => res.data)
   
     return {
       props: {

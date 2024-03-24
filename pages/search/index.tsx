@@ -4,12 +4,12 @@ import Sidebar from '@/components/templates/Products/Sidebar'
 import axios from 'axios'
 import React from 'react'
 import { useQuery } from 'react-query'
-import localhostBackend from '@/localhost';
+import {localhostDatabase} from '@/localhost';
 
 export default function index({ productsData, categoriesData, searchResult }) {
 
   const { data:products } = useQuery('Products', () =>
-  axios.get(`${localhostBackend}/products`).then((res) => res.data),
+  axios.get(`${localhostDatabase}/products`).then((res) => res.data),
   {
     initialData: productsData,
     staleTime: 900000,
@@ -18,7 +18,7 @@ export default function index({ productsData, categoriesData, searchResult }) {
   )
 
   const { data:categories } = useQuery('Categories', () =>
-  axios.get(`${localhostBackend}/categories`).then((res) => res.data),
+  axios.get(`${localhostDatabase}/categories`).then((res) => res.data),
   {
     initialData: categoriesData,
     staleTime: 900000,
@@ -48,8 +48,8 @@ export async function getServerSideProps(context) {
   
   const { query } = context;
 
-  const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data)
-  const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data)
+  const productsData = await axios.get(`${localhostDatabase}/products`).then((res) => res.data)
+  const categoriesData = await axios.get(`${localhostDatabase}/categories`).then((res) => res.data)
   
   const searchResult = productsData.filter(item =>
       item.name.toLowerCase().includes(query.q.toLowerCase())

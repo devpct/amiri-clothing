@@ -2,11 +2,12 @@ import Sidebar from '@/components/templates/Dashboard/User/Sidebar'
 import axios from 'axios'
 import React from 'react'
 import { useQuery } from 'react-query'
+import { localhostBackend } from '@/localhost';
 
 export default function settings() {
 
     let { data } = useQuery('UserInfo', () =>
-    axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
+    axios.get(`${localhostBackend}/api/auth/info`).then((res) => res.data))
 
   return (
     <>

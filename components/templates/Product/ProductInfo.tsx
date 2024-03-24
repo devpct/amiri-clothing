@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import useSWR, { mutate } from 'swr';
-import localhostBackend from '@/localhost';
+import {localhostDatabase, localhostBackend} from '@/localhost';
 
 export default function ProductInfo({ product, isLogin, cart }) {
   const dispatch = useDispatch();
@@ -15,10 +15,10 @@ export default function ProductInfo({ product, isLogin, cart }) {
   const cartsQty = useSelector((state:any) => state.cartsQty);
 
     const { data: userInfo } = useQuery('UserInfo', () =>
-    axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
+    axios.get(`${localhostBackend}/api/auth/info`).then((res) => res.data))
 
     const { data: cartItems } = useSWR('Cart', () =>
-    axios.get(`${localhostBackend}/cart`).then((res) => res.data)
+    axios.get(`${localhostDatabase}/cart`).then((res) => res.data)
     );
 
     const handleShoppingCarts = async (color, size) => {
@@ -29,7 +29,7 @@ export default function ProductInfo({ product, isLogin, cart }) {
     
         if (!productAlreadyInCart) {
           dispatch(setCartsQty(cartsQty + 1));
-          await axios.post(`${localhostBackend}/cart`, {
+          await axios.post(`${localhostDatabase}/cart`, {
             customer_id: userInfo.id,
             product_id: +product.id,
             color_name: color.name,

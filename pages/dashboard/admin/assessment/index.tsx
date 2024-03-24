@@ -3,7 +3,7 @@ import Navbar from '@/components/templates/Dashboard/Admin/Navbar';
 import Sidebar from '@/components/templates/Dashboard/Admin/Sidebar';
 import axios from 'axios';
 import React, { useState } from 'react'
-import localhostBackend from '@/localhost';
+import {localhostDatabase, localhostBackend} from '@/localhost';
 
 export default function assessment({userData, usersData, productsData, categoriesData, cartData,commentsData, sliderData}) {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,13 +24,13 @@ export default function assessment({userData, usersData, productsData, categorie
 
 export async function getServerSideProps(context) {
   const { token } = context.req.cookies
-  const usersData = await axios.get(`${localhostBackend}/users`).then((res) => res.data)
-  const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data)
-  const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data)
-  const cartData = await axios.get(`${localhostBackend}/cart`).then((res) => res.data)
-  const commentsData = await axios.get(`${localhostBackend}/comments`).then((res) => res.data)
-  const sliderData = await axios.get(`${localhostBackend}/slider`).then((res) => res.data)
-  const userData = await axios.post('http://localhost:3000/api/auth/info',{ token }).then((res) => res.data).catch((err) =>{
+  const usersData = await axios.get(`${localhostDatabase}/users`).then((res) => res.data)
+  const productsData = await axios.get(`${localhostDatabase}/products`).then((res) => res.data)
+  const categoriesData = await axios.get(`${localhostDatabase}/categories`).then((res) => res.data)
+  const cartData = await axios.get(`${localhostDatabase}/cart`).then((res) => res.data)
+  const commentsData = await axios.get(`${localhostDatabase}/comments`).then((res) => res.data)
+  const sliderData = await axios.get(`${localhostDatabase}/slider`).then((res) => res.data)
+  const userData = await axios.post(`${localhostBackend}/api/auth/info`,{ token }).then((res) => res.data).catch((err) =>{
     if(err.response.status === 401){
       return {
         redirect:{

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { hashPassword } from '@/utils/auth'
-import localhostBackend from '@/localhost';
+import {localhostDatabase} from '@/localhost';
 
 type Data = {
   message: string;
@@ -21,7 +21,7 @@ export default async function handler(
       return res.status(400).json({ message: "Data is not valid  !!"})
     }
 
-    const usersData = await axios.get(`${localhostBackend}/users`).then((res) => res.data);
+    const usersData = await axios.get(`${localhostDatabase}/users`).then((res) => res.data);
     const userToUpdate = usersData.find(user => user.email === email);
     if (!userToUpdate) {
       return res.status(404).json({ message: 'User not found!' });
@@ -39,7 +39,7 @@ export default async function handler(
     userToUpdate.role = role;
 
 
-    axios.put(`${localhostBackend}/users/${userToUpdate.id}`, userToUpdate)
+    axios.put(`${localhostDatabase}/users/${userToUpdate.id}`, userToUpdate)
 
     return res.status(200).json({ message: 'User information updated successfully!' });
   } catch (error) {

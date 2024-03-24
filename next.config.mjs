@@ -6,7 +6,8 @@ const nextConfig = {
   },
   env: {
     privateKey: 'dsasfdfakfdskjdffdsdfas'
-  }
+  },
+  output: 'standalone',
 };
 
 export default nextConfig;

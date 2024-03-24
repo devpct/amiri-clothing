@@ -4,7 +4,7 @@ import Sidebar from '@/components/templates/Dashboard/Admin/Sidebar'
 import axios from 'axios';
 import Comments from '@/components/templates/Dashboard/Admin/Comments';
 import useSWR from 'swr';
-import localhostBackend from '@/localhost';
+import {localhostDatabase, localhostBackend} from '@/localhost';
 
 
 export default function index({ userData }) {
@@ -12,7 +12,7 @@ export default function index({ userData }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const { data: commentsData } = useSWR('Comments', () =>
-  axios.get(`${localhostBackend}/comments`).then((res) => res.data)
+  axios.get(`${localhostDatabase}/comments`).then((res) => res.data)
   );
 
   return (
@@ -32,7 +32,7 @@ export default function index({ userData }) {
 export async function getServerSideProps(context) {
     const { token } = context.req.cookies
   
-    const userData = await axios.post('http://localhost:3000/auth/info',{ token }).then((res) => res.data).catch((err) =>{
+    const userData = await axios.post(`${localhostBackend}/auth/info`,{ token }).then((res) => res.data).catch((err) =>{
       if(err.response.status === 401){
         return {
           redirect:{

@@ -5,13 +5,13 @@ import ProductInfo from '@/components/templates/Product/ProductInfo'
 import Head from "next/head";
 import axios from 'axios';
 import { useQuery } from 'react-query';
-import localhostBackend from '@/localhost';
+import {localhostDatabase, localhostBackend} from '@/localhost';
 
 
 export default function product({ product, categories, cart }) {
 
   let { data } = useQuery('UserInfo', () =>
-  axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
+  axios.get(`${localhostBackend}/api/auth/info`).then((res) => res.data))
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function product({ product, categories, cart }) {
 }
 
 export async function getStaticPaths() {
-  const products = await axios.get(`${localhostBackend}/products`).then((res) => res.data);
+  const products = await axios.get(`${localhostDatabase}/products`).then((res) => res.data);
 
   const paths = products.map(product => ({
     params: { productName: product.name },
@@ -47,10 +47,10 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { params } = context;
 
-  const product = await axios.get(`${localhostBackend}/products?name=${params.productName}`).then((res) => res.data);
+  const product = await axios.get(`${localhostDatabase}/products?name=${params.productName}`).then((res) => res.data);
 
-  const categories = await axios.get(`${localhostBackend}/categories`).then((res) => res.data)
-  const cart = await axios.get(`${localhostBackend}/cart`).then((res) => res.data)
+  const categories = await axios.get(`${localhostDatabase}/categories`).then((res) => res.data)
+  const cart = await axios.get(`${localhostDatabase}/cart`).then((res) => res.data)
 
   return {
     props: {

@@ -4,7 +4,7 @@ import Sidebar from '@/components/templates/Dashboard/Admin/Sidebar'
 import axios from 'axios';
 import Products from '@/components/templates/Dashboard/Admin/Products';
 import useSWR from 'swr';
-import localhostBackend from '@/localhost';
+import {localhostDatabase, localhostBackend} from '@/localhost';
 
 
 export default function index({ userData, categoriesData }) {
@@ -12,7 +12,7 @@ export default function index({ userData, categoriesData }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const { data: productsData } = useSWR('Products', () =>
-  axios.get(`${localhostBackend}/products`).then((res) => res.data)
+  axios.get(`${localhostDatabase}/products`).then((res) => res.data)
   );
 
   return (
@@ -32,7 +32,7 @@ export default function index({ userData, categoriesData }) {
 export async function getServerSideProps(context) {
     const { token } = context.req.cookies
   
-    const userData = await axios.post('http://localhost:3000/api/auth/info',{ token }).then((res) => res.data).catch((err) =>{
+    const userData = await axios.post(`${localhostBackend}/api/auth/info`,{ token }).then((res) => res.data).catch((err) =>{
       if(err.response.status === 401){
         return {
           redirect:{
@@ -51,7 +51,7 @@ export async function getServerSideProps(context) {
         }
     }
 
-    const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data)
+    const categoriesData = await axios.get(`${localhostDatabase}/categories`).then((res) => res.data)
 
     return {
       props: {

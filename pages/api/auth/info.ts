@@ -2,7 +2,7 @@
 import { verifyToken } from '@/utils/auth'
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next'
-import localhostBackend from '@/localhost';
+import {localhostDatabase} from '@/localhost';
 
 type Data = {
   message?: string;
@@ -20,7 +20,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {    
   if (req.method === 'GET') {    
-    const usersData = await axios.get(`${localhostBackend}/users`).then((res) => res.data);
+    const usersData = await axios.get(`${localhostDatabase}/users`).then((res) => res.data);
 
     const { token } = req.cookies    
   
@@ -38,7 +38,7 @@ export default async function handler(
     
     return res.status(200).json({ id:isUserExist.id, fullname:isUserExist.fullname, email:isUserExist.email, password:isUserExist.password, phonenumber:isUserExist.phonenumber, address:isUserExist.address, role:isUserExist.role})
   } else {
-    const usersData = await axios.get(`${localhostBackend}/users`).then((res) => res.data);
+    const usersData = await axios.get(`${localhostDatabase}/users`).then((res) => res.data);
 
     const { token } = req.body
 

@@ -1,21 +1,16 @@
-  import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SidebarSearch from '@/components/modules/Product/Sidebar/SidebarSearch'
 import AppBar from '@mui/material/AppBar';
-import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import Container from '@mui/material/Container';
-import InputBase from '@mui/material/InputBase';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { TextField } from '@mui/material';
 import Link from 'next/link';
 import axios from 'axios';
 import { useQuery, useQueryClient } from 'react-query';
@@ -24,6 +19,7 @@ import { startCase } from 'lodash';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShoppingCarts } from '@/redux/actions';
+import { localhostBackend } from '@/localhost';
 
 const pages = ['products', 'women', 'men'];
 const settings = ['Dashboard', 'Admin Panel', 'Logout'];
@@ -106,11 +102,11 @@ function Navbar() {
     const queryClient = useQueryClient();
 
     let { data } = useQuery('UserInfo', () =>
-    axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
+    axios.get(`${localhostBackend}/api/auth/info`).then((res) => res.data))
 
     const handleOpenMenu = (event) => {
       if(event.target.innerHTML === 'Logout'){
-        axios.get('http://localhost:3000/api/auth/logout')
+        axios.get(`${localhostBackend}/api/auth/logout`)
         queryClient.setQueryData('UserInfo', undefined)
         window.location.reload();
       }

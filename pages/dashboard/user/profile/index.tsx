@@ -3,11 +3,12 @@ import { useQuery } from 'react-query'
 import axios from 'axios'
 import Sidebar from '@/components/templates/Dashboard/User/Sidebar'
 import Profile from '@/components/templates/Dashboard/User/Profile'
+import { localhostBackend } from '@/localhost';
 
 export default function index() {
 
   let { data } = useQuery('UserInfo', () =>
-  axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
+  axios.get(`${localhostBackend}/api/auth/info`).then((res) => res.data))
 
   return (
     <>

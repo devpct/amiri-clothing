@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { startCase } from 'lodash';
 import { setCategoryId } from '@/redux/actions';
 import { useEffect } from 'react';
-import localhostBackend from '@/localhost';
+import {localhostDatabase} from '@/localhost';
 
 export default function index({ productsData, categoriesData }) {
 
@@ -19,7 +19,7 @@ export default function index({ productsData, categoriesData }) {
   const selectedCategoryId = useSelector((state:any) => state.selectedCategoryId);
 
   const { data:products } = useQuery('ProductsMen', () =>
-  axios.get(`${localhostBackend}/products`).then((res) => res.data),
+  axios.get(`${localhostDatabase}/products`).then((res) => res.data),
   {
     initialData: productsData,
     staleTime: 900000,
@@ -28,7 +28,7 @@ export default function index({ productsData, categoriesData }) {
   )
 
   const { data:categories } = useQuery('CategoriesMen', () =>
-  axios.get(`${localhostBackend}/categories`).then((res) => res.data),
+  axios.get(`${localhostDatabase}/categories`).then((res) => res.data),
   {
     initialData: categoriesData,
     staleTime: 900000,
@@ -59,8 +59,8 @@ export default function index({ productsData, categoriesData }) {
 
 export async function getStaticProps() {
 
-  const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data);
-  const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data);
+  const productsData = await axios.get(`${localhostDatabase}/products`).then((res) => res.data);
+  const categoriesData = await axios.get(`${localhostDatabase}/categories`).then((res) => res.data);
   
 const categoriesWithoutWomen = categoriesData.filter(category => !category.name.toLowerCase().includes('women'));
 

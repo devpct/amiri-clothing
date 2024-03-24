@@ -3,7 +3,7 @@ import { startCase } from 'lodash';
 import React from 'react'
 import axios from 'axios';
 import { mutate } from 'swr';
-import localhostBackend from '@/localhost';
+import {localhostDatabase} from '@/localhost';
   
 
 export default function Table({ selected, setSelected, data, columnNames, title }) {
@@ -27,7 +27,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
 
       const updateStatus = async (id: any, newStatus: any) => {
         const targetData = data.find(item => item.id === id)
-        await axios.put(`${localhostBackend}/order/${id}`, 
+        await axios.put(`${localhostDatabase}/order/${id}`, 
         {
         id: targetData.id,
         customer_id: targetData.customer_id,

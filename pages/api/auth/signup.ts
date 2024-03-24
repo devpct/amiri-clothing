@@ -4,7 +4,7 @@ import { generateToken, hashPassword } from '@/utils/auth';
 import { serialize } from 'cookie';
 import axios from 'axios';
 import moment from 'moment';
-import localhostBackend from '@/localhost';
+import {localhostDatabase} from '@/localhost';
 
 type Data = {
   message: string;
@@ -15,7 +15,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const usersData = await axios.get(`${localhostBackend}/users`).then((res) => res.data);
+  const usersData = await axios.get(`${localhostDatabase}/users`).then((res) => res.data);
 
   const { fullname, email, password, role } = req.body;
 
@@ -44,7 +44,7 @@ export default async function handler(
 
   const token = generateToken({ email });
 
-  axios.post(`${localhostBackend}/users`, user);
+  axios.post(`${localhostDatabase}/users`, user);
 
   return res
     .setHeader('Set-Cookie', serialize('token', token, {

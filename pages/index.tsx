@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Slider from '@/components/templates/Home/Slider';
 import Clothes from '@/components/templates/Home/Products';
-import localhostBackend from '@/localhost';
+import {localhostDatabase} from '@/localhost';
 import { useQuery } from 'react-query';
 import { toast, Bounce } from 'react-toastify';
 import axios from 'axios';
@@ -13,7 +13,7 @@ interface IndexProps {
 
 const Index: React.FC<IndexProps> = ({ sliderData, productsData }) => {
   const { data } = useQuery('Slider', () =>
-    axios.get(`${localhostBackend}/slider`).then((res) => res.data),
+    axios.get(`${localhostDatabase}/slider`).then((res) => res.data),
     {
       initialData: sliderData,
       staleTime: 900000,
@@ -65,9 +65,9 @@ const Index: React.FC<IndexProps> = ({ sliderData, productsData }) => {
 export default Index;
 
 export async function getStaticProps() {
-  const sliderData = await axios.get(`${localhostBackend}/slider`).then((res) => res.data)
+  const sliderData = await axios.get(`${localhostDatabase}/slider`).then((res) => res.data)
   
-  const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data)
+  const productsData = await axios.get(`${localhostDatabase}/products`).then((res) => res.data)
 
   return {
     props: {

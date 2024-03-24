@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Sidebar from '@/components/templates/Dashboard/User/Sidebar'
 import Purchased from '@/components/templates/Dashboard/User/Purchased'
-import localhostBackend from '@/localhost';
+import {localhostDatabase, localhostBackend} from '@/localhost';
 
 export default function index({ userData, productsData, ordersData }) {
 
@@ -33,11 +33,11 @@ export async function getServerSideProps(context) {
       }
   }
 
-  const userData = await axios.post('http://localhost:3000/api/auth/info',{ token }).then((res) => res.data)
+  const userData = await axios.post(`${localhostBackend}/api/auth/info`,{ token }).then((res) => res.data)
 
-  const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data)
+  const productsData = await axios.get(`${localhostDatabase}/products`).then((res) => res.data)
 
-  const ordersData = await axios.get(`${localhostBackend}/order`).then((res) => res.data)
+  const ordersData = await axios.get(`${localhostDatabase}/order`).then((res) => res.data)
 
   return {
     props: {

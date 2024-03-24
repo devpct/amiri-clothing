@@ -3,6 +3,7 @@ import axios from 'axios';
 import { startCase } from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { Bounce, toast } from 'react-toastify';
+import { localhostBackend } from '@/localhost';
 
 export default function Profile({ data }) {
 
@@ -24,7 +25,7 @@ export default function Profile({ data }) {
 
     const customer = { fullname, email, password, phoneNumber, address, role: data?.role }
 
-    axios.put('http://localhost:3000/api/auth/info-update', customer)
+    axios.put(`${localhostBackend}/api/auth/info-update`, customer)
       .then((res) => {
         if (res.status === 200) {
             toast.success('The update was done successfully ((:', {
