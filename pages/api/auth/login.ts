@@ -6,7 +6,8 @@ import axios from 'axios';
 import localhostBackend from '@/localhost';
 
 type Data = {
-  message: string
+  message: string;
+  token?: any;
 }
 
 export default async function handler(

@@ -8,6 +8,7 @@ import localhostBackend from '@/localhost';
 
 type Data = {
   message: string;
+  token?: any;
 };
 
 export default async function handler(
