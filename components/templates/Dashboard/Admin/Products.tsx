@@ -6,7 +6,7 @@ import Pagination from '@/components/modules/Dashboard/Admin/Pagination';
 import Table from '@/components/modules/Dashboard/Admin/Table';
 import axios from 'axios';
 
-export default function Products({ productsData, categoriesData }:{ productsData:any, categoriesData:any }) {
+export default function Products({ productsData, categoriesData }) {
   const [selected, setSelected] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [openModalAdd, setOpenModalAdd] = useState(false);
@@ -22,12 +22,12 @@ export default function Products({ productsData, categoriesData }:{ productsData
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredProducts = productsData?.filter((product:any) => {
+  const filteredProducts = productsData?.filter(product => {
     const searchTermLower = searchTerm.toLowerCase();
     const productName = product.name.toLowerCase();
     const nameMatch = productName.includes(searchTermLower);
-    const colors = product.colors.map((color:any) => color.toLowerCase());
-    const colorMatch = colors.some((color:any) => color.toLowerCase() === searchTermLower);
+    const colors = product.colors.map(color => color.toLowerCase());
+    const colorMatch = colors.some(color => color.toLowerCase() === searchTermLower);
     const priceMatch = product.price.toString().includes(searchTermLower);
     return nameMatch || colorMatch || priceMatch ;
   });
@@ -41,7 +41,7 @@ export default function Products({ productsData, categoriesData }:{ productsData
   const indexOfFirst = indexOfLast - perPage;
   const current = filteredProducts?.slice(indexOfFirst, indexOfLast);
 
-  const paginate = (pageNumber:any) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -52,7 +52,7 @@ export default function Products({ productsData, categoriesData }:{ productsData
             <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{productsData?.length} Products</span>
           </div>
 
-          <Search value={searchTerm} onChange={(e:any) => setSearchTerm(e.target.value)}/>
+          <Search value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
 
           <Buttons 
           selected={selected} 

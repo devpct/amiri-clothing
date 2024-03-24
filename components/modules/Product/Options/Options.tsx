@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 
 
-export default function Options({ product, isLogin, handleShoppingCarts }:{ product:any, isLogin:any, handleShoppingCarts:any }) {
+export default function Options({ product, isLogin, handleShoppingCarts }) {
   
   const productDetails = {
     price: Number(product.price).toLocaleString(),
@@ -26,7 +26,7 @@ export default function Options({ product, isLogin, handleShoppingCarts }:{ prod
   };
   
   
-  const colors = product.colors.map((color:any, index:any) => ({
+  const colors = product.colors.map((color, index) => ({
     name: color,
     class: product.colors_code[index],
   }));
@@ -79,7 +79,7 @@ export default function Options({ product, isLogin, handleShoppingCarts }:{ prod
               <h3 className="text-sm font-medium ">Color</h3>
               <RadioGroup value={selectedColor} className="mt-4">
                 <div className="flex items-center space-x-3 ">
-                  {colors.map((color:{name:any,class:any}) => (
+                  {colors.map(color => (
                     <div className={`flex gap-x-3  p-[0.8rem] rounded-full cursor-pointer
                     ${selectedColor.name === color.name ? `bg-[#000000] dark:bg-white` : ''}
                     `}

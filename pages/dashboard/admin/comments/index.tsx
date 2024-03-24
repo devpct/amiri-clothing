@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import localhostBackend from '@/localhost';
 
 
-export default function index({ userData }:{ userData:any }) {
+export default function index({ userData }) {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -29,7 +29,7 @@ export default function index({ userData }:{ userData:any }) {
   )
 }
 
-export async function getServerSideProps(context:any) {
+export async function getServerSideProps(context) {
     const { token } = context.req.cookies
   
     const userData = await axios.post('http://localhost:3000/auth/info',{ token }).then((res) => res.data).catch((err) =>{

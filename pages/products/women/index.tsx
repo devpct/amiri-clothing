@@ -10,14 +10,14 @@ import { useEffect } from 'react';
 import { setCategoryId } from '@/redux/actions';
 import localhostBackend from '@/localhost';
 
-export default function index({ productsData, categoriesData }:{productsData:any,categoriesData:any}) {
+export default function index({ productsData, categoriesData }) {
   const dispatch = useDispatch();
 
   useEffect(()=>{
     dispatch(setCategoryId(''));
   },[])
 
-  const selectedCategoryId = useSelector((state:{state:any}) => state.selectedCategoryId);
+  const selectedCategoryId = useSelector((state:{selectedCategoryId:any}) => state.selectedCategoryId);
 
   const { data:products } = useQuery('ProductsWomen', () =>
   axios.get(`${localhostBackend}/products`).then((res) => res.data),
@@ -62,11 +62,11 @@ export async function getStaticProps() {
   const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data);
   const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data);
   
-const categoriesWithoutWomen = categoriesData.filter((category:{category:any}) => category.name.toLowerCase().includes('women'));
+const categoriesWithoutWomen = categoriesData.filter(category => category.name.toLowerCase().includes('women'));
 
-const categoriesWithoutWomenIds = categoriesWithoutWomen.map((category:{category:any}) => category.id);
+const categoriesWithoutWomenIds = categoriesWithoutWomen.map(category => category.id);
 
-const productsWithoutWomen = productsData.filter((product:{product:any}) =>
+const productsWithoutWomen = productsData.filter(product =>
     categoriesWithoutWomenIds.includes(product.category_id));
 
 

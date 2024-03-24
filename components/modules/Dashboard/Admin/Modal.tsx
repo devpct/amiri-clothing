@@ -443,31 +443,31 @@ export default function UsersModal({
                         <Input 
                         label='Full Name' 
                         placeholder='Enter full name to get started'
-                        onChange={(event:{target:any})=> setFullName(event.target.value)}
+                        onChange={(event)=> setFullName(event.target.value)}
                         value={fullname}
                         />
                         <Input 
                         label='Email' 
                         placeholder='Enter email to get started'
-                        onChange={(event:{target:any})=> setEmail(event.target.value)}
+                        onChange={(event)=> setEmail(event.target.value)}
                         value={email}
                         />
                         <Input 
                         label='Password' 
                         placeholder='Enter password to get started'
-                        onChange={(event:{target:any})=> setPassword(event.target.value)}
+                        onChange={(event)=> setPassword(event.target.value)}
                         value={password}
                         />
                         <Input 
                         label='Phone Number' 
                         placeholder='Enter phone number to get started'
-                        onChange={(event:{target:any})=> setPhoneNumber(event.target.value)}
+                        onChange={(event)=> setPhoneNumber(event.target.value)}
                         value={phoneNumber}
                         />
                         <Input 
                         label='Address' 
                         placeholder='Enter address to get started'
-                        onChange={(event:{target:any})=> setAddress(event.target.value)}
+                        onChange={(event)=> setAddress(event.target.value)}
                         value={address}
                         />
 
@@ -477,7 +477,7 @@ export default function UsersModal({
                         <Select
                         value={role}
                         displayEmpty
-                        onChange={(event:{target:any}) => setRole(event.target.value)}
+                        onChange={(event) => setRole(event.target.value)}
                         inputProps={{ 'aria-label': 'Without label' }}
                         >
                         
@@ -493,43 +493,43 @@ export default function UsersModal({
                     <Input 
                     label='Product Name' 
                     placeholder='Enter product name to get started'
-                    onChange={(event:{target:any})=> setProductName(event.target.value)}
+                    onChange={(event)=> setProductName(event.target.value)}
                     value={productName}
                     />
                     <Input 
                     label='Colors' 
                     placeholder='Enter colors to get started'
-                    onChange={(event:{target:any}) => setColors(event.target.value.split(','))}
+                    onChange={(event) => setColors(event.target.value.split(','))}
                     value={colors.join(',')}
                     />
                     <Input 
                     label='Colors Code' 
                     placeholder='Enter colors code to get started'
-                    onChange={(event:{target:any})=> setColorsCode(event.target.value.split(','))}
+                    onChange={(event)=> setColorsCode(event.target.value.split(','))}
                     value={colorsCode.join(',')}
                     />
                     <Input 
                     label='Price' 
                     placeholder='Enter price to get started'
-                    onChange={(event:{target:any}) => setPrice(event.target.value)}
+                    onChange={(event) => setPrice(event.target.value)}
                     value={price.toLocaleString()}
                     />
                     <Input 
                     label='Image' 
                     placeholder='Enter image to get started'
-                    onChange={(event:{target:any})=> setImages(event.target.value.split(','))}
+                    onChange={(event)=> setImages(event.target.value.split(','))}
                     value={images.join(',')}
                     />
                     <Input 
                     label='Size' 
                     placeholder='Enter size to get started'
-                    onChange={(event:{target:any})=> setSize(event.target.value.split(','))}
+                    onChange={(event)=> setSize(event.target.value.split(','))}
                     value={size.join(',')}
                     />
                     <Input 
                     label='Description' 
                     placeholder='Enter description to get started'
-                    onChange={(event:{target:any})=> setDescription(event.target.value)}
+                    onChange={(event)=> setDescription(event.target.value)}
                     value={description}
                     />
 
@@ -539,11 +539,11 @@ export default function UsersModal({
                     <Select
                     value={categoryId}
                     displayEmpty
-                    onChange={(event:{target:any}) => setCategoryId(event.target.value)}
+                    onChange={(event) => setCategoryId(event.target.value)}
                     inputProps={{ 'aria-label': 'Without label' }}
                     >
                     {
-                        categoriesData.map((category:{id:any}) => (
+                        categoriesData.map(category => (
                             <MenuItem value={category.id}>{category.id}</MenuItem>
                         ))
                     }
@@ -556,13 +556,13 @@ export default function UsersModal({
                     <Input 
                     label='Category Id' 
                     placeholder='Enter category id to get started'
-                    onChange={(event:{target:any})=> setCategoryId(event.target.value)}
+                    onChange={(event)=> setCategoryId(event.target.value)}
                     value={categoryId}
                     />
                     <Input 
                     label='Category Name' 
                     placeholder='Enter category name to get started'
-                    onChange={(event:{target:any}) => setCategoryName(event.target.value)}
+                    onChange={(event) => setCategoryName(event.target.value)}
                     value={categoryName}
                     />
               </div>
@@ -571,25 +571,25 @@ export default function UsersModal({
                     <Input 
                     label='Customer Id' 
                     placeholder='Enter customer Id to get started'
-                    onChange={(event:{target:any})=> setCustomerId(event.target.value)}
+                    onChange={(event)=> setCustomerId(event.target.value)}
                     value={customerId}
                     />
                     <Input 
                     label='Product Id' 
                     placeholder='Enter product id to get started'
-                    onChange={(event:{target:any}) => setProductId(event.target.value)}
+                    onChange={(event) => setProductId(event.target.value)}
                     value={productId}
                     />
                     <Input 
                     label='Text' 
                     placeholder='Enter text to get started'
-                    onChange={(event:{target:any}) => setText(event.target.value)}
+                    onChange={(event) => setText(event.target.value)}
                     value={text}
                     />
                     <Input 
                     label='Like' 
                     placeholder='Enter like to get started'
-                    onChange={(event:{target:any}) => setLike(event.target.value)}
+                    onChange={(event) => setLike(event.target.value)}
                     value={like}
                     />
               </div>
@@ -598,7 +598,7 @@ export default function UsersModal({
                     <Input 
                     label='Image' 
                     placeholder='Enter image to get started'
-                    onChange={(event:{target:any})=> setImage(event.target.value)}
+                    onChange={(event)=> setImage(event.target.value)}
                     value={image}
                     />
               </div>
@@ -607,31 +607,31 @@ export default function UsersModal({
                     <Input 
                     label='Customer Id' 
                     placeholder='Enter customer Id to get started'
-                    onChange={(event:{target:any})=> setCustomerId(event.target.value)}
+                    onChange={(event)=> setCustomerId(event.target.value)}
                     value={customerId}
                     />
                     <Input 
                     label='Product Id' 
                     placeholder='Enter product id to get started'
-                    onChange={(event:{target:any}) => setProductId(event.target.value)}
+                    onChange={(event) => setProductId(event.target.value)}
                     value={productId}
                     />
                     <Input 
                     label='Color Name' 
                     placeholder='Enter color name to get started'
-                    onChange={(event:{target:any}) => setColorName(event.target.value)}
+                    onChange={(event) => setColorName(event.target.value)}
                     value={colorName}
                     />
                     <Input 
                     label='Size' 
                     placeholder='Enter size to get started'
-                    onChange={(event:{target:any}) => setSize(event.target.value)}
+                    onChange={(event) => setSize(event.target.value)}
                     value={size}
                     />
                     <Input 
                     label='Qty' 
                     placeholder='Enter qty to get started'
-                    onChange={(event:{target:any}) => setQty(event.target.value)}
+                    onChange={(event) => setQty(event.target.value)}
                     value={qty}
                     />
               </div>
@@ -640,31 +640,31 @@ export default function UsersModal({
                     <Input 
                     label='Customer Id' 
                     placeholder='Enter customer Id to get started'
-                    onChange={(event:{target:any})=> setCustomerId(event.target.value)}
+                    onChange={(event)=> setCustomerId(event.target.value)}
                     value={customerId}
                     />
                     <Input 
                     label='Product Id' 
                     placeholder='Enter product id to get started'
-                    onChange={(event:{target:any}) => setProductId(event.target.value)}
+                    onChange={(event) => setProductId(event.target.value)}
                     value={productId}
                     />
                     <Input 
                     label='Color Name' 
                     placeholder='Enter color name to get started'
-                    onChange={(event:{target:any}) => setColorName(event.target.value)}
+                    onChange={(event) => setColorName(event.target.value)}
                     value={colorName}
                     />
                     <Input 
                     label='Size' 
                     placeholder='Enter size to get started'
-                    onChange={(event:{target:any}) => setSize(event.target.value)}
+                    onChange={(event) => setSize(event.target.value)}
                     value={size}
                     />
                     <Input 
                     label='Qty' 
                     placeholder='Enter qty to get started'
-                    onChange={(event:{target:any}) => setQty(event.target.value)}
+                    onChange={(event) => setQty(event.target.value)}
                     value={qty}
                     />
                   <div className="flex flex-col ">
@@ -673,7 +673,7 @@ export default function UsersModal({
                         <Select
                         value={status}
                         displayEmpty
-                        onChange={(event:{target:any}) => setStatus(event.target.value)}
+                        onChange={(event) => setStatus(event.target.value)}
                         inputProps={{ 'aria-label': 'Without label' }}
                         >
                         

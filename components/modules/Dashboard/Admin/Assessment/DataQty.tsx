@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-export default function DataQty({icon, title, qty }:{icon:any, title:any, qty:any }) {
+export default function DataQty({icon, title, qty }) {
 
   const [darkMode, setDarkMode] = useState(false);
 

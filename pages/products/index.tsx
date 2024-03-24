@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { startCase } from 'lodash';
 import localhostBackend from '@/localhost';
 
-export default function index({ productsData, categoriesData }:{productsData:any,categoriesData:any}) {
+export default function index({ productsData, categoriesData }) {
 
   const selectedCategoryId = useSelector((state:any) => state.selectedCategoryId);
 

@@ -4,7 +4,7 @@ import Sidebar from '@/components/templates/Dashboard/User/Sidebar'
 import Purchased from '@/components/templates/Dashboard/User/Purchased'
 import localhostBackend from '@/localhost';
 
-export default function index({ userData, productsData, ordersData }:{ userData:any, productsData:any, ordersData:any }) {
+export default function index({ userData, productsData, ordersData }) {
 
   return (
     <>
@@ -22,7 +22,7 @@ export default function index({ userData, productsData, ordersData }:{ userData:
   )
 }
 
-export async function getServerSideProps(context:any) {
+export async function getServerSideProps(context) {
   const { token } = context.req.cookies
 
   if (!token) {

@@ -5,37 +5,12 @@ import axios from 'axios';
 import { mutate } from 'swr';
 import localhostBackend from '@/localhost';
   
-interface Data {
-    id: any;
-    fullname: any;
-    role: any;
-    phonenumber: any;
-    email: any;
-    address: any;
-    name: any;
-    colors_code: any[];
-    colors: any[];
-    price: { price: any };
-    description: any;
-    size: any[];
-    category_id: any;
-    customer_id: any;
-    product_id: any;
-    text: any;
-    like: any;
-    image: any[];
-    color_name: any;
-    qty: any;
-    status: any;
-    images: any[];
-    newStatus:any;
-  }
 
-export default function Table({ selected, setSelected, data, columnNames, title }:{ selected:any, setSelected:any, data:any, columnNames:any, title:any }) {
+export default function Table({ selected, setSelected, data, columnNames, title }) {
 
-    const toggleSelection = (mainId:{id:any}) => {
+    const toggleSelection = (mainId) => {
         if (selected.includes(mainId)) {
-            setSelected(selected.filter((id:{id:any}) => id !== mainId));
+            setSelected(selected.filter(id => id !== mainId));
         } else {
             setSelected([...selected, mainId]);
         }
@@ -45,13 +20,13 @@ export default function Table({ selected, setSelected, data, columnNames, title 
         if (selected.length === data.length) {
           setSelected([]);
         } else {
-          const allIds = data.map((data:{id:any}) => data.id);
+          const allIds = data.map(data => data.id);
           setSelected(allIds);
         }
       };
 
       const updateStatus = async (id: any, newStatus: any) => {
-        const targetData = data.find((item:{id:any}) => item.id === id)
+        const targetData = data.find(item => item.id === id)
         await axios.put(`${localhostBackend}/order/${id}`, 
         {
         id: targetData.id,
@@ -89,7 +64,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                     </th>
                     <th scope="col" className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">{columnNames[1]}</th>
                     {
-                     columnNames.slice(2,columnNames.length).map(({name}:{name:any}) =>(
+                     columnNames.slice(2,columnNames.length).map(name =>(
                         <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">{name}</th>
                      ))
                     }
@@ -97,7 +72,7 @@ export default function Table({ selected, setSelected, data, columnNames, title 
                 </thead>
                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700 ">
                 {data?.length > 0 ? (
-                    data.map((data:Data) => (
+                    data.map(data => (
                     <tr
                         key={data.id}
                         className={`${

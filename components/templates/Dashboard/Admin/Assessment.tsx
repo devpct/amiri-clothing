@@ -3,7 +3,7 @@ import { useResizeDetector } from 'react-resize-detector';
 import CartsData from '@/components/templates/Dashboard/Admin/Assessment/CartsData';
 import Charts from '@/components/templates/Dashboard/Admin/Assessment/Charts';
 
-export default function Assessment({ usersData, productsData, categoriesData, cartData, commentsData, sliderData }:{ usersData:any, productsData:any, categoriesData:any, cartData:any, commentsData:any, sliderData:any }) {
+export default function Assessment({ usersData, productsData, categoriesData, cartData, commentsData, sliderData }) {
 
     const { width, ref } = useResizeDetector();
 

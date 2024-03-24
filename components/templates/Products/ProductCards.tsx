@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Card from '@/components/modules/Card';
 import { useSelector } from 'react-redux';
 
@@ -14,7 +14,7 @@ export default function ProductCard({ productsData, searchResult }:{ productsDat
     products = productsData
   }
 
-  const compareByPrice = (a:any, b:any) => {
+  const compareByPrice = (a, b) => {
     const priceA = parseFloat(a.price);
     const priceB = parseFloat(b.price);
 
@@ -25,7 +25,7 @@ export default function ProductCard({ productsData, searchResult }:{ productsDat
     }
   };
 
-  const sortByProductId = (a:any, b:any) => {
+  const sortByProductId = (a, b) => {
     return a.id - b.id;
   };
 
@@ -43,7 +43,7 @@ export default function ProductCard({ productsData, searchResult }:{ productsDat
           {sortedProducts?.length > 0 ? (
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5  xl:gap-x flex-wrap">
             {
-              sortedProducts.map((product:any) => (
+              sortedProducts.map(product => (
                 (selectedCategoryId === '' || product.category_id === selectedCategoryId) && (
                   <Card key={product.id} productsData={product} />
                   )

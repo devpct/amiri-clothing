@@ -9,7 +9,7 @@ export default function ProductsSort() {
   const dispatch = useDispatch();
   const selectedSortBy = useSelector((state:any) => state.selectedSortBy);
 
-  const handleChange = (event:any) => {
+  const handleChange = (event) => {
     dispatch(setSortBy(event.target.value));
   };
   

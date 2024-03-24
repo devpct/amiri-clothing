@@ -9,7 +9,7 @@ import { useQuery } from 'react-query';
 import useSWR, { mutate } from 'swr';
 import localhostBackend from '@/localhost';
 
-export default function ProductInfo({ product, isLogin, cart }:{product:any,isLogin:any,cart:any}) {
+export default function ProductInfo({ product, isLogin, cart }) {
   const dispatch = useDispatch();
   const shoppingCarts = useSelector((state:any) => state.shoppingCarts);
   const cartsQty = useSelector((state:any) => state.cartsQty);
@@ -21,10 +21,10 @@ export default function ProductInfo({ product, isLogin, cart }:{product:any,isLo
     axios.get(`${localhostBackend}/cart`).then((res) => res.data)
     );
 
-    const handleShoppingCarts = async (color:any, size:any) => {
+    const handleShoppingCarts = async (color, size) => {
       if(userInfo){
       const productAlreadyInCart = cartItems.find(
-        (cartItem:any) => cartItem.product_id === +product.id
+        cartItem => cartItem.product_id === +product.id
         );
     
         if (!productAlreadyInCart) {
@@ -43,7 +43,6 @@ export default function ProductInfo({ product, isLogin, cart }:{product:any,isLo
           }
         } else {
           console.log('Product is already in the cart');
-          // انجام عملیاتی در صورتی که محصول قبلاً به سبد خرید اضافه شده است
         }
       }
     };

@@ -4,7 +4,7 @@ import { startCase } from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { Bounce, toast } from 'react-toastify';
 
-export default function Profile({ data }:{data:any}) {
+export default function Profile({ data }) {
 
   const [fullname, setFullname] = useState('')
   const [email, setEmail] = useState("")
@@ -19,7 +19,7 @@ export default function Profile({ data }:{data:any}) {
     setAddress(data?.address)
   },[data])
 
-  const update = (event:any) => {
+  const update = (event) => {
     event.preventDefault()
 
     const customer = { fullname, email, password, phoneNumber, address, role: data?.role }
@@ -60,10 +60,10 @@ export default function Profile({ data }:{data:any}) {
     <>
         <div className="container my-9 mx-auto lg:h-[70vh] flex flex-col items-center justify-center gap-10 ">
         <div className="w-full flex justify-center flex-wrap gap-7">
-          <Input label='Full Name' placeholder='Enter your name...' value={fullname} onChange={(event:any)=> setFullname(event.target.value)}/>
-          <Input label='Email' placeholder='Enter your Email...' value={email} onChange={(event:any)=> setEmail(event.target.value)}/>
-          <Input label='Password' placeholder='Enter your New Password...' value={password} onChange={(event:any)=> setPassword(event.target.value)}/>
-          <Input label='Phone Number' placeholder='Enter your Phone Number...' value={phoneNumber} onChange={(event:any)=> setPhoneNumber(event.target.value)}/>
+          <Input label='Full Name' placeholder='Enter your name...' value={fullname} onChange={(event)=> setFullname(event.target.value)}/>
+          <Input label='Email' placeholder='Enter your Email...' value={email} onChange={(event)=> setEmail(event.target.value)}/>
+          <Input label='Password' placeholder='Enter your New Password...' value={password} onChange={(event)=> setPassword(event.target.value)}/>
+          <Input label='Phone Number' placeholder='Enter your Phone Number...' value={phoneNumber} onChange={(event)=> setPhoneNumber(event.target.value)}/>
           <Input label='Role' value={startCase(data?.role)} InputOff={true} />
           <div className='w-full mx-5 lg:mx-[6.8rem]'>
             <p className='mb-1 '>Address</p>

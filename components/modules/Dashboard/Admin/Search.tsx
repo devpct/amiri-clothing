@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Search({ value, onChange}:{ value:any, onChange:any}) {
+export default function Search({ value, onChange}) {
   return (
     <>
     <div className="relative lg:w-[35rem] mx-5 lg:mx-0">

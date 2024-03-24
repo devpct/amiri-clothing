@@ -4,7 +4,7 @@ import CategorySelect from '@/components/modules/Product/Sidebar/CategorySelect'
 import SidebarSearch from '@/components/modules/Product/Sidebar/SidebarSearch'
 import ProductsSort from '@/components/modules/Product/Sidebar/ProductsSort'
 
-export default function Sidebar({ categoriesData }:{categoriesData:any}) {
+export default function Sidebar({ categoriesData }) {
 
   return (
     <>

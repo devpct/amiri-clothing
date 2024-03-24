@@ -8,7 +8,7 @@ import { useQuery } from 'react-query';
 import localhostBackend from '@/localhost';
 
 
-export default function product({ product, categories, cart }:{product:any,categories:any,cart:any}) {
+export default function product({ product, categories, cart }) {
 
   let { data } = useQuery('UserInfo', () =>
   axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
@@ -34,7 +34,7 @@ export default function product({ product, categories, cart }:{product:any,categ
 export async function getStaticPaths() {
   const products = await axios.get(`${localhostBackend}/products`).then((res) => res.data);
 
-  const paths = products.map((product:any) => ({
+  const paths = products.map(product => ({
     params: { productName: product.name },
   }));
 
@@ -44,7 +44,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context:any) {
+export async function getStaticProps(context) {
   const { params } = context;
 
   const product = await axios.get(`${localhostBackend}/products?name=${params.productName}`).then((res) => res.data);

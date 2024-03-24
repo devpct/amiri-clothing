@@ -24,7 +24,7 @@ export default async function handler(
       return res.status(400).json({ message: "Data is not valid  !!"})
     }
 
-    const isUserExist = usersData.find((user:any) => user.email === email);
+    const isUserExist = usersData.find(user => user.email === email);
     
     console.log(password, isUserExist.password);
 

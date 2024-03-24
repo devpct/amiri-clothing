@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ProductImages({ imags }:{ imags:any }) {
+export default function ProductImages({ imags }) {
   return (
     <>
     <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">

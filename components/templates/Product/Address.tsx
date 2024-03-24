@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { startCase } from 'lodash';
 
 
-export default function Address({ product, categories }:{product:any,categories:any}) {
+export default function Address({ product, categories }) {
 
   const categoryName = categories[product.category_id - 1].name;
 
@@ -27,7 +27,7 @@ export default function Address({ product, categories }:{product:any,categories:
     <>
     <nav aria-label="Breadcrumb" className='lg:sticky dark:bg-gray-900 bg-white z-20 lg:top-[7.5%] lg:lg:pb-5 '>
           <ol role="list" className="flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-            {breadcrumbs.map((breadcrumb:any) => (
+            {breadcrumbs.map(breadcrumb => (
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
                   <Link href={breadcrumb.href} className="mr-2 text-sm font-medium ">

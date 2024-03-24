@@ -4,9 +4,8 @@ import Buttons from '@/components/modules/Dashboard/Admin/Buttons';
 import Modal from '@/components/modules/Dashboard/Admin/Modal';
 import Pagination from '@/components/modules/Dashboard/Admin/Pagination';
 import Table from '@/components/modules/Dashboard/Admin/Table';
-import axios from 'axios';
 
-export default function Sliders({ slidersData }:{ slidersData:any }) {
+export default function Sliders({ slidersData }) {
   const [selected, setSelected] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [openModalAdd, setOpenModalAdd] = useState(false);
@@ -15,7 +14,7 @@ export default function Sliders({ slidersData }:{ slidersData:any }) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 6;
 
-  const filteredSliders = slidersData?.filter((slider:any) => {
+  const filteredSliders = slidersData?.filter(slider => {
     const searchTermLower = searchTerm.toLowerCase();
     const image = slider.image.toLowerCase();
     const imageMatch = image.includes(searchTermLower);
@@ -31,7 +30,7 @@ export default function Sliders({ slidersData }:{ slidersData:any }) {
   const indexOfFirst = indexOfLast - perPage;
   const current = filteredSliders?.slice(indexOfFirst, indexOfLast);
 
-  const paginate = (pageNumber:any) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -42,7 +41,7 @@ export default function Sliders({ slidersData }:{ slidersData:any }) {
             <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{slidersData?.length} Sliders</span>
           </div>
 
-          <Search value={searchTerm} onChange={(e:any) => setSearchTerm(e.target.value)}/>
+          <Search value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
 
           <Buttons 
           selected={selected} 

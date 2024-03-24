@@ -6,7 +6,7 @@ import React from 'react'
 import { useQuery } from 'react-query'
 import localhostBackend from '@/localhost';
 
-export default function index({ productsData, categoriesData, searchResult }:{productsData:any,categoriesData:any,searchResult:any }) {
+export default function index({ productsData, categoriesData, searchResult }) {
 
   const { data:products } = useQuery('Products', () =>
   axios.get(`${localhostBackend}/products`).then((res) => res.data),
@@ -44,15 +44,14 @@ export default function index({ productsData, categoriesData, searchResult }:{pr
 }
 
 
-export async function getServerSideProps(context:any) {
+export async function getServerSideProps(context) {
   
   const { query } = context;
 
   const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data)
   const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data)
   
-  const searchResult = productsData.filter(
-    (item:any) =>
+  const searchResult = productsData.filter(item =>
       item.name.toLowerCase().includes(query.q.toLowerCase())
   );
   

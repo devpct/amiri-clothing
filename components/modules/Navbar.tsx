@@ -81,7 +81,7 @@ function Navbar() {
     return router.pathname.startsWith('/products');
   };
 
-  const handleClick = (page:any) => {
+  const handleClick = (page) => {
     setSelectedPage(page);
   };
 
@@ -108,7 +108,7 @@ function Navbar() {
     let { data } = useQuery('UserInfo', () =>
     axios.get('http://localhost:3000/api/auth/info').then((res) => res.data))
 
-    const handleOpenMenu = (event:any) => {
+    const handleOpenMenu = (event) => {
       if(event.target.innerHTML === 'Logout'){
         axios.get('http://localhost:3000/api/auth/logout')
         queryClient.setQueryData('UserInfo', undefined)

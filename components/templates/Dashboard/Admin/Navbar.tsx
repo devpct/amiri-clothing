@@ -2,7 +2,7 @@ import { Avatar, IconButton } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 
-export default function Navbar({ isOpen, setIsOpen, data }:{ isOpen:any, setIsOpen:any, data:any }) {
+export default function Navbar({ isOpen, setIsOpen, data }) {
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)

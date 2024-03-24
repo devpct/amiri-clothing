@@ -25,7 +25,7 @@ export default function index() {
   )
 }
 
-export async function getServerSideProps(context:any) {
+export async function getServerSideProps(context) {
   const { token } = context.req.cookies
 
   if (!token) {

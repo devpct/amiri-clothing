@@ -10,7 +10,7 @@ import { setCategoryId } from '@/redux/actions';
 import { useEffect } from 'react';
 import localhostBackend from '@/localhost';
 
-export default function index({ productsData, categoriesData }:{productsData:any,categoriesData:any}) {
+export default function index({ productsData, categoriesData }) {
 
   const dispatch = useDispatch();
   useEffect(()=>{
@@ -62,11 +62,11 @@ export async function getStaticProps() {
   const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data);
   const categoriesData = await axios.get(`${localhostBackend}/categories`).then((res) => res.data);
   
-const categoriesWithoutWomen = categoriesData.filter((category:any) => !category.name.toLowerCase().includes('women'));
+const categoriesWithoutWomen = categoriesData.filter(category => !category.name.toLowerCase().includes('women'));
 
-const categoriesWithoutWomenIds = categoriesWithoutWomen.map((category:any) => category.id);
+const categoriesWithoutWomenIds = categoriesWithoutWomen.map(category => category.id);
 
-const productsWithoutWomen = productsData.filter((product:any) =>categoriesWithoutWomenIds.includes(product.category_id));
+const productsWithoutWomen = productsData.filter(product =>categoriesWithoutWomenIds.includes(product.category_id));
 
 
   return {

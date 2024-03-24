@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import moment from 'moment';
 
-export default function Charts({ width, usersData }:{ width:any, usersData:any }) {
+export default function Charts({ width, usersData }) {
 
     const allMonths = moment.months();
     const currentMonthIndex = moment().month();
@@ -12,7 +12,7 @@ export default function Charts({ width, usersData }:{ width:any, usersData:any }
         const daysInMonth = moment().month(month).daysInMonth();
         const monthData = [];
         for (let day = 1; day <= daysInMonth; day++) {
-            const usersRegisteredOnDay = usersData.filter((user:any) => {
+            const usersRegisteredOnDay = usersData.filter(user => {
                 const userDay = moment(user.createdAt).date();
                 const userMonth = moment(user.createdAt).format('MMMM');
                 return userMonth === month && userDay === day;

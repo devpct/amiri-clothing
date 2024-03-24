@@ -5,7 +5,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import localhostBackend from '@/localhost';
 
-export default function assessment({userData, usersData, productsData, categoriesData, cartData,commentsData, sliderData}:{userData:any, usersData:any, productsData:any, categoriesData:any, cartData:any,commentsData:any, sliderData:any}) {
+export default function assessment({userData, usersData, productsData, categoriesData, cartData,commentsData, sliderData}) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -22,7 +22,7 @@ export default function assessment({userData, usersData, productsData, categorie
 }
 
 
-export async function getServerSideProps(context:any) {
+export async function getServerSideProps(context) {
   const { token } = context.req.cookies
   const usersData = await axios.get(`${localhostBackend}/users`).then((res) => res.data)
   const productsData = await axios.get(`${localhostBackend}/products`).then((res) => res.data)

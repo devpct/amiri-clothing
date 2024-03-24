@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { startCase } from 'lodash';
 
 
-export default function Card({ productsData }:{ productsData:any }) {
+export default function Card({ productsData }) {
   return (
     <>
     <div className="group relative">

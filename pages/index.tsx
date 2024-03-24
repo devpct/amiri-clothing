@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Slider from '@/components/templates/Home/Slider';
 import Clothes from '@/components/templates/Home/Products';
 import localhostBackend from '@/localhost';
