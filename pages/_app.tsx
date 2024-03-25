@@ -53,7 +53,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
               {!isLoginPage && !isSignupPage && !isDashboard && <Footer />}
               <ToastContainer />
               <ShoppingCarts />
-              <Theme darkMode={darkMode}/>
+              {!isLoginPage && !isSignupPage && <Theme darkMode={darkMode}/>}
             </div>
           </QueryClientProvider>
         </main>
