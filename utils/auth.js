@@ -1,10 +1,10 @@
 import { hash, compare } from "bcryptjs";
 import { sign, verify } from "jsonwebtoken"
 
-    const hashPassword = async (password) => {
-        const hashedPassword = await hash(password, 12);
-        return hashedPassword
-    }
+const hashPassword = async (password) => {
+    const hashedPassword = await hash(password, 12);
+    return hashedPassword
+}
 
 const generateToken = (data) => {
     const token = sign({ ...data }, process.env.privateKey)    

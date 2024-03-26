@@ -165,8 +165,8 @@ export default function UsersModal({
       };
       const add = async () => {
         setOpenModalAdd(false)
-        const hashedPassword = await hashPassword(password);
         if(title === 'User'){
+        const hashedPassword = await hashPassword(password);
         await axios.post(`${localhostDatabase}/users`, {
           fullname,
           email,
@@ -279,9 +279,9 @@ export default function UsersModal({
           }
         }
       const update = async () => {
-        const hashedPassword = await hashPassword(password);
         setOpenModalEdit(false);
         if (title === 'User') { 
+          const hashedPassword = await hashPassword(password);
           await axios.put(`${localhostDatabase}/users/${selected[0]}`, {
               fullname,
               email,
