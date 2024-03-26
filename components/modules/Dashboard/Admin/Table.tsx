@@ -6,7 +6,7 @@ import { mutate } from 'swr';
 import {localhostDatabase} from '@/localhost';
   
 
-export default function Table({ selected, setSelected, data, columnNames, title, userData }) {
+export default function Table({ selected, setSelected, data, columnNames, title, userData }:{selected:any, setSelected:any, data:any, columnNames:any, title:any,userData?:any}) {
 
     const toggleSelection = (mainId) => {
         if (selected.includes(mainId)) {
@@ -78,7 +78,10 @@ export default function Table({ selected, setSelected, data, columnNames, title,
                         className={`${
                         selected.includes(data.id)
                             ? 'bg-blue-100 dark:bg-gray-500'
-                            : data.id === userData.id ? 'bg-gray-100 dark:bg-black' : ''
+                            :
+                            userData ?
+                            data.id === userData.id ? 'bg-gray-100 dark:bg-black' : ''
+                            : null
                         }`}
                         onClick={() => toggleSelection(data.id)}
                     >
