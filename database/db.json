@@ -6,39 +6,27 @@
       "password": "$2a$12$pNlfnJwkqkrU9Hcn9CHt8.z8LvjtmYPLL0z1E1295aWM/6OeAcW0i",
       "phonenumber": "09215641823",
       "address": "IR, Qom, Bolvar 15 Khordad, Koche 53, Pelak 10",
-      "role": "admin",
+      "role": "manager",
       "createdAt": "2024-03-01 10:30:00",
       "id": "e0bf"
     },
     {
-      "fullname": "rasool",
+      "fullname": "Rasool Hosseini",
       "email": "rasool@gmail.com",
-      "password": "$2a$12$pNlfnJwkqkrU9Hcn9CHt8.z8LvjtmYPLL0z1E1295aWM/6OeAcW0i",
-      "phonenumber": "",
-      "address": "",
-      "role": "customer",
-      "createdAt": "2024-02-01 10:30:00",
+      "password": "$2a$12$ExHYHT2uOdekQGxnFPW71Os4RlQ.e8K91Tzmc1TRyZ1c2LlYnzNoS",
+      "phonenumber": "09023883441",
+      "address": "IR, Qom, Azar",
+      "role": "admin",
       "id": "6568"
     },
     {
-      "id": "9ab9",
-      "fullname": "sddssss",
-      "email": "",
-      "password": "",
-      "phonenumber": "",
-      "address": "",
-      "createdAt": "2024-03-02 10:30:00",
-      "role": "customer"
-    },
-    {
-      "id": "90d4",
-      "fullname": "mmd",
-      "email": "",
-      "password": "",
-      "phonenumber": "",
-      "address": "",
-      "createdAt": "2024-03-03 10:30:00",
-      "role": "customer"
+      "fullname": "Elone Musk",
+      "email": "elonemusk@gmail.com",
+      "password": "$2a$12$8Y2iRQsRZNcnJ6nVBU7w/eUaNZZBjGo1iys/TXAnA.UqpT3rv3Jd.",
+      "phonenumber": "01000000001",
+      "address": "USA, CA, Lop",
+      "role": "customer",
+      "id": "90d4"
     },
     {
       "fullname": "ali",
@@ -284,7 +272,7 @@
       "color_name": "white",
       "size": "XL",
       "qty": 1,
-      "status": "sending"
+      "status": "delivery"
     },
     {
       "id": "79ac",

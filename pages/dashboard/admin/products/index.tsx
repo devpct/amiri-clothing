@@ -43,7 +43,7 @@ export async function getServerSideProps(context) {
     })
   
       
-    if (userData.role !== 'admin') {
+    if (userData.role !== 'admin' && userData.role !== 'manager') {
         return {
           redirect:{
             destination: '/',

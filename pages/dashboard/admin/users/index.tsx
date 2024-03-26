@@ -22,7 +22,7 @@ export default function index({ userData }) {
     <Navbar isOpen={isOpen} setIsOpen={setIsOpen} data={userData}/>
 
     <div className='min-[1000px]:h-screen h-full lg:ml-64 py-[3rem]'>
-    <Users usersData={usersData}/>
+    <Users usersData={usersData} userData={userData}/>
     </div>
     </div>
     </>
@@ -43,7 +43,7 @@ export async function getServerSideProps(context) {
     })
   
       
-    if (userData.role !== 'admin') {
+    if (userData.role !== 'admin' && userData.role !== 'manager') {
         return {
           redirect:{
             destination: '/',

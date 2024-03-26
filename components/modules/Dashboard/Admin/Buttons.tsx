@@ -35,7 +35,8 @@ export default function Buttons({
     setImage,
     setColorName,
     setQty,
-    setStatus
+    setStatus,
+    userData
     }:
     { 
     selected?:any, 
@@ -69,7 +70,8 @@ export default function Buttons({
     setImage?:any,
     setColorName?:any,
     setQty?:any,
-    setStatus?:any
+    setStatus?:any,
+    userData?:any
     }) {
     const handleOpen = () => {
         if(title === 'users'){
@@ -116,30 +118,40 @@ export default function Buttons({
     }
 
     const deleted = async () => {
-    if(title === 'users'){
-    let nonAdminUsersToDelete;
-    
-    if (!showAdmins && !showCustomers) {
-        nonAdminUsersToDelete = selected;
-    } else {
-        nonAdminUsersToDelete = selected.filter(userId => {
-        const user = data.find(u => u.id === userId);
-        if (!showAdmins) {
-            return user && user.role === 'customer';
+        if (title === 'users') {
+            let nonAdminUsersToDelete;
+        
+            if (!showAdmins && !showCustomers) {
+                nonAdminUsersToDelete = selected;
+            } else {
+                nonAdminUsersToDelete = selected.filter(async userId => {
+                    const usersData = await axios.get(`${localhostDatabase}/users/${userId}`).then(res => res.data);
+                    if (!showAdmins) {
+                        return usersData.role === 'customer';
+                    }
+                    if (!showCustomers) {
+                        return usersData.role === 'admin';
+                    }
+                    return usersData.role !== 'admin' && usersData.role !== 'manager';
+                });
+            }
+        
+            await Promise.all(nonAdminUsersToDelete.map(async (userId) => {
+                const usersData = await axios.get(`${localhostDatabase}/users/${userId}`).then(res => res.data);
+                if(userData.role === 'admin'){
+                    if (usersData.role === 'customer') {
+                        await axios.delete(`${localhostDatabase}/users/${userId}`);
+                    }
+                }else{
+                    if (usersData.role === 'customer' || usersData.role === 'admin') {
+                        await axios.delete(`${localhostDatabase}/users/${userId}`);
+                    }
+                }
+            }));
+        
+            mutate('Users');
         }
-        if (!showCustomers) {
-            return user && user.role === 'admin';
-        }
-        return user && user.role !== 'admin';
-        });
-    }
-    
-    await Promise.all(nonAdminUsersToDelete.map(async (userId) => {
-        await axios.delete(`${localhostDatabase}/users/${userId}`);
-    }));
-    
-    mutate('Users');
-    }else if (title === 'products') {
+        else if (title === 'products') {
         await Promise.all(selected.map(async (productId) => {
             await axios.delete(`${localhostDatabase}/products/${productId}`);
         }));
@@ -179,6 +191,15 @@ export default function Buttons({
         if(title === 'users'){
         const selectedUserId = selected[0];
         const selectedUser = filteredUsers.find(user => user.id === selectedUserId);
+        if (userData.role === 'admin') {
+            if (selectedUser.role !== 'customer' || selectedUser.role === 'admin') {
+                setOpenModalEdit(false);
+                console.log(selectedUser.role , userData.role); 
+                if(selectedUser.id === userData.id) {
+                    setOpenModalEdit(true);
+                }
+            }
+        }
         if (selectedUser) {
         setFullName(selectedUser.fullname || '');
         setEmail(selectedUser.email || '');

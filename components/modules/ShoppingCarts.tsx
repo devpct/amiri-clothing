@@ -113,8 +113,7 @@ export default function ShoppingCarts() {
       console.error('Error while placing order:', error);
     }
   };
-  
-  
+
   return (
     <Transition.Root show={shoppingCarts} as={Fragment}>
       <Dialog as="div" className="relative z-40" onClose={handleCloseShoppingCarts} onClick={handleCloseShoppingCarts}>

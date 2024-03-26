@@ -5,6 +5,7 @@ import axios from 'axios';
 import { mutate } from 'swr';
 import moment from 'moment';
 import {localhostDatabase} from '@/localhost';
+import { hashPassword } from '@/utils/auth';
 
 
 export default function UsersModal({
@@ -60,7 +61,8 @@ export default function UsersModal({
     setColorName,
     setQty,
     status,
-    setStatus
+    setStatus,
+    userData
     }:
     {
     openModalAdd?:any,
@@ -115,7 +117,8 @@ export default function UsersModal({
     setColorName?:any,
     setQty?:any,
     status?:any,
-    setStatus?:any
+    setStatus?:any,
+    userData?:any,
     }) {
     const handleClose = () => {
         if(title === 'User'){
@@ -162,11 +165,12 @@ export default function UsersModal({
       };
       const add = async () => {
         setOpenModalAdd(false)
+        const hashedPassword = await hashPassword(password);
         if(title === 'User'){
         await axios.post(`${localhostDatabase}/users`, {
           fullname,
           email,
-          password,
+          password: hashedPassword,
           phonenumber : phoneNumber,
           address,
           role,
@@ -275,25 +279,26 @@ export default function UsersModal({
           }
         }
       const update = async () => {
+        const hashedPassword = await hashPassword(password);
         setOpenModalEdit(false);
-        if(title === 'User'){
-        await axios.put(`${localhostDatabase}/users/${selected[0]}`, {
-          fullname,
-          email,
-          password,
-          phonenumber: phoneNumber,
-          address,
-          role,
-        });
-      
-        mutate('Users');
-      
-        setFullName('');
-        setEmail('');
-        setPassword('');
-        setPhoneNumber('');
-        setAddress('');
-        }else if (title === 'Product'){
+        if (title === 'User') { 
+          await axios.put(`${localhostDatabase}/users/${selected[0]}`, {
+              fullname,
+              email,
+              password: hashedPassword,
+              phonenumber: phoneNumber,
+              address,
+              role,
+          });
+          
+          mutate('Users');
+          
+          setFullName('');
+          setEmail('');
+          setPassword('');
+          setPhoneNumber('');
+          setAddress('');
+      }else if (title === 'Product'){
             await axios.put(`${localhostDatabase}/products/${selected[0]}`, {
                 name: productName,
                 colors,

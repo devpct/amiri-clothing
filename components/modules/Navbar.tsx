@@ -301,7 +301,7 @@ function Navbar() {
 
 // Admin Panel
 
-                  data.role === 'admin' ?
+                  data.role === 'admin' || data.role === 'manager' ?
                   <MenuItem key={setting} style={{ padding: '0'}} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center" style={{ padding: '10px 30px', width: '100%', height:'100%'}} onClick={handleOpenMenu}>{setting}</Typography>
                   </MenuItem>
@@ -311,7 +311,6 @@ function Navbar() {
                     <Typography textAlign="center" style={{ padding: '10px 30px', width: '100%', height:'100%'}} onClick={handleOpenMenu}>{setting}</Typography>
                     </MenuItem>
                     : null
-
                   ))}
                 </Menu>
               </div>

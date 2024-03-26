@@ -12,7 +12,8 @@ export default function index({ userData }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const { data: cartData } = useSWR('Cart', () =>
-  axios.get(`${localhostDatabase}/cart`).then((res) => res.data)
+  axios.get(`${localhostDatabase}/cart`).then((res) => res.data),
+  { revalidateOnFocus: true, revalidateOnReconnect: true }
   );
 
   return (
@@ -43,7 +44,7 @@ export async function getServerSideProps(context) {
     })
   
       
-    if (userData.role !== 'admin') {
+    if (userData.role !== 'admin' && userData.role !== 'manager') {
         return {
           redirect:{
             destination: '/',
