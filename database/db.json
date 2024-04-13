@@ -167,6 +167,16 @@
       "address": "",
       "role": "customer",
       "createdAt": "2024-03-10 11:44:21"
+    },
+    {
+      "id": "3446",
+      "fullname": "test",
+      "email": "test@gmail.com",
+      "password": "$2a$12$ZK02HSshJunBUKTVKJR9Eu85BiAKLWE5JoMFmYgLpesc7kCa.oJ..",
+      "phonenumber": "",
+      "address": "",
+      "role": "customer",
+      "createdAt": "2024-04-13 22:44:45"
     }
   ],
   "products": [
@@ -248,7 +258,7 @@
   "slider": [
     {
       "id": "1",
-      "image": "https://media.licdn.com/dms/image/C4E12AQHWyW6VbusXZg/article-cover_image-shrink_720_1280/0/1525774737844?e=1711584000&v=beta&t=cOqnpNsFduBeUup4UsgBKOlBiTnc0Dxa-VuiDXNP0nI"
+      "image": "https://png.pngtree.com/template/20220318/ourmid/pngtree-fashion-men-s-51-promotion-full-screen-poster-image_895209.jpg"
     },
     {
       "image": "https://www.funkypigeon.com/_next/image?url=%2Fimages%2FSweaterHoodie%2Ftab_types.jpg&w=640&q=75",

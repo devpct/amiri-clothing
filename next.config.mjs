@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: { 
-    domains: ['idehalmag.com','seeklogo.com','tailwindui.com','amiri.com','media.licdn.com','www.funkypigeon.com']
+    domains: ['idehalmag.com','seeklogo.com','tailwindui.com','amiri.com','media.licdn.com','www.funkypigeon.com','png.pngtree.com']
   },
   env: {
     privateKey: 'dsasfdfakfdskjdffdsdfas'

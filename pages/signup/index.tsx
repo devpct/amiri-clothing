@@ -210,7 +210,7 @@ export async function getServerSideProps(context) {
         }
     }
 
-    const sliderData = await axios.get('https://amiri-clothing-server.liara.run/slider').then((res) => res.data);
+    const sliderData = await axios.get(`${localhostDatabase}/slider`).then((res) => res.data);
 
     return {
       props: {
